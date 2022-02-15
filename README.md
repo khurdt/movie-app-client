@@ -1,3 +1,4 @@
+# Movie App Client-Side
 ● Returns a list of ALL movies to the user (each listed item with an image, title, and
 description)
 <br><br>

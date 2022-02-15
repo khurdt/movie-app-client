@@ -6,13 +6,13 @@ import './index.scss';
 
 //Main component (will eventually use all the others)
 class myFlixApplication extends React.Component {
-    render() {
-        return (
-            <div className='my-flix'>
-                <div>Good Evening</div>
-            </div>
-        );
-    }
+  render() {
+    return (
+      <div className='my-flix'>
+        <div>Good Evening</div>
+      </div>
+    );
+  }
 }
 
 //Finds the root of your app
