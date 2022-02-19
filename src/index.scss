@@ -2,12 +2,13 @@ $color: steelblue;
 
 .main-view {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 1rem;
+    grid-template-columns: 1fr;
+    grid-gap: 20px;
     color: $color;
     text-align: center;
-    margin-top: 3em;
+    margin: auto;
     font-size: 20px;
+    max-width: 50%;
 }
 
 .movie-card {
@@ -16,6 +17,26 @@ $color: steelblue;
 }
 
 .movie-card:hover {
+    background-color: lighten($color, 30%);
+    transition: 0.5s;
+}
+
+.movie-poster img {
+    width: 200px;
+    height: 200px;
+}
+
+.back-button {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 10px;
+    color: $color;
+    border: 2px solid $color;
+    padding: 20px;
+}
+
+.back-button:hover {
     background-color: lighten($color, 30%);
     transition: 0.5s;
 }
