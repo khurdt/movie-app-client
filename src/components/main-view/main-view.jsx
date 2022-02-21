@@ -1,19 +1,30 @@
 import React from 'react';
+import axios from 'axios';
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
 
 export class MainView extends React.Component {
-  constructor() { //the place to initialize a state's values or data
+  constructor() { //the place to initialize a state's values or data in memory before rendering component
     super(); //initializes component's state and enables this.state
     this.state = {
-      movies: [
-        { _id: 1, title: 'Inception', description: 'desc1', imagePath: '...', director: 'Christopher Nolan', genre: 'Action' },
-        { _id: 2, title: 'Shawshank Redemption', description: 'desc2', imagePath: '...', director: 'Frank Darabont', genre: 'Drama' },
-        { _id: 3, title: 'Gladiator', description: 'desc3', imagePath: '...', director: 'Ridley Scott', genre: 'Action' }
-      ],
+      movies: [],
       selectedMovie: null
     };
   }
+
+  //code executed right after the component is added to the DOM
+  componentDidMount() {
+    axios.get('https://kh-movie-app.herokuapp.com/movies')
+      .then(response => {
+        this.setState({
+          movie: response.data
+        });
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
+
   //this changes selectedMovie from null to the new movie clicked on
   setSelectedMovie(newSelectedMovie) {
     this.setState({
