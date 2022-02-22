@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import './login-view.scss';
+
 
 export function LoginView(props) {
   const [username, setUsername] = useState('');
@@ -13,16 +15,22 @@ export function LoginView(props) {
   };
 
   return (
-    <form>
-      <label>
-        Username:
-        <input type='text' value={username} onChange={e => setUsername(e.target.value)} />
-      </label>
-      <label>
-        Password:
-        <input type='password' value={password} onChange={e => setPassword(e.target.value)} />
-      </label>
-      <button type='submit' onClick={handleSubmit}>Submit</button>
-    </form>
+    <>
+      <h1>Welcome to myFlix</h1>
+      <form className='login'>
+        <label className='username'>
+          Username:
+          <input type='text' value={username} onChange={e => setUsername(e.target.value)} />
+        </label>
+        <label className='password'>
+          Password:
+          <input type='password' value={password} onChange={e => setPassword(e.target.value)} />
+        </label>
+        <button className='submit' type='submit' onClick={handleSubmit}>Submit</button>
+        <button className='submit' type='button' onClick={() => {
+          props.onRegisterClick();
+        }}>Register Here</button>
+      </form>
+    </>
   )
 }

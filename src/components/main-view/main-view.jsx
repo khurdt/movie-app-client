@@ -3,6 +3,7 @@ import axios from 'axios';
 import { LoginView } from '../login-view/login-view';
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
+import { RegistrationView } from '../registration-view/registration-view';
 
 export class MainView extends React.Component {
   constructor() { //the place to initialize a state's values or data in memory before rendering component
@@ -45,7 +46,7 @@ export class MainView extends React.Component {
     const { movies, selectedMovie, user } = this.state;
     //sets up event listener and renders Movie View
 
-    if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
+    if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} onRegisterClick={<RegistrationView />} />;
 
     if (movies.length <= 2) return <div className='main-view' />;
 

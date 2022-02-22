@@ -61,4 +61,44 @@
   opacity: 0.5;
   transition: 0.3s ease-in;
 }
+h1 {
+  text-align: center;
+  font-style: italic;
+}
+
+.login {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 30px;
+  text-align: center;
+  color: purple;
+}
+
+input {
+  outline: none;
+  display: block;
+  border-radius: 10px;
+  width: 300px;
+  padding: 3px;
+  box-shadow: 3px 3px 3px 0px #445588;
+}
+
+.username {
+  padding: 20px;
+  margin: auto;
+  text-align: left;
+}
+
+.password {
+  padding: 20px;
+  margin: auto;
+  text-align: left;
+}
+
+.submit {
+  margin: auto;
+  max-width: 200px;
+  box-shadow: 3px 3px 3px 0px #445588;
+  border-radius: 10px;
+}
 /*# sourceMappingURL=index.caa67093.css.map */
