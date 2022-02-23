@@ -11,7 +11,8 @@ export class MainView extends React.Component {
     this.state = {
       movies: [],
       selectedMovie: null,
-      user: null
+      user: null,
+      register: 'user',
     };
   }
 
@@ -35,6 +36,12 @@ export class MainView extends React.Component {
     });
   }
 
+  onRegister(register) {
+    this.setState({
+      register
+    });
+  }
+
   //When a user successfully logs in, this function updates the 'user' property from null to particular user
   onLoggedIn(user) {
     this.setState({
@@ -43,10 +50,12 @@ export class MainView extends React.Component {
   }
 
   render() {
-    const { movies, selectedMovie, user } = this.state;
+    const { movies, selectedMovie, user, register } = this.state;
     //sets up event listener and renders Movie View
 
-    if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} onRegisterClick={<RegistrationView />} />;
+    if (!user && !register) return <RegistrationView onRegister={register => this.onRegister(register)} />
+
+    if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} onRegister={register => this.onRegister(register)} />;
 
     if (movies.length <= 2) return <div className='main-view' />;
 
@@ -58,8 +67,8 @@ export class MainView extends React.Component {
             <MovieView movie={selectedMovie} onBackClick={newSelectedMovie => { this.setSelectedMovie(newSelectedMovie); }} />
             : //this means else
             movies.map(movie => (
-              <MovieCard key={movie._id} //helps React better distinguish between similar elements in list
-                movie={movie} //returns data of movie to Movie Card
+              // id helps React better distinguish between similar elements in list
+              <MovieCard key={movie._id} movie={movie} //returns data of movie to Movie Card
                 //passing this eventlistener to MovieCard
                 onMovieClick={(movie) => { this.setSelectedMovie(movie) }} />
             ))
