@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './login-view.scss';
+import PropTypes from 'prop-types';
 
 
 export function LoginView(props) {
@@ -16,7 +17,7 @@ export function LoginView(props) {
 
   return (
     <>
-      <h1>Welcome to myFlix</h1>
+      <h1>Login to myFlix</h1>
       <form className='login'>
         <label className='username'>
           Username:
@@ -28,9 +29,15 @@ export function LoginView(props) {
         </label>
         <button className='submit' type='submit' onClick={handleSubmit}>Submit</button>
         <button className='submit' type='button' onClick={() => {
-          props.onRegisterClick();
+          props.onRegister(null);
         }}>Register Here</button>
       </form>
     </>
   )
 }
+
+LoginView.propTypes = {
+  // username: PropTypes.string.isRequired,
+  // password: PropTypes.string.isRequired,
+  onLoggedIn: PropTypes.func.isRequired
+};

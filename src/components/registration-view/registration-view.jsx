@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import '../login-view/login-view.scss';
+import PropTypes from 'prop-types';
 
 export function RegistrationView(props) {
   const [username, newUsername] = useState('');
@@ -10,12 +11,12 @@ export function RegistrationView(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(username, password, email, birthday);
-    props.onRegister();
+    props.onRegister(username);
   }
 
   return (
     <>
-      <h1>Welcome to myFlix</h1>
+      <h1>Register for myFlix</h1>
       <form className='login'>
         <label className='username'>
           Username:
@@ -38,3 +39,11 @@ export function RegistrationView(props) {
     </>
   )
 }
+
+RegistrationView.propTypes = {
+  // username: PropTypes.string.isRequired,
+  // password: PropTypes.string.isRequired,
+  // email: PropTypes.string.isRequired,
+  // birthday: PropTypes.string.isRequired,
+  onRegister: PropTypes.func.isRequired
+};
