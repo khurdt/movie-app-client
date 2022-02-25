@@ -1,0 +1,80 @@
+.super-button {
+  border: none;
+  width: 225px;
+  height: 40px;
+  border-radius: 30%;
+  font-family: "Ubuntu", sans-serif;
+  background-color: lightcoral;
+  color: black;
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 3px;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.3);
+}
+.super-button:hover {
+  opacity: 0.5;
+  transition: 0.3s ease-in;
+}
+.value {
+  display: block;
+}
+
+.movie-view {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.movie-item {
+  padding: 20px;
+  text-align: left;
+  margin: auto;
+}
+.movie-item:nth-child(1) {
+  text-align: center;
+}
+.movie-item:nth-child(2) img {
+  width: 500px;
+  height: 600px;
+}
+
+.back-button {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 10px;
+  color: #034710;
+  border: 2px solid #034710;
+  padding: 20px;
+}
+.back-button:hover {
+  background-color: #09da31;
+  transition: 0.5s;
+  cursor: pointer;
+}
+.form {
+  margin-top: 20%;
+  max-width: 60%;
+}
+
+.login-body {
+  max-width: 100%;
+  border: 1px solid black;
+  background-color: black;
+  color: white;
+}
+
+.reg-button {
+  width: 200px;
+}
+
+.log-button {
+  width: 100px;
+}
+.main-view {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 20px;
+  color: #034710;
+  font-size: 20px;
+}
+/*# sourceMappingURL=index.22722d73.css.map */

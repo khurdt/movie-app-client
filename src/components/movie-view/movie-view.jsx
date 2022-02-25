@@ -1,4 +1,5 @@
 import React from 'react';
+import './movie-view.scss';
 import { Button } from '../button/button';
 import PropTypes from 'prop-types';
 
@@ -12,10 +13,10 @@ export class MovieView extends React.Component {
         <button className='back-button' onClick={() => { onBackClick(null); }}>Back</button>
         <div className='movie-view'>
           <div className='movie-item'>
-            <img src={movie.imagePath} />
+            <span className='value'>{movie.title}</span>
           </div>
           <div className='movie-item'>
-            <span className='value'>{movie.title}</span>
+            <img src={movie.imagePath} crossOrigin="anonymous" />
           </div>
           <div className='movie-item'>
             <span className='label'>Description: </span>

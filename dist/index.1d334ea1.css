@@ -1,0 +1,101 @@
+h1 {
+  text-align: center;
+  font-style: italic;
+}
+
+.login {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 30px;
+  text-align: center;
+  color: purple;
+}
+
+input {
+  outline: none;
+  display: block;
+  border-radius: 10px;
+  width: 300px;
+  padding: 3px;
+  box-shadow: 3px 3px 3px 0px #445588;
+}
+
+.username {
+  padding: 20px;
+  margin: auto;
+  text-align: left;
+}
+
+.password {
+  padding: 20px;
+  margin: auto;
+  text-align: left;
+}
+
+.submit {
+  margin: auto;
+  max-width: 200px;
+  box-shadow: 3px 3px 3px 0px #445588;
+  border-radius: 10px;
+}
+.super-button {
+  border: none;
+  width: 225px;
+  height: 40px;
+  border-radius: 30%;
+  font-family: "Ubuntu", sans-serif;
+  background-color: lightcoral;
+  color: black;
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 3px;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.3);
+}
+.super-button:hover {
+  opacity: 0.5;
+  transition: 0.3s ease-in;
+}
+.value {
+  display: block;
+}
+
+.movie-view {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.movie-item {
+  padding: 20px;
+  text-align: left;
+  margin: auto;
+}
+.movie-item:nth-child(1) {
+  text-align: center;
+}
+.movie-item:nth-child(2) img {
+  width: 500px;
+  height: 600px;
+}
+
+.back-button {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 10px;
+  color: #034710;
+  border: 2px solid #034710;
+  padding: 20px;
+}
+.back-button:hover {
+  background-color: #09da31;
+  transition: 0.5s;
+  cursor: pointer;
+}
+.main-view {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 20px;
+  color: #034710;
+  font-size: 20px;
+}
+/*# sourceMappingURL=index.1d334ea1.css.map */

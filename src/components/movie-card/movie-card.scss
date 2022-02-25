@@ -1,0 +1,26 @@
+$color: #034710;
+
+.movie-card {
+    padding: 20px;
+    margin: 20px auto;
+    text-align: center;
+    transition: 0.5s;
+    &:hover {
+        background-color: lighten($color, 30%);
+        transition: 0.5s;
+        cursor: pointer;
+        color: black;
+    }
+}
+
+.movie-card-img img {
+    display: block;
+    width: 300px;
+    height: 400px;
+    margin: auto;
+    padding: 30px;
+}
+
+.movie-card-title {
+    margin-top: 30px;
+}
