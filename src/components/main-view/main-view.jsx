@@ -61,7 +61,7 @@ export class MainView extends React.Component {
     if (movies.length <= 2) return <div className='main-view' />;
 
     return (
-      <Container>
+      <Container fluid style={{ width: '100%', height: 'max-content', backgroundColor: '#1B1D24' }}>
         <div className='main-view'>
           {/*If the state of `selectedMovie` is not null, that selected movie will be returned otherwise, all *movies will be returned*/}
           {selectedMovie ? (//this is the same as the if statement
@@ -74,7 +74,7 @@ export class MainView extends React.Component {
             : (//this means else
               <Row className='justify-content-md-center'>
                 {movies.map(movie => (
-                  <Col md={3}>
+                  <Col md={4}>
                     <MovieCard key={movie._id} movie={movie} //returns data of movie to Movie Card // id helps React better distinguish between similar elements in list
                       //passing this eventlistener to MovieCard
                       onMovieClick={(movie) => { this.setSelectedMovie(movie) }} />

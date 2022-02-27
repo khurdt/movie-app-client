@@ -1,5 +1,5 @@
 import React from 'react';
-// import './movie-card.scss';
+import './movie-card.scss';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import PropTypes from 'prop-types';
@@ -8,12 +8,14 @@ export class MovieCard extends React.Component {
   render() {
     const { movie, onMovieClick } = this.props;
     return (
-      <Card>
-        <Card.Img variant='top' src={movie.imagePath} crossOrigin='anonymous' />
+      <Card className='mt-5 ml-5 movie-card' style={{ maxWidth: '400px', height: '725px', color: 'white', backgroundColor: '#1E2127' }}>
+        <Card.Title className='m-4'>{movie.title}</Card.Title>
+        <Card.Img className='m-auto' style={{ maxWidth: '326px', height: '481px' }} src={movie.imagePath} crossOrigin='anonymous' />
         <Card.Body>
-          <Card.Title>{movie.title}</Card.Title>
-          <Card.Text>{movie.description}</Card.Text>
-          <Button onClick={() => onMovieClick(movie)} variant='link'>Read More</Button>
+          <Card.Text className='overflow-hidden ml-2' style={{ height: '50px' }}>{movie.description}</Card.Text>
+          <Card.Footer>
+            <Button onClick={() => onMovieClick(movie)} variant='link'>Read More</Button>
+          </Card.Footer>
         </Card.Body>
       </Card>
     );

@@ -1,38 +1,16 @@
-$color: #034710;
+.movie-view-card {
+    box-shadow: 4px 4px 6px 4px rgba(12, 17, 26, 0.3);
+}
 
-.value {
+.label {
     display: block;
 }
 
-.movie-view {
-    display: grid;
-    grid-template-columns: 1fr;
-}
-
-.movie-item {
-    padding: 20px;
-    text-align: left;
-    margin: auto;
-    &:nth-child(1) {
-        text-align: center;
+@media all and (max-height: 800px) {
+    .movie-view-container {
+        height: 800px;
     }
-    &:nth-child(2) img {
-        width: 500px;
-        height: 600px;
-    }
-}
-
-.back-button {
-    position: absolute;
-    top: 0;
-    left: 0;
-    margin: 10px;
-    color: $color;
-    border: 2px solid $color;
-    padding: 20px;
-    &:hover {
-        background-color: lighten($color, 30%);
-        transition: 0.5s;
-        cursor: pointer;
+    .movie-view-card {
+        height: 800px;
     }
 }
