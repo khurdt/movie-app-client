@@ -4,6 +4,7 @@ import { LoginView } from '../login-view/login-view';
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
 import { RegistrationView } from '../registration-view/registration-view';
+import { Container, Row, Col } from 'react-bootstrap';
 
 export class MainView extends React.Component {
   constructor() { //the place to initialize a state's values or data in memory before rendering component
@@ -60,21 +61,31 @@ export class MainView extends React.Component {
     if (movies.length <= 2) return <div className='main-view' />;
 
     return (
-      <>
+      <Container>
         <div className='main-view'>
           {/*If the state of `selectedMovie` is not null, that selected movie will be returned otherwise, all *movies will be returned*/}
-          {selectedMovie ? //this is the same as the if statement
-            <MovieView movie={selectedMovie} onBackClick={newSelectedMovie => { this.setSelectedMovie(newSelectedMovie); }} />
-            : //this means else
-            movies.map(movie => (
-              // id helps React better distinguish between similar elements in list
-              <MovieCard key={movie._id} movie={movie} //returns data of movie to Movie Card
-                //passing this eventlistener to MovieCard
-                onMovieClick={(movie) => { this.setSelectedMovie(movie) }} />
-            ))
+          {selectedMovie ? (//this is the same as the if statement
+            <Row className='justify-content-md-center'>
+              <Col md={8} >
+                <MovieView movie={selectedMovie} onBackClick={newSelectedMovie => { this.setSelectedMovie(newSelectedMovie); }} />
+              </Col>
+            </Row>
+          )
+            : (//this means else
+              <Row className='justify-content-md-center'>
+                {movies.map(movie => (
+                  <Col md={3}>
+                    <MovieCard key={movie._id} movie={movie} //returns data of movie to Movie Card // id helps React better distinguish between similar elements in list
+                      //passing this eventlistener to MovieCard
+                      onMovieClick={(movie) => { this.setSelectedMovie(movie) }} />
+                  </Col>
+                ))
+                }
+              </Row>
+            )
           }
         </div>
-      </>
+      </Container>
       //event listener selects movie from map and resets state and pushes selected movie to movie view
     );
   }

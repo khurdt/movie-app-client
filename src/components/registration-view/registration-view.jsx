@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import '../login-view/login-view.scss';
 import PropTypes from 'prop-types';
+import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 
 export function RegistrationView(props) {
+  const user = 'user';
   const [username, newUsername] = useState('');
   const [password, newPassword] = useState('');
   const [email, newEmail] = useState('');
@@ -15,28 +17,69 @@ export function RegistrationView(props) {
   }
 
   return (
-    <>
-      <h1>Register for myFlix</h1>
-      <form className='login'>
-        <label className='username'>
-          Username:
-          <input type='text' value={username} onChange={e => newUsername(e.target.value)} />
-        </label>
-        <label className='password'>
-          Password:
-          <input type='password' value={password} onChange={e => newPassword(e.target.value)} />
-        </label>
-        <label className='password'>
-          Email:
-          <input type='email' value={email} onChange={e => newEmail(e.target.value)} />
-        </label>
-        <label className='password'>
-          Birthday:
-          <input type='text' value={birthday} onChange={e => newBirthday(e.target.value)} />
-        </label>
-        <button className='submit' type='submit' onClick={handleSubmit}>Submit</button>
-      </form>
-    </>
+    <body className='body'>
+      <Container className='container'>
+        <Form className='form' style={{ maxWidth: '750px' }}>
+          <Col xs={{ span: 12, offset: 0 }} sm={{ span: 10, offset: 1, }} md={{ span: 8, offset: 2 }} lg={{ span: 7, offset: 4 }} xl={{ span: 7, offset: 5 }} className='login-body bg-dark'  >
+            <Row>
+              <Col>
+                <h2 className='greeting'>Register for myFlix</h2>
+                <h5 className='log-in-greeting'>create an account</h5>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <Form.Group className='mb-3 mt-3 mr-5 ml-5' controlId='formUsername'>
+                  <Form.Label>Username:</Form.Label>
+                  <Form.Control className='bg' placeholder='Enter your username' type='text' onChange={e => newUsername(e.target.value)} />
+                </Form.Group>
+              </Col>
+            </Row>
+            <Row>
+              <Col className='mr-5 ml-5'>
+                <Form.Group className='mb-3' controlId='formPassword'>
+                  <Form.Label>Password:</Form.Label>
+                  <Form.Control placeholder='Enter your password' type='password' onChange={e => newPassword(e.target.value)} />
+                </Form.Group>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <Form.Group className='mb-3 mr-5 ml-5' controlId='formUsername'>
+                  <Form.Label>Email:</Form.Label>
+                  <Form.Control className='bg' placeholder='Enter your email' type='email' onChange={e => newEmail(e.target.value)} />
+                </Form.Group>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <Form.Group className='mb-3 mr-5 ml-5' controlId='formUsername'>
+                  <Form.Label>Birthday:</Form.Label>
+                  <Form.Control className='bg' placeholder='Enter your birthday' type='text' onChange={e => newBirthday(e.target.value)} />
+                </Form.Group>
+              </Col>
+            </Row>
+            <Row className='mb-3' >
+              <Col></Col>
+              <Col></Col>
+              <Col>
+                <Button style={{ width: '105px' }} className='log-button mr-5' type='submit' onClick={
+                  handleSubmit}>Submit</Button>
+              </Col>
+            </Row>
+            <Row className='mb-3'>
+              <Col></Col>
+              <Col>
+                <Button className='reg-button' type='button' onClick={() => { props.onRegister(user); }}>
+                  Log in here
+                </Button>
+              </Col>
+              <Col></Col>
+            </Row>
+          </Col>
+        </Form>
+      </Container >
+    </body >
   )
 }
 

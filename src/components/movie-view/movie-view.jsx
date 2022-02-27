@@ -1,5 +1,5 @@
 import React from 'react';
-import './movie-view.scss';
+// import './movie-view.scss';
 import { Button } from '../button/button';
 import PropTypes from 'prop-types';
 

@@ -1,42 +1,43 @@
-h1 {
+.body {
+  position: absolute;
+  background-color: #1266F1;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+
+.form {
+  margin-top: 10%;
+}
+
+.login-body {
+  box-shadow: 4px 4px 6px 4px rgba(24, 38, 58, 0.3);
+  max-width: 100%;
+  border: 1px solid black;
+  background-color: black;
+  color: white;
+}
+
+.reg-button {
+  width: 175px;
+  background-color: aqua;
+}
+
+.log-button {
+  width: 100px;
+  background-color: aqua;
+}
+
+.greeting {
   text-align: center;
-  font-style: italic;
+  padding: 10px;
 }
 
-.login {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-gap: 30px;
+.log-in-greeting {
   text-align: center;
-  color: purple;
-}
-
-input {
-  outline: none;
-  display: block;
-  border-radius: 10px;
-  width: 300px;
-  padding: 3px;
-  box-shadow: 3px 3px 3px 0px #445588;
-}
-
-.username {
-  padding: 20px;
-  margin: auto;
-  text-align: left;
-}
-
-.password {
-  padding: 20px;
-  margin: auto;
-  text-align: left;
-}
-
-.submit {
-  margin: auto;
-  max-width: 200px;
-  box-shadow: 3px 3px 3px 0px #445588;
-  border-radius: 10px;
+  padding: 10px;
+  opacity: 0.7;
 }
 .super-button {
   border: none;
@@ -55,47 +56,5 @@ input {
   opacity: 0.5;
   transition: 0.3s ease-in;
 }
-.value {
-  display: block;
-}
 
-.movie-view {
-  display: grid;
-  grid-template-columns: 1fr;
-}
-
-.movie-item {
-  padding: 20px;
-  text-align: left;
-  margin: auto;
-}
-.movie-item:nth-child(1) {
-  text-align: center;
-}
-.movie-item:nth-child(2) img {
-  width: 500px;
-  height: 600px;
-}
-
-.back-button {
-  position: absolute;
-  top: 0;
-  left: 0;
-  margin: 10px;
-  color: #034710;
-  border: 2px solid #034710;
-  padding: 20px;
-}
-.back-button:hover {
-  background-color: #09da31;
-  transition: 0.5s;
-  cursor: pointer;
-}
-.main-view {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 20px;
-  color: #034710;
-  font-size: 20px;
-}
 /*# sourceMappingURL=index.1d334ea1.css.map */
