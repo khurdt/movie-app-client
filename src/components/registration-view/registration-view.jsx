@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import '../login-view/login-view.scss';
 import PropTypes from 'prop-types';
-import { Container, Row, Col, Form, Button } from 'react-bootstrap';
+import { Container, Row, Col, Form, Button, Card } from 'react-bootstrap';
 
 export function RegistrationView(props) {
   const user = 'user';
@@ -19,8 +19,8 @@ export function RegistrationView(props) {
   return (
     <body className='body'>
       <Container className='container'>
-        <Form className='form' style={{ maxWidth: '750px' }}>
-          <Col xs={{ span: 12, offset: 0 }} sm={{ span: 10, offset: 1, }} md={{ span: 8, offset: 2 }} lg={{ span: 7, offset: 4 }} xl={{ span: 7, offset: 5 }} className='login-body bg-dark'  >
+        <Form style={{ maxWidth: '750px', marginTop: '3%' }}>
+          <Col xs={{ span: 12, offset: 0 }} sm={{ span: 10, offset: 1, }} md={{ span: 8, offset: 2 }} lg={{ span: 7, offset: 4 }} xl={{ span: 7, offset: 5 }} style={{ backgroundColor: '#1E2127' }} className='login-body'  >
             <Row>
               <Col>
                 <h2 className='greeting'>Register for myFlix</h2>
@@ -67,15 +67,17 @@ export function RegistrationView(props) {
                   handleSubmit}>Submit</Button>
               </Col>
             </Row>
-            <Row className='mb-3'>
-              <Col></Col>
-              <Col>
-                <Button className='reg-button' type='button' onClick={() => { props.onRegister(user); }}>
-                  Log in here
-                </Button>
-              </Col>
-              <Col></Col>
-            </Row>
+            <Card.Footer>
+              <Row className='mb-3'>
+                <Col></Col>
+                <Col>
+                  <Button className='reg-button' type='button' onClick={() => { props.onRegister(user); }}>
+                    Log in here
+                  </Button>
+                </Col>
+                <Col></Col>
+              </Row>
+            </Card.Footer>
           </Col>
         </Form>
       </Container >

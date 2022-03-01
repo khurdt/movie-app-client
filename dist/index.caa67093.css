@@ -1,104 +1,58 @@
-.main-view {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-gap: 20px;
-  color: steelblue;
-  margin: auto;
-  font-size: 20px;
-  max-width: 50%;
-}
 
 .movie-card {
-  border: 2px solid steelblue;
-  padding: 20px;
+  box-shadow: 4px 4px 6px 4px rgba(12, 17, 26, 0.3);
 }
-.movie-card:hover {
-  background-color: #b2cce1;
-  transition: 0.5s;
-  cursor: pointer;
+.movie-view-card {
+  box-shadow: 4px 4px 6px 4px rgba(12, 17, 26, 0.3);
 }
 
-.movie-item {
-  padding: 20px;
-  text-align: left;
-}
-.movie-item:nth-child(1) {
-  width: 300px;
-  height: 400px;
-}
-.movie-item:nth-child(2) {
-  text-align: center;
-}
-
-.back-button {
-  position: absolute;
-  top: 0;
-  left: 0;
-  margin: 10px;
-  color: steelblue;
-  border: 2px solid steelblue;
-  padding: 20px;
-}
-.back-button:hover {
-  background-color: #b2cce1;
-  transition: 0.5s;
-  cursor: pointer;
-}
-.super-button {
-  border: none;
-  width: 225px;
-  height: 40px;
-  border-radius: 30%;
-  font-family: "Ubuntu", sans-serif;
-  background-color: lightcoral;
-  color: black;
-  text-decoration: none;
-  padding: 10px;
-  border-radius: 3px;
-  border-bottom: 2px solid rgba(0, 0, 0, 0.3);
-}
-.super-button:hover {
-  opacity: 0.5;
-  transition: 0.3s ease-in;
-}
-h1 {
-  text-align: center;
-  font-style: italic;
-}
-
-.login {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-gap: 30px;
-  text-align: center;
-  color: purple;
-}
-
-input {
-  outline: none;
+.label {
   display: block;
-  border-radius: 10px;
-  width: 300px;
-  padding: 3px;
-  box-shadow: 3px 3px 3px 0px #445588;
 }
 
-.username {
-  padding: 20px;
-  margin: auto;
-  text-align: left;
+@media all and (max-height: 800px) {
+  .movie-view-container {
+    height: 800px;
+  }
+
+  .movie-view-card {
+    height: 800px;
+  }
+}
+.body {
+  position: absolute;
+  background-color: #1266F1;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
 }
 
-.password {
-  padding: 20px;
-  margin: auto;
-  text-align: left;
+.login-body {
+  box-shadow: 4px 4px 6px 4px rgba(24, 38, 58, 0.3);
+  max-width: 100%;
+  border: 1px solid black;
+  color: white;
 }
 
-.submit {
-  margin: auto;
-  max-width: 200px;
-  box-shadow: 3px 3px 3px 0px #445588;
-  border-radius: 10px;
+.reg-button {
+  width: 175px;
+  background-color: aqua;
+}
+
+.log-button {
+  width: 100px;
+  background-color: aqua;
+}
+
+.greeting {
+  text-align: center;
+  padding: 10px;
+}
+
+.log-in-greeting {
+  text-align: center;
+  padding: 10px;
+  opacity: 0.7;
 }
 /*# sourceMappingURL=index.caa67093.css.map */

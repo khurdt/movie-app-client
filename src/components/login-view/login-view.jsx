@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import './login-view.scss';
 import PropTypes from 'prop-types';
-import { Container, Row, Col, Form, Button } from 'react-bootstrap';
+import { Container, Row, Col, Form, Button, Card } from 'react-bootstrap';
 
 
 export function LoginView(props) {
@@ -10,18 +11,26 @@ export function LoginView(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(username, password);
-    props.onLoggedIn(username);
-    /* Send a request to the server for authentication */
-    /* then call props.onLoggedIn(username) */
+    //sends a request to the server for authentication
+    axios.post('https://kh-movie-app.herokuapp.com/login', {
+      username: username,
+      password: password
+    })
+      .then(response => {
+        const data = response.data;
+        props.onLoggedIn(data);
+      })
+      .catch(e => {
+        console.log('no such user')
+      });
   };
 
   return (
     <body className='body'>
       <Container className='container'>
-        <Form className='form' style={{ maxWidth: '750px' }}>
+        <Form style={{ maxWidth: '750px', marginTop: '10%' }}>
           <Row>
-            <Col xs={{ span: 12, offset: 0 }} sm={{ span: 10, offset: 1, }} md={{ span: 8, offset: 2 }} lg={{ span: 7, offset: 4 }} xl={{ span: 7, offset: 5 }} className='login-body bg-dark'  >
+            <Col xs={{ span: 12, offset: 0 }} sm={{ span: 10, offset: 1, }} md={{ span: 8, offset: 2 }} lg={{ span: 7, offset: 4 }} xl={{ span: 7, offset: 5 }} style={{ backgroundColor: '#1E2127' }} className='login-body'  >
               <Row>
                 <Col>
                   <h2 className='greeting'>Welcome to myFlix</h2>
@@ -52,15 +61,17 @@ export function LoginView(props) {
                     handleSubmit}>Submit</Button>
                 </Col>
               </Row>
-              <Row className='mb-3'>
-                <Col></Col>
-                <Col>
-                  <Button className='reg-button' type='button' onClick={() => { props.onRegister(null); }}>
-                    Register Here
-                  </Button>
-                </Col>
-                <Col></Col>
-              </Row>
+              <Card.Footer>
+                <Row className='mb-3'>
+                  <Col></Col>
+                  <Col>
+                    <Button className='reg-button' type='button' onClick={() => { props.onRegister(null); }}>
+                      Register Here
+                    </Button>
+                  </Col>
+                  <Col></Col>
+                </Row>
+              </Card.Footer>
             </Col>
           </Row>
         </Form>
