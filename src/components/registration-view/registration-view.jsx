@@ -3,6 +3,7 @@ import '../login-view/login-view.scss';
 import PropTypes from 'prop-types';
 import { Container, Row, Col, Form, Button, Card } from 'react-bootstrap';
 import axios from 'axios';
+import Menu from '../navbar/navbar';
 
 export function RegistrationView(props) {
   const user = 'user';
@@ -65,9 +66,10 @@ export function RegistrationView(props) {
   }
 
   return (
-    <body className='body'>
+    <body style={{ backgroundColor: '#1266F1' }} className='body'>
+      <Menu />
       <Container className='container'>
-        <Form style={{ maxWidth: '750px', marginTop: '3%' }}>
+        <Form style={{ maxWidth: '750px', marginTop: '10%' }}>
           <Col xs={{ span: 12, offset: 0 }} sm={{ span: 10, offset: 1, }} md={{ span: 8, offset: 2 }} lg={{ span: 7, offset: 4 }} xl={{ span: 7, offset: 5 }} style={{ backgroundColor: '#1E2127' }} className='login-body'  >
             <Row>
               <Col>
@@ -110,21 +112,10 @@ export function RegistrationView(props) {
                   handleSubmit}>Submit</Button>
               </Col>
             </Row>
-            <Card.Footer>
-              <Row className='mb-3'>
-                <Col></Col>
-                <Col>
-                  <Button className='reg-button' type='button' onClick={() => { props.onRegister(user); }}>
-                    Log in here
-                  </Button>
-                </Col>
-                <Col></Col>
-              </Row>
-            </Card.Footer>
           </Col>
         </Form>
       </Container >
-    </body >
+    </body>
   )
 }
 
@@ -133,5 +124,4 @@ RegistrationView.propTypes = {
   // password: PropTypes.string.isRequired,
   // email: PropTypes.string.isRequired,
   // birthday: PropTypes.string.isRequired,
-  onRegister: PropTypes.func.isRequired
 };

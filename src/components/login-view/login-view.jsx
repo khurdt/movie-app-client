@@ -3,6 +3,7 @@ import axios from 'axios';
 import './login-view.scss';
 import PropTypes from 'prop-types';
 import { Container, Row, Col, Form, Button, Card } from 'react-bootstrap';
+import Menu from '../navbar/navbar';
 
 
 export function LoginView(props) {
@@ -52,6 +53,7 @@ export function LoginView(props) {
 
   return (
     <body className='body'>
+      <Menu />
       <Container className='container'>
         <Form style={{ maxWidth: '750px', marginTop: '10%' }}>
           <Row>
@@ -88,22 +90,11 @@ export function LoginView(props) {
                     handleSubmit}>Submit</Button>
                 </Col>
               </Row>
-              <Card.Footer>
-                <Row className='mb-3'>
-                  <Col></Col>
-                  <Col>
-                    <Button className='reg-button' type='button' onClick={() => { props.onRegister(null); }}>
-                      Register Here
-                    </Button>
-                  </Col>
-                  <Col></Col>
-                </Row>
-              </Card.Footer>
             </Col>
           </Row>
         </Form>
       </Container >
-    </body >
+    </body>
   );
 }
 

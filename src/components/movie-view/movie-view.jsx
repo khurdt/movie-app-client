@@ -2,6 +2,7 @@ import React from 'react';
 import './movie-view.scss';
 import PropTypes from 'prop-types';
 import { Container, Row, Col, Form, Button, Card } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 export class MovieView extends React.Component {
 
@@ -24,39 +25,20 @@ export class MovieView extends React.Component {
             <Row>
               <Col>
                 <div><span className='label'>Director: </span></div>
-                <Button variant='link'>{movie.director.name}</Button>
+                <Link to={`/directors/${movie.director.name}`}>
+                  <Button variant='link'>{movie.director.name}</Button>
+                </Link>
               </Col>
               <Col>
                 <div><span className='label'>Genre: </span></div>
-                <Button variant='link'>{movie.genre.name}</Button>
+                <Link to={`/genres/${movie.genre.name}`}>
+                  <Button variant='link'>{movie.genre.name}</Button>
+                </Link>
               </Col>
             </Row>
           </Card.Footer>
         </Card>
       </Container>
-      // <div>
-      //   <button className='back-button' onClick={() => { onBackClick(null); }}>Back</button>
-      //   <div className='movie-view'>
-      //     <div className='movie-item'>
-      //       <span className='value'>{movie.title}</span>
-      //     </div>
-      //     <div className='movie-item'>
-      //       <img src={movie.imagePath} crossOrigin="anonymous" />
-      //     </div>
-      //     <div className='movie-item'>
-      //       <span className='label'>Description: </span>
-      //       <span className='value'>{movie.description}</span>
-      //     </div>
-      //     <div className='movie-item'>
-      //       <span className='label'>Director: </span>
-      //       <span className='value'>{movie.director.name}</span>
-      //     </div>
-      //     <div className='movie-item'>
-      //       <span className='label'>Genre: </span>
-      //       <span className='value'>{movie.genre.name}</span>
-      //     </div>
-      //   </div>
-      // </div>
     );
   }
   // keypressCallback(event) {
