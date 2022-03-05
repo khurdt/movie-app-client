@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
+import './navbar-view.scss';
 import { Link } from 'react-router-dom';
-import { Container, Navbar, Nav, NavDropdown, Button } from 'react-bootstrap';
+import { Container, Navbar, Nav, NavDropdown, Button, Card } from 'react-bootstrap';
+import { DropdownSubmenu, NavDropdownMenu } from "react-bootstrap-submenu";
 
 export default function Menu({ user }) {
     const onLoggedOut = () => {
@@ -20,15 +22,11 @@ export default function Menu({ user }) {
     };
 
     return (
-        <Navbar style={{ backgroundColor: '#1E2127' }} expand='lg'>
-            <Container>
-                <Navbar.Brand style={{ color: '#1266F1', fontSize: '30px' }} href='/'>myFlix</Navbar.Brand>
-                <Navbar.Toggle aria-controls='basic-navbar-nav' />
-                <Navbar.Collapse id='responsive-navbar-nav'>
+        <>
+            <Navbar style={{ backgroundColor: '#1E2127', height: '56px' }} expand='lg'>
+                <Container>
+                    <Navbar.Brand style={{ color: '#1266F1', fontSize: '20px' }} href='/'>myFlix</Navbar.Brand>
                     <Nav className='ml-auto'>
-                        {isAuth() && (
-                            <Nav.Link style={{ color: 'white' }}>{user}</Nav.Link>
-                        )}
                         {isAuth() && (
                             <Button style={{ color: 'white' }} onClick={() => { onLoggedOut() }}>Logout</Button>
                         )}
@@ -39,8 +37,25 @@ export default function Menu({ user }) {
                             <Nav.Link style={{ color: 'white' }} href='/register'>Register</Nav.Link>
                         )}
                     </Nav>
-                </Navbar.Collapse>
-            </Container>
-        </Navbar>
+                </Container>
+            </Navbar>
+            {isAuth() && (
+                <Navbar className='submenu' style={{ backgroundColor: '#1E2127' }} expand='lg'>
+                    <Container>
+                        <Navbar.Toggle aria-controls='responsive-navbar-nav' />
+                        <Navbar.Collapse id='responsive-navbar-nav'>
+                            <Nav className='mr-auto'>
+                                {isAuth() && (
+                                    <Nav.Link style={{ color: 'white' }} href='/'>Movies</Nav.Link>
+                                )}
+                                {isAuth() && (
+                                    <Nav.Link style={{ color: 'white' }} href={`/users/${user}`}>{user}</Nav.Link>
+                                )}
+                            </Nav>
+                        </Navbar.Collapse>
+                    </Container>
+                </Navbar>
+            )}
+        </>
     );
 }

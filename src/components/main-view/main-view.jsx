@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import Menu from '../navbar/navbar';
 import { LoginView } from '../login-view/login-view';
+import { ProfileView } from '../profile-view/profile-view';
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
 import { RegistrationView } from '../registration-view/registration-view';
@@ -10,6 +11,7 @@ import { GenreView } from '../genre-view/genre-view.jsx';
 import { BrowserRouter as Router, Routes, Route, Redirect } from 'react-router-dom';
 import { render } from 'react-dom';
 import { Container, Row, Col } from 'react-bootstrap';
+import { useIsRTL } from 'react-bootstrap/esm/ThemeProvider';
 
 export class MainView extends React.Component {
   constructor() { //the place to initialize a state's values or data in memory before rendering component
@@ -122,8 +124,9 @@ export class MainView extends React.Component {
 
             <Route path={`/users/${user}`} render={({ match, history }) => {
               if (!user) return <Redirect to='/' />
+              if (movies.length === 0) return <div className='main-view' />;
               return <Col>
-                <ProfileView movies={movies} user={user} onBackClick={() => history.goBack()} />
+                <ProfileView user={user} movies={movies} onBackClick={() => history.goBack()} />
               </Col>
             }} />
 
