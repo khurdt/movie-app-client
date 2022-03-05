@@ -5,21 +5,26 @@
 .movie-card {
   box-shadow: 4px 4px 6px 4px rgba(12, 17, 26, 0.3);
 }
-.movie-view-card {
+.movie-view {
   box-shadow: 4px 4px 6px 4px rgba(12, 17, 26, 0.3);
+  min-height: 750px;
+}
+
+.little-card {
+  box-shadow: 1px 1px 2px 2px rgba(12, 17, 26, 0.3);
 }
 
 .label {
   display: block;
 }
 
-@media all and (max-height: 800px) {
+@media all and (max-height: 700px) {
   .movie-view-container {
-    height: 800px;
+    height: auto;
   }
 
-  .movie-view-card {
-    height: 800px;
+  .movie-view {
+    height: auto;
   }
 }
 .body {

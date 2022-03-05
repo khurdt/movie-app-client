@@ -5,6 +5,8 @@ import { LoginView } from '../login-view/login-view';
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
 import { RegistrationView } from '../registration-view/registration-view';
+import { DirectorView } from '../director-view/director-view';
+import { GenreView } from '../genre-view/genre-view.jsx';
 import { BrowserRouter as Router, Routes, Route, Redirect } from 'react-router-dom';
 import { render } from 'react-dom';
 import { Container, Row, Col } from 'react-bootstrap';
@@ -70,9 +72,9 @@ export class MainView extends React.Component {
               if (!user) return <Redirect to='/login' />
               //Before the movies have been loaded
               if (movies.length === 0) return <div className='main-view' />
-              return movies.map(m => (
-                <Col className='m-0' sm={6} md={5} lg={4} key={m._id}>
-                  <MovieCard movie={m} />
+              return movies.map(movie => (
+                <Col className='m-0' sm={6} md={5} lg={4} key={movie._id}>
+                  <MovieCard movie={movie} />
                 </Col>
               ))
             }} />
@@ -91,26 +93,29 @@ export class MainView extends React.Component {
 
             <Route path="/movies/:id" render={({ match, history }) => {
               if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
+              if (movies.length === 0) return <div className='main-view' />
               return <Col md={8}>
-                <MovieView movie={movies.find(m => m._id === match.params.id)}
+                <MovieView movie={movies.find(movie => movie._id === match.params.id)}
                   onBackClick={() => history.goBack()} />
               </Col>
             }} />
 
-            <Route path='/genres/:name' render={({ match }) => {
+            <Route path='/genres/:name' render={({ match, history }) => {
               if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
               if (movies.length === 0) return <div className='main-view' />;
               return <Col md={8}>
-                <GenreView genre={movies.find(m => m.genre.name === match.params.name).genre}
+                <GenreView genre={movies.find(m => m.genre.name === match.params.name)}
+                  movies={movies.filter(movie => movie.genre.name === match.params.name)}
                   onBackClick={() => history.goBack()} />
               </Col>
             }} />
 
-            <Route path='/directors/:name' render={({ match }) => {
+            <Route path='/directors/:name' render={({ match, history }) => {
               if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
               if (movies.length === 0) return <div className='main-view' />;
               return <Col md={8}>
-                <DirectorView director={movies.find(m => m.director.name === match.params.name).director}
+                <DirectorView director={movies.find(m => m.director.name === match.params.name)}
+                  movies={movies.filter(movie => movie.director.name === match.params.name)}
                   onBackClick={() => history.goBack()} />
               </Col>
             }} />
@@ -134,62 +139,3 @@ export class MainView extends React.Component {
     );
   }
 }
-
-//export default MainView;
-
-{/* <Row className="main-view justify-content-md-center">
-<Route exact path="/" render={() => {
-  return movies.map(m => (
-    <Col md={3} key={m._id}>
-      <MovieCard movie={m} />
-    </Col>
-  ))
-}} />
-<Route path="/movies/:movieId" render={({ match }) => {
-  return <Col md={8}>
-    <MovieView movie={movies.find(m => m._id === match.params.movieId)} />
-  </Col>
-}} />
-</Row> */}
-
-{/* <BrowserRouter>
-        <Navbar style={{ backgroundColor: '#1E2127' }} expand='lg'>
-          <Container>
-            <Navbar.Brand style={{ color: '#1266F1', fontSize: '30px' }} href='movies'>myFlix</Navbar.Brand>
-            <Navbar.Toggle aria-controls='basic-navbar-nav' />
-            <Navbar.Collapse id='basic-navbar-nav'>
-              <Nav className='me-auto'>
-                <Nav.Link style={{ color: 'white' }} onClick={() => { this.getMovies(token); }}>Movies</Nav.Link>
-              </Nav>
-              <Nav className='ml-auto'>
-                <Nav.Link style={{ color: 'white' }} onClick={() => { this.onLoggedOut(); }}>Logout</Nav.Link>
-              </Nav>
-            </Navbar.Collapse>
-          </Container>
-        </Navbar>
-        <Container fluid style={{ width: '100%', height: 'max-content', backgroundColor: '#1B1D24' }}>
-          <Routes>
-            <Row className='justify-content-md-center'>
-              <Route exact path='/' render={() => {
-                return (
-                  movies.map(m => (
-                    <Col md={4} key={m._id}>
-                      <MovieCard movie={m} />
-                    </Col>
-                  ))
-                );
-              }} />
-            </Row>
-            <Row className='justify-content-md-center'>
-              <Route exact path='/movies/:movieId' render={({ match }) => {
-                return (
-                  <Col md={8}>
-                    <MovieView movie={movies.find(m => m._id === match.params.movieId)} />
-                  </Col>
-                );
-              }} />
-            </Row>
-          </Routes>
-        </Container>
-        event listener selects movie from map and resets state and pushes selected movie to movie view
-      </BrowserRouter> */}
