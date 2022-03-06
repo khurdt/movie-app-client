@@ -54,7 +54,7 @@ export function LoginView(props) {
   return (
     <body className='body'>
       <Menu />
-      <Container className='container'>
+      <Container fluid className='container'>
         <Form style={{ maxWidth: '750px', marginTop: '10%' }}>
           <Row>
             <Col xs={{ span: 12, offset: 0 }} sm={{ span: 10, offset: 1, }} md={{ span: 8, offset: 2 }} lg={{ span: 7, offset: 4 }} xl={{ span: 7, offset: 5 }} style={{ backgroundColor: '#1E2127' }} className='login-body'  >

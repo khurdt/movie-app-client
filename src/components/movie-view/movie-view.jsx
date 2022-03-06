@@ -1,10 +1,52 @@
 import React from 'react';
+import axios from 'axios';
 import '../movie-view/movie-view.scss';
+import heartLogo from '../../images/heart.png';
 import PropTypes from 'prop-types';
 import { Container, Row, Col, Form, Button, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 export class MovieView extends React.Component {
+  // onRemoveFavorite = (e, movie) => {
+  //   e.preventDefault();
+  //   const username = localStorage.getItem('user');
+  //   const token = localStorage.getItem('token');
+
+  //   axios.delete(`https://kh-movie-app.herokuapp.com/users/${username}/movies/${movie._id}`,
+  //     {
+  //       headers: { Authorization: `Bearer ${token}` },
+  //     }
+  //   )
+  //     .then((response) => {
+  //       console.log(response);
+  //       alert('Movie removed');
+  //       this.componentDidMount();
+  //     })
+  //     .catch(function (error) {
+  //       console.log(error);
+  //     });
+  // };
+
+  // addFavorite = (e, movie) => {
+  //   e.preventDefault();
+  //   const username = localStorage.getItem('user');
+  //   const token = localStorage.getItem('token');
+
+  //   axios.post(`https://kh-movie-app.herokuapp.com/users/${username}/movies/${movie._id}`,
+  //     {
+  //       headers: { Authorization: `Bearer ${token}` }
+  //     }
+  //   )
+  //     .then((response) => {
+  //       console.log(response);
+  //       alert('Movie added');
+  //     })
+  //     .catch(function (error) {
+  //       console.log(error);
+  //     });
+  // };
+
+  handleClick = event => event.target.classList.add('heartclick');
 
   render() {
 
@@ -20,7 +62,20 @@ export class MovieView extends React.Component {
         <Card className='m-auto movie-view' style={{ maxWidth: '698px', height: '100vh', backgroundColor: '#1E2127', color: 'white' }}>
           <Card.Img style={{ maxWidth: '698px', height: '26vh', objectFit: 'cover', objectPosition: '0 0' }} src={movie.imagePath} crossOrigin='anonymous' />
           <Card.Text className='ml-3 mt-2'>{movie.genre.name}</Card.Text>
-          <Card.Title className='m-3'>{movie.title}</Card.Title>
+          <Row>
+            <Col>
+              <Card.Title className='m-3'>{movie.title}</Card.Title>
+            </Col>
+            <Col>
+              <button style={{ background: 'inherit' }} type='submit' onClick={(e) => this.addFavorite(e, { movie })} className='m-2'>
+                <img
+                  className='heart'
+                  onClick={this.handleClick}
+                  style={{ width: '20px', height: '20px', backgroundColor: 'inherit' }}
+                  src={heartLogo} alt='heart logo' />
+              </button>
+            </Col>
+          </Row>
           <Card.Text className='m-3'>{movie.description}</Card.Text>
           <Card.Footer className='p-3 ml-3'>
             <Row>

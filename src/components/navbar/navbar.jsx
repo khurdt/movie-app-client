@@ -24,36 +24,32 @@ export default function Menu({ user }) {
     return (
         <>
             <Navbar style={{ backgroundColor: '#1E2127', height: '56px' }} expand='lg'>
-                <Container>
-                    <Navbar.Brand style={{ color: '#1266F1', fontSize: '20px' }} href='/'>myFlix</Navbar.Brand>
-                    <Nav className='ml-auto'>
-                        {isAuth() && (
-                            <Button style={{ color: 'white' }} onClick={() => { onLoggedOut() }}>Logout</Button>
-                        )}
-                        {!isAuth() && (
-                            <Nav.Link style={{ color: 'white' }} href='/'>Login</Nav.Link>
-                        )}
-                        {!isAuth() && (
-                            <Nav.Link style={{ color: 'white' }} href='/register'>Register</Nav.Link>
-                        )}
-                    </Nav>
-                </Container>
+                <Navbar.Brand style={{ color: '#1266F1', fontSize: '20px' }} href='/'>myFlix</Navbar.Brand>
+                <Nav className='ml-auto' style={{ backgroundColor: '#1E2127' }}>
+                    {isAuth() && (
+                        <Button style={{ color: 'white' }} onClick={() => { onLoggedOut() }}>Logout</Button>
+                    )}
+                    {!isAuth() && (
+                        <Nav.Link style={{ color: 'white' }} href='/'>Login</Nav.Link>
+                    )}
+                    {!isAuth() && (
+                        <Nav.Link style={{ color: 'white' }} href='/register'>Register</Nav.Link>
+                    )}
+                </Nav>
             </Navbar>
             {isAuth() && (
                 <Navbar className='submenu' style={{ backgroundColor: '#1E2127' }} expand='lg'>
-                    <Container>
-                        <Navbar.Toggle aria-controls='responsive-navbar-nav' />
-                        <Navbar.Collapse id='responsive-navbar-nav'>
-                            <Nav className='mr-auto'>
-                                {isAuth() && (
-                                    <Nav.Link style={{ color: 'white' }} href='/'>Movies</Nav.Link>
-                                )}
-                                {isAuth() && (
-                                    <Nav.Link style={{ color: 'white' }} href={`/users/${user}`}>{user}</Nav.Link>
-                                )}
-                            </Nav>
-                        </Navbar.Collapse>
-                    </Container>
+                    <Navbar.Toggle aria-controls='responsive-navbar-nav' />
+                    <Navbar.Collapse id='responsive-navbar-nav'>
+                        <Nav className='mr-auto'>
+                            {isAuth() && (
+                                <Nav.Link style={{ color: 'white' }} href='/'>Movies</Nav.Link>
+                            )}
+                            {isAuth() && (
+                                <Nav.Link style={{ color: 'white' }} href={`/users/${user}`}>{user}</Nav.Link>
+                            )}
+                        </Nav>
+                    </Navbar.Collapse>
                 </Navbar>
             )}
         </>

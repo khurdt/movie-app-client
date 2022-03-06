@@ -41,6 +41,14 @@
 .movie-card {
   box-shadow: 4px 4px 6px 4px rgba(12, 17, 26, 0.3);
 }
+
+.heart {
+  opacity: 0.3;
+}
+
+.heartclick {
+  opacity: 1;
+}
 .movie-view {
   box-shadow: 4px 4px 6px 4px rgba(12, 17, 26, 0.3);
   min-height: 750px;
