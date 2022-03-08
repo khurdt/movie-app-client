@@ -7,50 +7,77 @@ import { Container, Row, Col, Form, Button, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 export class MovieView extends React.Component {
-  // onRemoveFavorite = (e, movie) => {
-  //   e.preventDefault();
-  //   const username = localStorage.getItem('user');
-  //   const token = localStorage.getItem('token');
+  constructor(props) { //the place to initialize a state's values or data in memory before rendering component
+    super(props); //initializes component's state and enables this.state
+    this.state = {
+      favoriteMovies: []
+    }
+  }
+  //getting jwt and user for authorizations and calling getUser ASAP
+  componentDidMount() {
+    const accessToken = localStorage.getItem('token');
+    this.getUserDetails(accessToken);
+  }
+  //getting user details to add to contructor or current state variables
+  getUserDetails = (token) => {
+    const username = localStorage.getItem('user');
+    axios.get(`https://kh-movie-app.herokuapp.com/users/${username}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    })
+      .then((response) => {
+        console.log(response);
+        this.setState({
+          favoriteMovies: response.data.favoriteMovies
+        });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
 
-  //   axios.delete(`https://kh-movie-app.herokuapp.com/users/${username}/movies/${movie._id}`,
-  //     {
-  //       headers: { Authorization: `Bearer ${token}` },
-  //     }
-  //   )
-  //     .then((response) => {
-  //       console.log(response);
-  //       alert('Movie removed');
-  //       this.componentDidMount();
-  //     })
-  //     .catch(function (error) {
-  //       console.log(error);
-  //     });
-  // };
+  onRemoveFavorite = () => {
+    const username = localStorage.getItem('user');
+    const token = localStorage.getItem('token');
 
-  // addFavorite = (e, movie) => {
-  //   e.preventDefault();
-  //   const username = localStorage.getItem('user');
-  //   const token = localStorage.getItem('token');
+    axios.delete(`https://kh-movie-app.herokuapp.com/users/${username}/movies/${this.props.movie._id}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    })
+      .then((response) => {
+        console.log(response);
+        this.componentDidMount();
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
 
-  //   axios.post(`https://kh-movie-app.herokuapp.com/users/${username}/movies/${movie._id}`,
-  //     {
-  //       headers: { Authorization: `Bearer ${token}` }
-  //     }
-  //   )
-  //     .then((response) => {
-  //       console.log(response);
-  //       alert('Movie added');
-  //     })
-  //     .catch(function (error) {
-  //       console.log(error);
-  //     });
-  // };
+  addFavorite = () => {
+    const username = localStorage.getItem('user');
+    const token = localStorage.getItem('token');
 
-  handleClick = event => event.target.classList.add('heartclick');
+    axios.post(`https://kh-movie-app.herokuapp.com/users/${username}/movies/${this.props.movie._id}`, { 'jwt': token }, {
+      headers: { Authorization: `Bearer ${token}` },
+    })
+      .then((response) => {
+        console.log(response);
+        this.componentDidMount();
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
 
   render() {
 
     const { movie, onBackClick } = this.props;
+
+    let tempArray = this.state.favoriteMovies;
+    let isFavorite = false;
+    if (tempArray.includes(movie._id)) {
+      isFavorite = true;
+    } else {
+      isFavorite = false;
+    };
 
     return (
       <Container fluid className='movie-view-container'>
@@ -67,13 +94,19 @@ export class MovieView extends React.Component {
               <Card.Title className='m-3'>{movie.title}</Card.Title>
             </Col>
             <Col>
-              <button style={{ background: 'inherit' }} type='submit' onClick={(e) => this.addFavorite(e, { movie })} className='m-2'>
-                <img
-                  className='heart'
-                  onClick={this.handleClick}
-                  style={{ width: '20px', height: '20px', backgroundColor: 'inherit' }}
+              {isFavorite ? (
+                <Card.Img
+                  className='heart-visible mt-3'
+                  onClick={this.onRemoveFavorite}
+                  style={{ width: '20px', height: '20px' }}
                   src={heartLogo} alt='heart logo' />
-              </button>
+              ) : (
+                <Card.Img
+                  className='heart mt-3'
+                  onClick={this.addFavorite}
+                  style={{ width: '20px', height: '20px' }}
+                  src={heartLogo} alt='heart logo' />
+              )}
             </Col>
           </Row>
           <Card.Text className='m-3'>{movie.description}</Card.Text>

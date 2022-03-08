@@ -13,7 +13,7 @@ export class ProfileView extends React.Component {
             password: undefined,
             email: undefined,
             birthday: undefined,
-            favoriteMovies: []
+            favoriteMovies: [],
         };
     }
 
@@ -86,7 +86,6 @@ export class ProfileView extends React.Component {
         )
             .then((response) => {
                 console.log(response);
-                alert('Movie removed');
                 this.componentDidMount();
             })
             .catch(function (error) {
@@ -138,7 +137,7 @@ export class ProfileView extends React.Component {
     // })
     render() {
         const { movies, onBackClick } = this.props;
-        const { favoriteMovies, username, email, birthday } = this.state;
+        const { favoriteMovies, username, password, email, birthday } = this.state;
 
         if (!username) {
             return null;
@@ -197,7 +196,7 @@ export class ProfileView extends React.Component {
                         <Col className='m-1'>
                             <Card style={{ backgroundColor: '#1B1D24', color: 'white' }}>
                                 <Card.Title className='m-1'>Favorite Movies</Card.Title>
-                                <Card.Body>
+                                <Row>
                                     {favoriteMovies.length === 0 && (
                                         <div className='text-center'>No Favorite Movies :(</div>
                                     )}
@@ -206,10 +205,10 @@ export class ProfileView extends React.Component {
                                             movie._id === favoriteMovies.find((m) => m === movie._id)
                                         ) {
                                             return (
-                                                <Card className='m-1 little-card' style={{ backgroundColor: '#1E2127', color: 'white' }}>
+                                                <Card className='m-1 little-card' style={{ maxWidth: '200px', backgroundColor: '#1E2127', color: 'white' }}>
                                                     <Card.Img className='m-auto' style={{ maxWidth: '140px', height: '207px' }} src={movie.imagePath} crossOrigin='anonymous' />
-                                                    <Card.Text style={{ fontSize: '12px' }} className='m-2' >{movie.title}</Card.Text>
-                                                    <Link to={`/movies/${movie._id}`}>
+                                                    <Card.Text style={{ fontSize: '12px' }} className='m-2 text-center' >{movie.title}</Card.Text>
+                                                    <Link className='m-auto' to={`/movies/${movie._id}`}>
                                                         <Button size='sm' variant='danger' value={movie._id}
                                                             onClick={(e) => this.onRemoveFavorite(e, movie)}>Remove</Button>
                                                     </Link>
@@ -217,8 +216,7 @@ export class ProfileView extends React.Component {
                                             )
                                         }
                                     })}
-                                </Card.Body>
-                                {/* <favoriteMovies favoriteMoviesList={favoriteMoviesList} /> */}
+                                </Row>
                             </Card>
                         </Col>
                     </Row>
