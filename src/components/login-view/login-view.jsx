@@ -53,46 +53,43 @@ export function LoginView(props) {
 
   return (
     <body className='body'>
-      <Menu />
       <Container fluid className='container'>
-        <Form style={{ maxWidth: '750px', marginTop: '10%' }}>
-          <Row>
-            <Col xs={{ span: 12, offset: 0 }} sm={{ span: 10, offset: 1, }} md={{ span: 8, offset: 2 }} lg={{ span: 7, offset: 4 }} xl={{ span: 7, offset: 5 }} style={{ backgroundColor: '#1E2127' }} className='login-body'  >
-              <Row>
-                <Col>
-                  <h2 className='greeting'>Welcome to myFlix</h2>
-                  <h5 className='log-in-greeting'>Log in to your account</h5>
-                </Col>
-              </Row>
-              <Row>
-                <Col>
-                  <Form.Group className='mb-3 mt-3 mr-5 ml-5' controlId='formUsername'>
-                    <Form.Label>Username:</Form.Label>
-                    <Form.Control className='bg' placeholder='Enter your username' type='text' onChange={e => setUsername(e.target.value)} />
-                    {usernameErr && <p style={{ color: 'red', padding: '1px' }}>{usernameErr}</p>}
-                  </Form.Group>
-                </Col>
-              </Row>
-              <Row>
-                <Col className='mr-5 ml-5'>
-                  <Form.Group className='mb-3' controlId='formPassword'>
-                    <Form.Label>Password:</Form.Label>
-                    <Form.Control placeholder='Enter your password' type='password' onChange={e => setPassword(e.target.value)} />
-                    {passwordErr && <p style={{ color: 'red', padding: '1px' }}>{passwordErr}</p>}
-                  </Form.Group>
-                </Col>
-              </Row>
-              <Row className='mb-3' >
-                <Col></Col>
-                <Col></Col>
-                <Col>
-                  <Button style={{ width: '105px' }} className='log-button mr-5' type='submit' onClick={
-                    handleSubmit}>Submit</Button>
-                </Col>
-              </Row>
-            </Col>
-          </Row>
-        </Form>
+        <Card className='login-body ml-auto mr-auto' style={{ backgroundColor: 'black', marginTop: '15%' }}>
+          <Form style={{ maxWidth: '750px', backgroundColor: 'black' }}>
+            <Row>
+              <Col>
+                <h2 className='greeting'>Welcome to myFlix</h2>
+                <h5 className='log-in-greeting'>Log in to your account</h5>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <Form.Group className='mb-3 mt-3 mr-5 ml-5' controlId='formUsername'>
+                  <Form.Label>Username:</Form.Label>
+                  <Form.Control className='bg' placeholder='Enter your username' type='text' onChange={e => setUsername(e.target.value)} />
+                  {usernameErr && <p style={{ color: 'red', padding: '1px' }}>{usernameErr}</p>}
+                </Form.Group>
+              </Col>
+            </Row>
+            <Row>
+              <Col className='mr-5 ml-5'>
+                <Form.Group className='mb-3' controlId='formPassword'>
+                  <Form.Label>Password:</Form.Label>
+                  <Form.Control placeholder='Enter your password' type='password' onChange={e => setPassword(e.target.value)} />
+                  {passwordErr && <p style={{ color: 'red', padding: '1px' }}>{passwordErr}</p>}
+                </Form.Group>
+              </Col>
+            </Row>
+            <Row className='mb-3' >
+              <Col></Col>
+              <Col></Col>
+              <Col>
+                <Button style={{ width: '105px' }} className='log-button mr-5' type='submit' onClick={
+                  handleSubmit}>Submit</Button>
+              </Col>
+            </Row>
+          </Form>
+        </Card>
       </Container >
     </body>
   );

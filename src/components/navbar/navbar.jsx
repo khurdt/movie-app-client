@@ -23,19 +23,22 @@ export default function Menu({ user }) {
 
     return (
         <>
-            <Navbar style={{ backgroundColor: '#1E2127', height: '56px' }} expand='lg'>
-                <Navbar.Brand style={{ color: '#1266F1', fontSize: '20px' }} href='/'>myFlix</Navbar.Brand>
-                <Nav className='ml-auto' style={{ backgroundColor: '#1E2127' }}>
-                    {isAuth() && (
-                        <Button style={{ color: 'white' }} onClick={() => { onLoggedOut() }}>Logout</Button>
-                    )}
-                    {!isAuth() && (
-                        <Nav.Link style={{ color: 'white' }} href='/'>Login</Nav.Link>
-                    )}
-                    {!isAuth() && (
-                        <Nav.Link style={{ color: 'white' }} href='/register'>Register</Nav.Link>
-                    )}
-                </Nav>
+            <Navbar style={{ backgroundColor: '#1E2127', height: '56px', margin: '0', padding: '0', zIndex: '100' }} expand='lg'>
+                <Navbar.Brand style={{ color: '#1266F1', fontSize: '20px', padding: '10px' }} href='/'>myFlix</Navbar.Brand>
+                <Navbar.Toggle aria-controls='responsive-navbar-nav' />
+                <Navbar.Collapse id='responsive-navbar-nav'>
+                    <Nav className='ml-auto' style={{ backgroundColor: '#1E2127', padding: '5px' }}>
+                        {isAuth() && (
+                            <Button style={{ color: 'white' }} onClick={() => { onLoggedOut() }}>Logout</Button>
+                        )}
+                        {!isAuth() && (
+                            <Nav.Link style={{ color: 'white' }} href='/'>Login</Nav.Link>
+                        )}
+                        {!isAuth() && (
+                            <Nav.Link style={{ color: 'white' }} href='/register'>Register</Nav.Link>
+                        )}
+                    </Nav>
+                </Navbar.Collapse>
             </Navbar>
             {isAuth() && (
                 <Navbar className='submenu' style={{ backgroundColor: '#1E2127' }} expand='lg'>

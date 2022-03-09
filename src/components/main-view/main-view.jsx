@@ -67,7 +67,7 @@ export class MainView extends React.Component {
     return (
       <Router>
         <Menu user={user} />
-        <Container fluid style={{ width: '100%', height: 'max-content', backgroundColor: '#1B1D24' }}>
+        <Container fluid style={{ width: '100%', height: 'max-content', backgroundColor: '#1B1D24', margin: '0', padding: '0' }}>
           <Row className='main-view justify-content-md-center'>
             <Route exact path='/' render={() => {
               //If there is no user, the LoginView is rendered. If there is a user logged in, the user details are passed as a prop to the LoginView
@@ -131,7 +131,7 @@ export class MainView extends React.Component {
             }} />
           </Row>
         </Container>
-      </Router>
+      </Router >
     );
   }
 }

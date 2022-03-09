@@ -66,10 +66,9 @@ export function RegistrationView(props) {
   }
 
   return (
-    <body style={{ backgroundColor: '#1266F1' }} className='body'>
-      <Menu />
-      <Container className='container'>
-        <Form style={{ maxWidth: '750px', marginTop: '10%' }}>
+    <body className='body'>
+      <Container fluid className='container'>
+        <Form style={{ maxWidth: '750px', marginTop: '15%' }}>
           <Col xs={{ span: 12, offset: 0 }} sm={{ span: 10, offset: 1, }} md={{ span: 8, offset: 2 }} lg={{ span: 7, offset: 4 }} xl={{ span: 7, offset: 5 }} style={{ backgroundColor: '#1E2127' }} className='login-body'  >
             <Row>
               <Col>
