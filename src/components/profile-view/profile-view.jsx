@@ -62,6 +62,11 @@ export class ProfileView extends React.Component {
     //     return isReq;
     // }
 
+    alertForPassword = (e) => {
+        e.preventDefault();
+        alert('password required');
+    }
+
     updateUser = (e) => {
         e.preventDefault();
         const username = localStorage.getItem('user');
@@ -94,7 +99,6 @@ export class ProfileView extends React.Component {
             .catch(function (error) {
                 console.log(error);
             });
-        // }
     };
 
     onRemoveFavorite = (e, movie) => {
@@ -155,15 +159,19 @@ export class ProfileView extends React.Component {
             birthday: value,
         })
     }
-    // const favoriteMoviesList = movies.filter(movie => {
-    //     return user.favoriteMovies.includes(movies._id);
-    // })
+
     render() {
         const { movies, onBackClick } = this.props;
         const { favoriteMovies, username, password, email, birthday } = this.state;
 
         if (!username) {
             return null;
+        }
+        let passwordNotEmpty = false;
+        if (value === undefined) {
+            passwordNotEmpty = false;
+        } else {
+            passwordNotEmpty = true;
         }
 
         return (
@@ -179,7 +187,7 @@ export class ProfileView extends React.Component {
                         <Col className='m-3'>
                             <Form onSubmit={(e) => this.editUser(e, this.username, this.password, this.email, this.birthday)}>
                                 <Form.Group className='m-1'>
-                                    <Form.Label>Username</Form.Label>
+                                    <Form.Label>Username:</Form.Label>
                                     <Form.Control
                                         type='text'
                                         name='username'
@@ -188,7 +196,7 @@ export class ProfileView extends React.Component {
                                         onChange={(e) => this.setUsername(e.target.value)} required />
                                 </Form.Group>
                                 <Form.Group className='m-1'>
-                                    <Form.Label>Password</Form.Label>
+                                    <Form.Label>Password:</Form.Label>
                                     <Form.Control
                                         type='text'
                                         name='password'
@@ -196,7 +204,7 @@ export class ProfileView extends React.Component {
                                         onChange={(e) => this.setPassword(e.target.value)} required />
                                 </Form.Group>
                                 <Form.Group className='m-1'>
-                                    <Form.Label>Email</Form.Label>
+                                    <Form.Label>Email:</Form.Label>
                                     <Form.Control
                                         type='text'
                                         name='email'
@@ -212,7 +220,11 @@ export class ProfileView extends React.Component {
                                         placeholder='Enter New Birthday'
                                         onChange={(e) => this.setBirthday(e.target.value)} required />
                                 </Form.Group>
-                                <Button className='m-3' variant='success' type='submit' onClick={this.updateUser}>Update</Button>
+                                {passwordNotEmpty ? (
+                                    <Button className='m-3' variant='success' type='submit' onClick={this.updateUser}>Update</Button>
+                                ) : (
+                                    <Button className='m-3' variant='success' type='submit' onClick={this.alertForPassword}>Update</Button>
+                                )}
                                 <Button className='m-3' variant='danger' onClick={() => this.onDeleteAccount()}>Delete Account</Button>
                             </Form>
                         </Col>
