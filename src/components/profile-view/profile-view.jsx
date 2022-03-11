@@ -168,7 +168,7 @@ export class ProfileView extends React.Component {
             return null;
         }
         let passwordNotEmpty = false;
-        if (value === undefined) {
+        if (this.state.password === undefined) {
             passwordNotEmpty = false;
         } else {
             passwordNotEmpty = true;
