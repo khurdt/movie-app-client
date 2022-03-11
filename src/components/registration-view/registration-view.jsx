@@ -66,10 +66,11 @@ export function RegistrationView(props) {
   }
 
   return (
-    <body className='body'>
-      <Container fluid className='container'>
-        <Form style={{ maxWidth: '750px', marginTop: '15%' }}>
-          <Col xs={{ span: 12, offset: 0 }} sm={{ span: 10, offset: 1, }} md={{ span: 8, offset: 2 }} lg={{ span: 7, offset: 4 }} xl={{ span: 7, offset: 5 }} style={{ backgroundColor: '#1E2127' }} className='login-body'  >
+    <Container fluid className='body'>
+      <Col className='pb-5'></Col>
+      <Form className='ml-auto mr-auto pt-5' style={{ maxWidth: '450px', marginTop: '3%' }}>
+        <Row>
+          <Col style={{ backgroundColor: '#1E2127', color: 'white' }} className='login-body'>
             <Row>
               <Col>
                 <h2 className='greeting'>Register for myFlix</h2>
@@ -112,9 +113,9 @@ export function RegistrationView(props) {
               </Col>
             </Row>
           </Col>
-        </Form>
-      </Container >
-    </body>
+        </Row>
+      </Form>
+    </Container >
   )
 }
 

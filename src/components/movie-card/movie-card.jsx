@@ -10,7 +10,7 @@ export class MovieCard extends React.Component {
     const { movie } = this.props;
 
     return (
-      <Card className='mt-5 ml-1 movie-card' style={{ maxWidth: '400px', height: '725px', color: 'white', backgroundColor: '#1E2127' }}>
+      <Card className='mt-2 mb-5 ml-auto mr-auto movie-card' style={{ maxWidth: '400px', height: '725px', color: 'white', backgroundColor: '#1E2127' }}>
         <Card.Title style={{ fontSize: '20px' }} className='m-4'>{movie.title}</Card.Title>
         <Card.Img className='m-auto' style={{ maxWidth: '326px', height: '481px' }} src={movie.imagePath} crossOrigin='anonymous' />
         <Card.Body>

@@ -1,8 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Container } from 'react-bootstrap';
-import { MainView } from './components/main-view/main-view';
-//import default MainView from './components/main-view/main-view.jsx';
+import MainView from './components/main-view/main-view';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import { devToolsEnhancer } from 'redux-devtools-extension';

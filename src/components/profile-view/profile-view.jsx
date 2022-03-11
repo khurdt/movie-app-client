@@ -42,10 +42,32 @@ export class ProfileView extends React.Component {
             });
     };
 
+    // validate = () => {
+    //     let isReq = true;
+    //     if (!this.state.username) {
+    //         isReq = false;
+    //     } else if (this.state.username.length < 2) {
+    //         isReq = false;
+    //     }
+    //     if (!this.state.password) {
+    //         isReq = false;
+    //     } else if (this.state.password.length < 6) {
+    //         isReq = false;
+    //     }
+    //     if (!this.state.email) {
+    //         isReq = false
+    //     } else if (this.state.email.indexOf('@') === -1) {
+    //         isReq = false
+    //     }
+    //     return isReq;
+    // }
+
     updateUser = (e) => {
         e.preventDefault();
         const username = localStorage.getItem('user');
         const token = localStorage.getItem('token');
+        // const isReq = validate();
+        // if (isReq) {
         axios.put(`https://kh-movie-app.herokuapp.com/users/${username}`, {
             username: this.state.username,
             password: this.state.password,
@@ -72,6 +94,7 @@ export class ProfileView extends React.Component {
             .catch(function (error) {
                 console.log(error);
             });
+        // }
     };
 
     onRemoveFavorite = (e, movie) => {
@@ -150,7 +173,7 @@ export class ProfileView extends React.Component {
                         <Button type='button' onClick={() => { onBackClick() }}>Return</Button>
                     </Col>
                 </Row>
-                <Card className='m-auto movie-view' style={{ maxWidth: '1128px', height: '789px', backgroundColor: '#1E2127', color: 'white' }}>
+                <Card className='m-auto movie-view' style={{ maxWidth: '1128px', backgroundColor: '#1E2127', color: 'white' }}>
                     <Card.Title style={{ fontSize: '30px' }} className='m-3'>Personal Info</Card.Title>
                     <Row>
                         <Col className='m-3'>
@@ -169,7 +192,7 @@ export class ProfileView extends React.Component {
                                     <Form.Control
                                         type='text'
                                         name='password'
-                                        placeholder='Enter New Password'
+                                        placeholder='Required for Update'
                                         onChange={(e) => this.setPassword(e.target.value)} required />
                                 </Form.Group>
                                 <Form.Group className='m-1'>
@@ -196,7 +219,7 @@ export class ProfileView extends React.Component {
                         <Col className='m-1'>
                             <Card style={{ backgroundColor: '#1B1D24', color: 'white' }}>
                                 <Card.Title className='m-1'>Favorite Movies</Card.Title>
-                                <Row>
+                                <Row className='m-auto'>
                                     {favoriteMovies.length === 0 && (
                                         <div className='text-center'>No Favorite Movies :(</div>
                                     )}

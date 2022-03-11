@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import './login-view.scss';
 import PropTypes from 'prop-types';
-import { Container, Row, Col, Form, Button, Card } from 'react-bootstrap';
+import { Container, Button, Col, Form, Row } from 'react-bootstrap';
 import Menu from '../navbar/navbar';
 
 
@@ -52,10 +52,11 @@ export function LoginView(props) {
   };
 
   return (
-    <body className='body'>
-      <Container fluid className='container'>
-        <Card className='login-body ml-auto mr-auto' style={{ backgroundColor: 'black', marginTop: '15%' }}>
-          <Form style={{ maxWidth: '750px', backgroundColor: 'black' }}>
+    <Container fluid className='body'>
+      <Col className='pb-5'></Col>
+      <Form className='ml-auto mr-auto pt-5' style={{ maxWidth: '450px', marginTop: '3%' }}>
+        <Row>
+          <Col style={{ backgroundColor: '#1E2127', color: 'white' }} className='login-body'  >
             <Row>
               <Col>
                 <h2 className='greeting'>Welcome to myFlix</h2>
@@ -84,14 +85,14 @@ export function LoginView(props) {
               <Col></Col>
               <Col></Col>
               <Col>
-                <Button style={{ width: '105px' }} className='log-button mr-5' type='submit' onClick={
+                <Button style={{ width: '105px' }} className='mr-5' type='submit' onClick={
                   handleSubmit}>Submit</Button>
               </Col>
             </Row>
-          </Form>
-        </Card>
-      </Container >
-    </body>
+          </Col>
+        </Row>
+      </Form>
+    </Container >
   );
 }
 
