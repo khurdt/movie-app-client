@@ -27,7 +27,7 @@ export class DirectorView extends React.Component {
             <Card.Text>Other {director.director.name} Movies</Card.Text>
             <Row>
               {movies.map(movie => (
-                <Card className='m-1 little-card' style={{ backgroundColor: '#1E2127', color: 'white' }}>
+                <Card key={movie._id} className='m-1 little-card' style={{ backgroundColor: '#1E2127', color: 'white' }}>
                   <Card.Img className='m-auto' style={{ maxWidth: '140px', height: '207px' }} src={movie.imagePath} crossOrigin='anonymous' />
                   <Card.Text style={{ fontSize: '12px' }} className='m-2' >{movie.title}</Card.Text>
                   <Link to={`/movies/${movie._id}`}>

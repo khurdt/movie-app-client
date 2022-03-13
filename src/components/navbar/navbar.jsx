@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './navbar-view.scss';
 import { Link } from 'react-router-dom';
 import { Container, Navbar, Nav, NavDropdown, Button, Card } from 'react-bootstrap';
