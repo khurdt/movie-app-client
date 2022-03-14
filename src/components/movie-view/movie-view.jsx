@@ -14,12 +14,11 @@ export function MovieView(props) {
     return null;
   }
 
-  onRemoveFavorite = (e) => {
-    e.preventDefault();
+  onRemoveFavorite = () => {
     const username = localStorage.getItem('user');
     const token = localStorage.getItem('token');
 
-    axios.delete(`https://kh-movie-app.herokuapp.com/users/${username}/movies/${props.movie._id}`, {
+    axios.delete(`https://kh-movie-app.herokuapp.com/users/${username}/movies/${movie._id}`, {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((response) => {
@@ -31,12 +30,11 @@ export function MovieView(props) {
       });
   };
 
-  addFavorite = (e) => {
-    e.preventDefault();
+  addFavorite = () => {
     const username = localStorage.getItem('user');
     const token = localStorage.getItem('token');
 
-    axios.post(`https://kh-movie-app.herokuapp.com/users/${username}/movies/${props.movie._id}`, { 'jwt': token }, {
+    axios.post(`https://kh-movie-app.herokuapp.com/users/${username}/movies/${movie._id}`, { 'jwt': token }, {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((response) => {
