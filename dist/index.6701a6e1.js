@@ -48904,8 +48904,7 @@ var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
 function MovieCard(props) {
     const { movie , userData , componentDidMount  } = props;
     if (userData.favoriteMovies === undefined) return null;
-    if (movie._id === undefined) return null;
-    onRemoveFavorite = function() {
+    const onRemoveFavorite = function() {
         const username = localStorage.getItem('user');
         const token = localStorage.getItem('token');
         const movieID = movie._id;
@@ -48915,12 +48914,12 @@ function MovieCard(props) {
             }
         }).then((response)=>{
             console.log(response);
-            props.componentDidMount();
+            componentDidMount();
         }).catch(function(error) {
             console.log(error);
         });
     };
-    addFavorite = function() {
+    const addFavorite = function() {
         const username = localStorage.getItem('user');
         const token = localStorage.getItem('token');
         const movieID = movie._id;
@@ -48932,7 +48931,7 @@ function MovieCard(props) {
             }
         }).then((response)=>{
             console.log(response);
-            props.componentDidMount();
+            componentDidMount();
         }).catch(function(error) {
             console.log(error);
         });
@@ -48949,7 +48948,7 @@ function MovieCard(props) {
         },
         __source: {
             fileName: "src/components/movie-card/movie-card.jsx",
-            lineNumber: 60
+            lineNumber: 57
         },
         __self: this,
         children: [
@@ -48958,7 +48957,7 @@ function MovieCard(props) {
                 to: `/movies/${movie._id}`,
                 __source: {
                     fileName: "src/components/movie-card/movie-card.jsx",
-                    lineNumber: 61
+                    lineNumber: 58
                 },
                 __self: this,
                 children: /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Card.Img, {
@@ -48967,7 +48966,7 @@ function MovieCard(props) {
                     crossOrigin: "anonymous",
                     __source: {
                         fileName: "src/components/movie-card/movie-card.jsx",
-                        lineNumber: 62
+                        lineNumber: 59
                     },
                     __self: this
                 })
@@ -48976,7 +48975,7 @@ function MovieCard(props) {
                 className: "m-4 title",
                 __source: {
                     fileName: "src/components/movie-card/movie-card.jsx",
-                    lineNumber: 64
+                    lineNumber: 61
                 },
                 __self: this,
                 children: movie.title
@@ -48986,7 +48985,7 @@ function MovieCard(props) {
                 to: `/movies/${movie._id}`,
                 __source: {
                     fileName: "src/components/movie-card/movie-card.jsx",
-                    lineNumber: 65
+                    lineNumber: 62
                 },
                 __self: this,
                 children: /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Card.Img, {
@@ -48998,7 +48997,7 @@ function MovieCard(props) {
                     crossOrigin: "anonymous",
                     __source: {
                         fileName: "src/components/movie-card/movie-card.jsx",
-                        lineNumber: 66
+                        lineNumber: 63
                     },
                     __self: this
                 })
@@ -49006,7 +49005,7 @@ function MovieCard(props) {
             /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Card.Body, {
                 __source: {
                     fileName: "src/components/movie-card/movie-card.jsx",
-                    lineNumber: 68
+                    lineNumber: 65
                 },
                 __self: this,
                 children: [
@@ -49017,7 +49016,7 @@ function MovieCard(props) {
                         },
                         __source: {
                             fileName: "src/components/movie-card/movie-card.jsx",
-                            lineNumber: 69
+                            lineNumber: 66
                         },
                         __self: this,
                         children: movie.description
@@ -49026,27 +49025,27 @@ function MovieCard(props) {
                         className: "footer-display",
                         __source: {
                             fileName: "src/components/movie-card/movie-card.jsx",
-                            lineNumber: 70
+                            lineNumber: 67
                         },
                         __self: this,
                         children: /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Row, {
                             __source: {
                                 fileName: "src/components/movie-card/movie-card.jsx",
-                                lineNumber: 71
+                                lineNumber: 68
                             },
                             __self: this,
                             children: [
                                 /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Col, {
                                     __source: {
                                         fileName: "src/components/movie-card/movie-card.jsx",
-                                        lineNumber: 72
+                                        lineNumber: 69
                                     },
                                     __self: this,
                                     children: /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
                                         to: `/movies/${movie._id}`,
                                         __source: {
                                             fileName: "src/components/movie-card/movie-card.jsx",
-                                            lineNumber: 73
+                                            lineNumber: 70
                                         },
                                         __self: this,
                                         children: /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Button, {
@@ -49056,7 +49055,7 @@ function MovieCard(props) {
                                             variant: "link",
                                             __source: {
                                                 fileName: "src/components/movie-card/movie-card.jsx",
-                                                lineNumber: 74
+                                                lineNumber: 71
                                             },
                                             __self: this,
                                             children: "Show More"
@@ -49066,7 +49065,7 @@ function MovieCard(props) {
                                 /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Col, {
                                     __source: {
                                         fileName: "src/components/movie-card/movie-card.jsx",
-                                        lineNumber: 77
+                                        lineNumber: 74
                                     },
                                     __self: this,
                                     children: isFavorite ? /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Card.Img, {
@@ -49080,7 +49079,7 @@ function MovieCard(props) {
                                         alt: "heart logo",
                                         __source: {
                                             fileName: "src/components/movie-card/movie-card.jsx",
-                                            lineNumber: 79
+                                            lineNumber: 76
                                         },
                                         __self: this
                                     }) : /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Card.Img, {
@@ -49094,7 +49093,7 @@ function MovieCard(props) {
                                         alt: "heart logo",
                                         __source: {
                                             fileName: "src/components/movie-card/movie-card.jsx",
-                                            lineNumber: 85
+                                            lineNumber: 82
                                         },
                                         __self: this
                                     })
@@ -49201,7 +49200,7 @@ var _reactRouterDom = require("react-router-dom");
 function MovieView(props) {
     const { movie , onBackClick , userData , componentDidMount  } = props;
     if (userData.favoriteMovies === undefined) return null;
-    onRemoveFavorite = function() {
+    const onRemoveFavorite = function() {
         const username = localStorage.getItem('user');
         const token = localStorage.getItem('token');
         _axiosDefault.default.delete(`https://kh-movie-app.herokuapp.com/users/${username}/movies/${movie._id}`, {
@@ -49215,7 +49214,7 @@ function MovieView(props) {
             console.log(error);
         });
     };
-    addFavorite = function() {
+    const addFavorite = function() {
         const username = localStorage.getItem('user');
         const token = localStorage.getItem('token');
         _axiosDefault.default.post(`https://kh-movie-app.herokuapp.com/users/${username}/movies/${movie._id}`, {

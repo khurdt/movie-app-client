@@ -12,11 +12,8 @@ export function MovieCard(props) {
   if (userData.favoriteMovies === undefined) {
     return null;
   }
-  if (movie._id === undefined) {
-    return null;
-  }
 
-  onRemoveFavorite = function () {
+  const onRemoveFavorite = function () {
     const username = localStorage.getItem('user');
     const token = localStorage.getItem('token');
     const movieID = movie._id;
@@ -25,14 +22,14 @@ export function MovieCard(props) {
     })
       .then((response) => {
         console.log(response);
-        props.componentDidMount();
+        componentDidMount();
       })
       .catch(function (error) {
         console.log(error);
       });
   };
 
-  addFavorite = function () {
+  const addFavorite = function () {
     const username = localStorage.getItem('user');
     const token = localStorage.getItem('token');
     const movieID = movie._id;
@@ -41,7 +38,7 @@ export function MovieCard(props) {
     })
       .then((response) => {
         console.log(response);
-        props.componentDidMount();
+        componentDidMount();
       })
       .catch(function (error) {
         console.log(error);
