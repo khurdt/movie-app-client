@@ -12,12 +12,15 @@ export function MovieCard(props) {
   if (userData.favoriteMovies === undefined) {
     return null;
   }
+  if (movie._id === undefined) {
+    return null;
+  }
 
   onRemoveFavorite = function () {
     const username = localStorage.getItem('user');
     const token = localStorage.getItem('token');
-
-    axios.delete(`https://kh-movie-app.herokuapp.com/users/${username}/movies/${movie._id}`, {
+    const movieID = movie._id;
+    axios.delete(`https://kh-movie-app.herokuapp.com/users/${username}/movies/${movieID}`, {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((response) => {
@@ -32,8 +35,8 @@ export function MovieCard(props) {
   addFavorite = function () {
     const username = localStorage.getItem('user');
     const token = localStorage.getItem('token');
-
-    axios.post(`https://kh-movie-app.herokuapp.com/users/${username}/movies/${movie._id}`, { 'jwt': token }, {
+    const movieID = movie._id;
+    axios.post(`https://kh-movie-app.herokuapp.com/users/${username}/movies/${movieID}`, { 'jwt': token }, {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((response) => {
