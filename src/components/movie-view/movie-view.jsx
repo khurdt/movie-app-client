@@ -7,14 +7,13 @@ import { Container, Row, Col, Form, Button, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 export function MovieView(props) {
-  let { componentDidMount } = props;
-  const { movie, onBackClick, userData } = props
+  const { movie, onBackClick, userData, componentDidMount } = props
 
   if (userData.favoriteMovies === undefined) {
     return null;
   }
 
-  onRemoveFavorite = () => {
+  onRemoveFavorite = function () {
     const username = localStorage.getItem('user');
     const token = localStorage.getItem('token');
 
@@ -30,7 +29,7 @@ export function MovieView(props) {
       });
   };
 
-  addFavorite = () => {
+  addFavorite = function () {
     const username = localStorage.getItem('user');
     const token = localStorage.getItem('token');
 

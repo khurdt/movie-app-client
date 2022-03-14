@@ -6,8 +6,7 @@ import { Container, Row, Col, Form, Button, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 export function ProfileView(props) {
-    let { componentDidMount } = props;
-    const { movies, onBackClick, userData } = props;
+    const { movies, onBackClick, userData, componentDidMount } = props;
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
