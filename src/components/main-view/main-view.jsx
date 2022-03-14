@@ -74,7 +74,6 @@ export class MainView extends React.Component {
   render() {
     const { movies, user } = this.props;
     const { userData } = this.state;
-    console.log(movies, user, userData.favoriteMovies);
     //sets up event listener and renders Movie View
     return (
       <Router>
