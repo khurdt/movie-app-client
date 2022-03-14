@@ -12,20 +12,17 @@ export function MovieCard(props) {
   if (userData.favoriteMovies === undefined) {
     return null;
   }
-  if (movie === undefined) {
-    return null;
-  }
-  if (componentDidMount === undefined) {
-    return null;
-  }
 
-  removeFavorite = function () {
+  onRemoveFavorite = (e, movie) => {
+    e.preventDefault();
     const username = localStorage.getItem('user');
     const token = localStorage.getItem('token');
-    const movieID = movie._id;
-    axios.delete(`https://kh-movie-app.herokuapp.com/users/${username}/movies/${movieID}`, {
-      headers: { Authorization: `Bearer ${token}` },
-    })
+
+    axios.delete(`https://kh-movie-app.herokuapp.com/users/${username}/movies/${movie._id}`,
+      {
+        headers: { Authorization: `Bearer ${token}` },
+      }
+    )
       .then((response) => {
         console.log(response);
         componentDidMount();
@@ -35,13 +32,15 @@ export function MovieCard(props) {
       });
   };
 
-  addFavorite = function () {
+  addFavorite = (e, movie) => {
+    e.preventDefault();
     const username = localStorage.getItem('user');
     const token = localStorage.getItem('token');
-    const movieID = movie._id;
-    axios.post(`https://kh-movie-app.herokuapp.com/users/${username}/movies/${movieID}`, { 'jwt': token }, {
+
+    axios.post(`https://kh-movie-app.herokuapp.com/users/${username}/movies/${movie._id}`, { 'jwt': token }, {
       headers: { Authorization: `Bearer ${token}` },
-    })
+    }
+    )
       .then((response) => {
         console.log(response);
         componentDidMount();
@@ -81,13 +80,13 @@ export function MovieCard(props) {
               {isFavorite ? (
                 <Card.Img
                   className='heart-visible mt-2'
-                  onClick={this.removeFavorite}
+                  onClick={(e) => this.onRemoveFavorite(e, movie)}
                   style={{ width: '20px', height: '20px' }}
                   src={heartLogo} alt='heart logo' />
               ) : (
                 <Card.Img
                   className='heart mt-2'
-                  onClick={this.addFavorite}
+                  onClick={(e) => this.addFavorite(e, movie)}
                   style={{ width: '20px', height: '20px' }}
                   src={heartLogo} alt='heart logo' />
               )}
