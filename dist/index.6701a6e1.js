@@ -48904,7 +48904,7 @@ var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
 function MovieCard(props) {
     const { movie , userData , componentDidMount  } = props;
     if (userData.favoriteMovies === undefined) return null;
-    const onRemoveFavorite = function() {
+    onRemoveFavorite = function() {
         const username = localStorage.getItem('user');
         const token = localStorage.getItem('token');
         const movieID = movie._id;
@@ -48919,7 +48919,7 @@ function MovieCard(props) {
             console.log(error);
         });
     };
-    const addFavorite = function() {
+    addFavorite = function() {
         const username = localStorage.getItem('user');
         const token = localStorage.getItem('token');
         const movieID = movie._id;

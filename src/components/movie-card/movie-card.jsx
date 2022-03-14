@@ -13,7 +13,7 @@ export function MovieCard(props) {
     return null;
   }
 
-  const onRemoveFavorite = function () {
+  onRemoveFavorite = function () {
     const username = localStorage.getItem('user');
     const token = localStorage.getItem('token');
     const movieID = movie._id;
@@ -29,7 +29,7 @@ export function MovieCard(props) {
       });
   };
 
-  const addFavorite = function () {
+  addFavorite = function () {
     const username = localStorage.getItem('user');
     const token = localStorage.getItem('token');
     const movieID = movie._id;
