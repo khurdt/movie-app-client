@@ -49200,7 +49200,7 @@ var _reactRouterDom = require("react-router-dom");
 function MovieView(props) {
     const { movie , onBackClick , userData , componentDidMount  } = props;
     if (userData.favoriteMovies === undefined) return null;
-    const onRemoveFavorite = function() {
+    onRemoveFavorite = function() {
         const username = localStorage.getItem('user');
         const token = localStorage.getItem('token');
         _axiosDefault.default.delete(`https://kh-movie-app.herokuapp.com/users/${username}/movies/${movie._id}`, {
@@ -49214,7 +49214,7 @@ function MovieView(props) {
             console.log(error);
         });
     };
-    const addFavorite = function() {
+    addFavorite = function() {
         const username = localStorage.getItem('user');
         const token = localStorage.getItem('token');
         _axiosDefault.default.post(`https://kh-movie-app.herokuapp.com/users/${username}/movies/${movie._id}`, {
