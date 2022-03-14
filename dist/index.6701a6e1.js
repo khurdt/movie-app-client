@@ -48903,7 +48903,7 @@ var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
 function MovieCard(props) {
     const { movie , userData , componentDidMount  } = props;
     if (userData.favoriteMovies === undefined) return null;
-    onRemoveFavorite = function() {
+    removeFavorite = function() {
         const username = localStorage.getItem('user');
         const token = localStorage.getItem('token');
         const movieID = movie._id;
@@ -49069,7 +49069,7 @@ function MovieCard(props) {
                                     __self: this,
                                     children: isFavorite ? /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Card.Img, {
                                         className: "heart-visible mt-2",
-                                        onClick: this.onRemoveFavorite,
+                                        onClick: this.removeFavorite,
                                         style: {
                                             width: '20px',
                                             height: '20px'
@@ -49135,7 +49135,7 @@ $RefreshReg$(_c, "MovieCard");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"8xIwr","react":"6TuXu","prop-types":"1tgq3","@parcel/transformer-js/src/esmodule-helpers.js":"JacNc","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"5V79J","./movie-card.scss":"cF5gT","react-router-dom":"cpyQW","react-bootstrap":"h2YVd","../../images/heart.png":"bm3z8","axios":"iYoWk"}],"cF5gT":[function() {},{}],"bm3z8":[function(require,module,exports) {
+},{"react/jsx-runtime":"8xIwr","react":"6TuXu","prop-types":"1tgq3","@parcel/transformer-js/src/esmodule-helpers.js":"JacNc","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"5V79J","./movie-card.scss":"cF5gT","react-router-dom":"cpyQW","../../images/heart.png":"bm3z8","react-bootstrap":"h2YVd","axios":"iYoWk"}],"cF5gT":[function() {},{}],"bm3z8":[function(require,module,exports) {
 module.exports = require('./helpers/bundle-url').getBundleURL('3VpAv') + "heart.7fb021ff.png";
 
 },{"./helpers/bundle-url":"8YnfL"}],"8YnfL":[function(require,module,exports) {
@@ -52454,7 +52454,7 @@ $RefreshReg$(_c, "MoviesList");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"8xIwr","react":"6TuXu","react-bootstrap/Col":"fbam0","react-redux":"2L0if","../visibility-filter-input/visibility-filter-input":"7ZxGS","../movie-card/movie-card":"6EiBJ","@parcel/transformer-js/src/esmodule-helpers.js":"JacNc","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"5V79J","prop-types":"1tgq3"}],"7ZxGS":[function(require,module,exports) {
+},{"react/jsx-runtime":"8xIwr","react":"6TuXu","react-bootstrap/Col":"fbam0","react-redux":"2L0if","prop-types":"1tgq3","../visibility-filter-input/visibility-filter-input":"7ZxGS","../movie-card/movie-card":"6EiBJ","@parcel/transformer-js/src/esmodule-helpers.js":"JacNc","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"5V79J"}],"7ZxGS":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$9bc3 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;

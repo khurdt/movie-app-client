@@ -13,7 +13,7 @@ export function MovieCard(props) {
     return null;
   }
 
-  onRemoveFavorite = function () {
+  removeFavorite = function () {
     const username = localStorage.getItem('user');
     const token = localStorage.getItem('token');
     const movieID = movie._id;
@@ -75,7 +75,7 @@ export function MovieCard(props) {
               {isFavorite ? (
                 <Card.Img
                   className='heart-visible mt-2'
-                  onClick={this.onRemoveFavorite}
+                  onClick={this.removeFavorite}
                   style={{ width: '20px', height: '20px' }}
                   src={heartLogo} alt='heart logo' />
               ) : (
