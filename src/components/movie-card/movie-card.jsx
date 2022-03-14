@@ -25,7 +25,7 @@ export function MovieCard(props) {
     })
       .then((response) => {
         console.log(response);
-        componentDidMount();
+        props.componentDidMount();
       })
       .catch(function (error) {
         console.log(error);
@@ -41,7 +41,7 @@ export function MovieCard(props) {
     })
       .then((response) => {
         console.log(response);
-        componentDidMount();
+        props.componentDidMount();
       })
       .catch(function (error) {
         console.log(error);

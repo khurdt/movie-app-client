@@ -48915,7 +48915,7 @@ function MovieCard(props) {
             }
         }).then((response)=>{
             console.log(response);
-            componentDidMount();
+            props.componentDidMount();
         }).catch(function(error) {
             console.log(error);
         });
@@ -48932,7 +48932,7 @@ function MovieCard(props) {
             }
         }).then((response)=>{
             console.log(response);
-            componentDidMount();
+            props.componentDidMount();
         }).catch(function(error) {
             console.log(error);
         });
