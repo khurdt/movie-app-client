@@ -12,6 +12,12 @@ export function MovieCard(props) {
   if (userData.favoriteMovies === undefined) {
     return null;
   }
+  if (movie === undefined) {
+    return null;
+  }
+  if (componentDidMount === undefined) {
+    return null;
+  }
 
   removeFavorite = function () {
     const username = localStorage.getItem('user');
