@@ -7,6 +7,7 @@ import Menu from '../navbar/navbar';
 
 
 export function LoginView(props) {
+  const { onLoggedIn } = props;
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
@@ -43,7 +44,7 @@ export function LoginView(props) {
       })
         .then(response => {
           const data = response.data;
-          props.onLoggedIn(data);
+          onLoggedIn(data);
         })
         .catch(e => {
           console.log('no such user')
@@ -97,7 +98,5 @@ export function LoginView(props) {
 }
 
 LoginView.propTypes = {
-  // username: PropTypes.string.isRequired,
-  // password: PropTypes.string.isRequired,
   onLoggedIn: PropTypes.func.isRequired
 };

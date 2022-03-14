@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import axios from 'axios';
 import '../movie-view/movie-view.scss';
 import heartLogo from '../../images/heart.png';
@@ -8,9 +8,9 @@ import { Link } from 'react-router-dom';
 
 export function MovieView(props) {
   let { componentDidMount } = props;
-  const { movie, onBackClick, myFavoriteMovies } = props
+  const { movie, onBackClick, userData } = props
 
-  if (!myFavoriteMovies) {
+  if (userData.favoriteMovies === undefined) {
     return null;
   }
 
@@ -48,8 +48,9 @@ export function MovieView(props) {
       });
   };
 
+  let tempArray = userData.favoriteMovies;
   let isFavorite = false;
-  if (myFavoriteMovies.includes(movie._id)) {
+  if (tempArray.includes(movie._id)) {
     isFavorite = true;
   } else {
     isFavorite = false;
@@ -106,31 +107,34 @@ export function MovieView(props) {
     </Container>
   );
 }
-  // keypressCallback(event) {
-  //   console.log(event.key);
-  // }
-  // componentDidMount() {
-  //   document.addEventListener('keypress', this.keypressCallback);
-  // }
-  // componentWillUnmount() {
-  //   document.removeEventListener('keypress', this.keypressCallback);
-  // }
+// keypressCallback(event) {
+//   console.log(event.key);
+// }
+// componentDidMount() {
+//   document.addEventListener('keypress', this.keypressCallback);
+// }
+// componentWillUnmount() {
+//   document.removeEventListener('keypress', this.keypressCallback);
+// }
 
-// MovieView.propTypes = {
-//   movie: PropTypes.shape({
-//     title: PropTypes.string.isRequired,
-//     description: PropTypes.string.isRequired,
-//     imagePath: PropTypes.string.isRequired,
-//     genre: PropTypes.shape({
-//       name: PropTypes.string.isRequired,
-//       description: PropTypes.string.isRequired
-//     }),
-//     director: PropTypes.shape({
-//       name: PropTypes.string.isRequired,
-//       description: PropTypes.string.isRequired,
-//       birth: PropTypes.string.isRequired,
-//       death: PropTypes.string,
-//     })
-//   }).isRequired
-// };
-
+MovieView.propTypes = {
+  movie: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    imagePath: PropTypes.string.isRequired,
+    genre: PropTypes.shape({
+      name: PropTypes.string.isRequired
+    }),
+    director: PropTypes.shape({
+      name: PropTypes.string.isRequired
+    })
+  }).isRequired,
+  userData: PropTypes.shape({
+    username: PropTypes.string,
+    password: PropTypes.string,
+    email: PropTypes.string,
+    birthday: PropTypes.string,
+    favoriteMovies: PropTypes.array,
+  }).isRequired,
+  onBackClick: PropTypes.func.isRequired
+};

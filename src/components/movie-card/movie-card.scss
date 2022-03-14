@@ -1,5 +1,28 @@
 .movie-card {
     box-shadow: 4px 4px 6px 4px rgba(12, 17, 26, 0.3);
+    max-width: 400px;
+    height: 725px;
+}
+
+.img {
+    max-width: 326px;
+    height: 481px;
+}
+
+.little-img {
+    display: none;
+}
+
+.big-img {
+    display: block;
+}
+
+.title {
+    font-size: 20px;
+}
+
+.button-size {
+    font-size: 15px;
 }
 
 .heart {
@@ -8,4 +31,33 @@
 
 .heartclick {
     opacity: 1;
+}
+
+@media all and (max-width: '700px') {
+    .movie-card {
+        max-width: 180px; 
+        height: 300px;
+    }
+    .img {
+        max-width: 140px; 
+        height: 207px;
+    }
+    .title {
+        font-size: 12px;
+    }
+    .desc-display {
+        display: none;
+    }
+    .button-size {
+        font-size: 7px;
+    }
+    .footer-display {
+        display: none;
+    }
+    .little-img {
+        display: block;
+    }
+    .big-img {
+        display: none;
+    }
 }

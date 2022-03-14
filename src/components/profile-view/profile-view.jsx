@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 export function ProfileView(props) {
     let { componentDidMount } = props;
     const { movies, onBackClick, userData } = props;
+
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
@@ -29,6 +30,8 @@ export function ProfileView(props) {
         email: email,
         birthday: birthday
     }
+
+    const formattedBirthday = birthday.slice(0, 10);
 
     const validate = () => {
         let isReq = true;
@@ -115,10 +118,10 @@ export function ProfileView(props) {
                     <Button type='button' onClick={() => { onBackClick() }}>Return</Button>
                 </Col>
             </Row>
-            <Card className='m-auto movie-view' style={{ maxWidth: '1128px', backgroundColor: '#1E2127', color: 'white' }}>
+            <Card className='m-auto movie-view profile-card' style={{ maxWidth: '1128px', backgroundColor: '#1E2127', color: 'white' }}>
                 <Card.Title style={{ fontSize: '30px' }} className='m-3'>Personal Info</Card.Title>
                 <Row>
-                    <Col className='m-3'>
+                    <Col className='m-3' xs={10} md={4}>
                         <Form>
                             <Form.Group className='m-1'>
                                 <Form.Label>Username:</Form.Label>
@@ -150,12 +153,13 @@ export function ProfileView(props) {
                                 {emailErr && <p style={{ color: 'red', padding: '1px' }}>{emailErr}</p>}
                             </Form.Group>
                             <Form.Group className='m-1'>
-                                <Form.Label>Birthday: {birthday}</Form.Label>
+                                <Form.Label>Birthday:</Form.Label>
                                 <Form.Control
                                     type='date'
                                     name='birthday'
+                                    value={formattedBirthday}
                                     placeholder='Enter New Birthday'
-                                    onChange={(e) => setBirthday(e.target.value)} required />
+                                    onChange={(e) => setBirthday(e.target.value)} required></Form.Control>
                             </Form.Group>
                             <Button className='m-3' variant='success' type='submit' onClick={this.updateUser}>Update</Button>
                             <Button className='m-3' variant='danger' onClick={() => this.onDeleteAccount()}>Delete Account</Button>
@@ -192,3 +196,15 @@ export function ProfileView(props) {
         </Container >
     );
 }
+
+ProfileView.propTypes = {
+    movies: PropTypes.array.isRequired,
+    userData: PropTypes.shape({
+        username: PropTypes.string.isRequired,
+        password: PropTypes.string.isRequired,
+        email: PropTypes.string.isRequired,
+        birthday: PropTypes.string.isRequired,
+        favoriteMovies: PropTypes.array.isRequired,
+    }).isRequired,
+    onBackClick: PropTypes.func.isRequired
+};

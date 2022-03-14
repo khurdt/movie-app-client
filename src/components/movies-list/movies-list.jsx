@@ -1,6 +1,7 @@
 import React from "react";
 import Col from 'react-bootstrap/Col';
 import { connect } from "react-redux";
+import PropTypes from 'prop-types';
 import VisibilityFilterInput from "../visibility-filter-input/visibility-filter-input";
 import { MovieCard } from "../movie-card/movie-card";
 const mapStateToProps = state => {
@@ -8,7 +9,12 @@ const mapStateToProps = state => {
   return { visibilityFilter };
 };
 function MoviesList(props) {
-  const { movies, visibilityFilter } = props;
+  const { movies, visibilityFilter, componentDidMount, userData } = props;
+
+  if (userData.favoriteMovies === undefined) {
+    return null;
+  }
+
   let filteredMovies = movies;
 
   if (visibilityFilter !== '') {
@@ -36,8 +42,8 @@ function MoviesList(props) {
         </Col>
       )}
       {filteredMovies.map(m => (
-        <Col sm={6} md={5} lg={4} key={m._id}>
-          <MovieCard movie={m} />
+        <Col xs={6} sm={6} md={5} lg={4} key={m._id}>
+          <MovieCard movie={m} userData={userData} componentDidMount={componentDidMount} />
         </Col>
       ))}
     </>
@@ -45,3 +51,16 @@ function MoviesList(props) {
 
 }
 export default connect(mapStateToProps)(MoviesList);
+
+MoviesList.propTypes = {
+  movies: PropTypes.array.isRequired,
+  visibilityFilter: PropTypes.string.isRequired,
+  userData: PropTypes.shape({
+    username: PropTypes.string,
+    password: PropTypes.string,
+    email: PropTypes.string,
+    birthday: PropTypes.string,
+    favoriteMovies: PropTypes.array,
+  }).isRequired,
+  componentDidMount: PropTypes.func.isRequired
+};

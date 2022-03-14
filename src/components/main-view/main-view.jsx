@@ -28,9 +28,9 @@ export class MainView extends React.Component {
   componentDidMount() {
     let accessToken = localStorage.getItem('token');
     if (accessToken !== null) {
+      this.getUserData(accessToken);
       this.props.setUser(localStorage.getItem('user'))
       this.getMovies(accessToken);
-      this.getUserData(accessToken);
     }
   }
 
@@ -40,6 +40,7 @@ export class MainView extends React.Component {
     this.props.setUser(authData.user.username)
     localStorage.setItem('token', authData.token);
     localStorage.setItem('user', authData.user.username);
+    this.getUserData(authData.token);
     this.getMovies(authData.token);
   }
 
@@ -73,18 +74,20 @@ export class MainView extends React.Component {
   render() {
     const { movies, user } = this.props;
     const { userData } = this.state;
+    console.log(movies, user, userData.favoriteMovies);
     //sets up event listener and renders Movie View
     return (
       <Router>
-        <Menu user={userData.username} />
+        <Menu user={user} />
         <Container fluid style={{ width: '100%', height: 'max-content', backgroundColor: '#1B1D24', margin: '0', padding: '0' }}>
           <Row className='main-view justify-content-md-center'>
             <Route exact path='/' render={() => {
               //If there is no user, the LoginView is rendered. If there is a user logged in, the user details are passed as a prop to the LoginView
               if (!user) return <Redirect to='/login' />
+              if (userData.favoriteMovies === undefined) return <div className='main-view' />
               //Before the movies have been loaded
               if (movies.length === 0) return <div className='main-view' />
-              return <MoviesList movies={movies} />
+              return <MoviesList movies={movies} userData={userData} componentDidMount={this.componentDidMount} />
             }} />
 
             <Route path='/login' render={() => {
@@ -103,7 +106,7 @@ export class MainView extends React.Component {
               if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
               if (movies.length === 0) return <div className='main-view' />
               return <Col md={8}>
-                <MovieView movie={movies.find(movie => movie._id === match.params.id)} myFavoriteMovies={userData.favoriteMovies} componentDidMount={this.componentDidMount}
+                <MovieView movie={movies.find(movie => movie._id === match.params.id)} userData={userData} componentDidMount={this.componentDidMount}
                   onBackClick={() => history.goBack()} />
               </Col>
             }} />

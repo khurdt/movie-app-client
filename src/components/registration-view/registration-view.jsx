@@ -5,8 +5,7 @@ import { Container, Row, Col, Form, Button, Card } from 'react-bootstrap';
 import axios from 'axios';
 import Menu from '../navbar/navbar';
 
-export function RegistrationView(props) {
-  const user = 'user';
+export function RegistrationView() {
   const [username, newUsername] = useState('');
   const [password, newPassword] = useState('');
   const [email, newEmail] = useState('');
@@ -118,10 +117,3 @@ export function RegistrationView(props) {
     </Container >
   )
 }
-
-RegistrationView.propTypes = {
-  // username: PropTypes.string.isRequired,
-  // password: PropTypes.string.isRequired,
-  // email: PropTypes.string.isRequired,
-  // birthday: PropTypes.string.isRequired,
-};
