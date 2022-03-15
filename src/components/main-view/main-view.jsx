@@ -21,6 +21,8 @@ export class MainView extends React.Component {
     this.state = {
       userData: {}
     };
+    this.removeFavorite = this.removeFavorite.bind(this);
+    this.addFavorite = this.addFavorite.bind(this);
     this.componentDidMount = this.componentDidMount.bind(this);
   }
 
@@ -57,7 +59,7 @@ export class MainView extends React.Component {
       })
   }
 
-  getUserData = (token) => {
+  getUserData(token) {
     const username = localStorage.getItem('user');
     axios.get(`https://kh-movie-app.herokuapp.com/users/${username}`, {
       headers: { Authorization: `Bearer ${token}` }
@@ -65,6 +67,43 @@ export class MainView extends React.Component {
       .then((response) => {
         console.log('user', response.data)
         this.setState({ userData: response.data });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+
+  removeFavorite(e, movie) {
+    e.preventDefault();
+    const username = localStorage.getItem('user');
+    const token = localStorage.getItem('token');
+
+    axios.delete(`https://kh-movie-app.herokuapp.com/users/${username}/movies/${movie._id}`,
+      {
+        headers: { Authorization: `Bearer ${token}` },
+      }
+    )
+      .then((response) => {
+        console.log(response);
+        this.componentDidMount();
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+
+  addFavorite(e, movie) {
+    e.preventDefault();
+    const username = localStorage.getItem('user');
+    const token = localStorage.getItem('token');
+
+    axios.post(`https://kh-movie-app.herokuapp.com/users/${username}/movies/${movie._id}`, { 'jwt': token }, {
+      headers: { Authorization: `Bearer ${token}` },
+    }
+    )
+      .then((response) => {
+        console.log(response);
+        this.componentDidMount();
       })
       .catch(function (error) {
         console.log(error);
@@ -86,7 +125,7 @@ export class MainView extends React.Component {
               if (userData.favoriteMovies === undefined) return <div className='main-view' />
               //Before the movies have been loaded
               if (movies.length === 0) return <div className='main-view' />
-              return <MoviesList movies={movies} userData={userData} componentDidMount={this.componentDidMount} />
+              return <MoviesList movies={movies} userData={userData} addFavorite={this.addFavorite} removeFavorite={this.removeFavorite} />
             }} />
 
             <Route path='/login' render={() => {
@@ -105,7 +144,8 @@ export class MainView extends React.Component {
               if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
               if (movies.length === 0) return <div className='main-view' />
               return <Col md={8}>
-                <MovieView movie={movies.find(movie => movie._id === match.params.id)} userData={userData} componentDidMount={this.componentDidMount}
+                <MovieView movie={movies.find(movie => movie._id === match.params.id)} userData={userData}
+                  addFavorite={this.addFavorite} removeFavorite={this.removeFavorite}
                   onBackClick={() => history.goBack()} />
               </Col>
             }} />

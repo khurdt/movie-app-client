@@ -7,48 +7,11 @@ import { Button, Card, Row, Col } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
 export function MovieCard(props) {
-  const { movie, userData, componentDidMount } = props;
+  const { movie, userData, addFavorite, removeFavorite } = props;
 
   if (userData.favoriteMovies === undefined) {
     return null;
   }
-
-  onRemoveFavorite = (e, movie) => {
-    e.preventDefault();
-    const username = localStorage.getItem('user');
-    const token = localStorage.getItem('token');
-
-    axios.delete(`https://kh-movie-app.herokuapp.com/users/${username}/movies/${movie._id}`,
-      {
-        headers: { Authorization: `Bearer ${token}` },
-      }
-    )
-      .then((response) => {
-        console.log(response);
-        componentDidMount();
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  };
-
-  addFavorite = (e, movie) => {
-    e.preventDefault();
-    const username = localStorage.getItem('user');
-    const token = localStorage.getItem('token');
-
-    axios.post(`https://kh-movie-app.herokuapp.com/users/${username}/movies/${movie._id}`, { 'jwt': token }, {
-      headers: { Authorization: `Bearer ${token}` },
-    }
-    )
-      .then((response) => {
-        console.log(response);
-        componentDidMount();
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  };
 
   let tempArray = userData.favoriteMovies;
   let isFavorite = false;
@@ -80,13 +43,13 @@ export function MovieCard(props) {
               {isFavorite ? (
                 <Card.Img
                   className='heart-visible mt-2'
-                  onClick={(e) => this.onRemoveFavorite(e, movie)}
+                  onClick={(e) => removeFavorite(e, movie)}
                   style={{ width: '20px', height: '20px' }}
                   src={heartLogo} alt='heart logo' />
               ) : (
                 <Card.Img
                   className='heart mt-2'
-                  onClick={(e) => this.addFavorite(e, movie)}
+                  onClick={(e) => addFavorite(e, movie)}
                   style={{ width: '20px', height: '20px' }}
                   src={heartLogo} alt='heart logo' />
               )}
@@ -117,5 +80,6 @@ MovieCard.propTypes = {
     birthday: PropTypes.string,
     favoriteMovies: PropTypes.array,
   }).isRequired,
-  componentDidMount: PropTypes.func.isRequired
+  addFavorite: PropTypes.func,
+  removeFavorite: PropTypes.func
 };

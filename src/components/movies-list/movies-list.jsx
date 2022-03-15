@@ -9,7 +9,7 @@ const mapStateToProps = state => {
   return { visibilityFilter };
 };
 function MoviesList(props) {
-  const { movies, visibilityFilter, componentDidMount, userData } = props;
+  const { movies, visibilityFilter, userData, addFavorite, removeFavorite } = props;
 
   if (userData.favoriteMovies === undefined) {
     return null;
@@ -43,7 +43,7 @@ function MoviesList(props) {
       )}
       {filteredMovies.map(m => (
         <Col xs={6} sm={6} md={5} lg={4} key={m._id}>
-          <MovieCard movie={m} userData={userData} componentDidMount={componentDidMount} />
+          <MovieCard movie={m} userData={userData} addFavorite={addFavorite} removeFavorite={removeFavorite} />
         </Col>
       ))}
     </>
@@ -62,5 +62,6 @@ MoviesList.propTypes = {
     birthday: PropTypes.string,
     favoriteMovies: PropTypes.array,
   }).isRequired,
-  componentDidMount: PropTypes.func.isRequired
+  addFavorite: PropTypes.func,
+  removeFavorite: PropTypes.func
 };
