@@ -26,7 +26,9 @@ export function MovieCard(props) {
       <Link className='m-auto pt-3 little-img' to={`/movies/${movie._id}`}>
         <Card.Img className='m-auto img' src={movie.imagePath} crossOrigin='anonymous' />
       </Link>
-      <Card.Text className='m-4 title'>{movie.title}</Card.Text>
+      <Link style={{ color: 'white' }} to={`/movies/${movie._id}`}>
+        <Card.Text className='m-4 title'>{movie.title}</Card.Text>
+      </Link>
       <Link className='m-auto big-img' to={`/movies/${movie._id}`}>
         <Card.Img className='m-auto' style={{ maxHeight: '480px' }} src={movie.imagePath} crossOrigin='anonymous' />
       </Link>
@@ -57,7 +59,7 @@ export function MovieCard(props) {
           </Row>
         </Card.Footer>
       </Card.Body>
-    </Card>
+    </Card >
   );
 }
 

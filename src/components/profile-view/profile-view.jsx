@@ -6,7 +6,7 @@ import { Container, Row, Col, Form, Button, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 export function ProfileView(props) {
-    const { movies, onBackClick, userData, componentDidMount } = props;
+    const { movies, onBackClick, userData, componentDidMount, removeFavorite } = props;
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -70,25 +70,6 @@ export function ProfileView(props) {
                     console.log(error);
                 });
         }
-    };
-
-    onRemoveFavorite = (e, movie) => {
-        e.preventDefault();
-        const username = localStorage.getItem('user');
-        const token = localStorage.getItem('token');
-
-        axios.delete(`https://kh-movie-app.herokuapp.com/users/${username}/movies/${movie._id}`,
-            {
-                headers: { Authorization: `Bearer ${token}` },
-            }
-        )
-            .then((response) => {
-                console.log(response);
-                componentDidMount();
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
     };
 
     onDeleteAccount = () => {
@@ -160,7 +141,7 @@ export function ProfileView(props) {
                                     placeholder='Enter New Birthday'
                                     onChange={(e) => setBirthday(e.target.value)} required></Form.Control>
                             </Form.Group>
-                            <Button className='m-3' variant='success' type='submit' onClick={this.updateUser}>Update</Button>
+                            <Button className='m-3' variant='success' type='submit' onClick={(e) => this.updateUser(e)}>Update</Button>
                             <Button className='m-3' variant='danger' onClick={() => this.onDeleteAccount()}>Delete Account</Button>
                         </Form>
                     </Col>
@@ -181,7 +162,7 @@ export function ProfileView(props) {
                                                 <Card.Text style={{ fontSize: '12px' }} className='m-2 text-center' >{movie.title}</Card.Text>
                                                 <Link className='m-auto' to={`/movies/${movie._id}`}>
                                                     <Button size='sm' variant='danger' value={movie._id}
-                                                        onClick={(e) => this.onRemoveFavorite(e, movie)}>Remove</Button>
+                                                        onClick={(e) => removeFavorite(e, movie)}>Remove</Button>
                                                 </Link>
                                             </Card>
                                         )

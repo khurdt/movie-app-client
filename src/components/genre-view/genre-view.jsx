@@ -46,7 +46,7 @@ export class GenreView extends React.Component {
 GenreView.propTypes = {
   movies: PropTypes.array.isRequired,
   genre: PropTypes.shape({
-    name: PropTypes.string.isRequired,
+    name: PropTypes.string,
     description: PropTypes.string.isRequired,
   }).isRequired,
   onBackClick: PropTypes.func.isRequired

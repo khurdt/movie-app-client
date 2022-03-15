@@ -31,7 +31,7 @@
     display: block;
 }
 
-@media all and (max-height: 700px) {
+@media all and (min-height: 630px) {
     .movie-view-container {
         height: auto;
     }

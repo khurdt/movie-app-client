@@ -174,7 +174,8 @@ export class MainView extends React.Component {
               if (!user) return <Redirect to='/' />
               if (movies.length === 0) return <div className='main-view' />;
               return <Col>
-                <ProfileView movies={movies} userData={userData} componentDidMount={this.componentDidMount} onBackClick={() => history.goBack()} />
+                <ProfileView movies={movies} userData={userData} componentDidMount={this.componentDidMount}
+                  removeFavorite={this.removeFavorite} onBackClick={() => history.goBack()} />
               </Col>
             }} />
           </Row>
