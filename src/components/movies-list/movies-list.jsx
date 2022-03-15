@@ -11,10 +11,6 @@ const mapStateToProps = state => {
 function MoviesList(props) {
   const { movies, visibilityFilter, userData, addFavorite, removeFavorite } = props;
 
-  if (userData.favoriteMovies === undefined) {
-    return null;
-  }
-
   let filteredMovies = movies;
 
   if (visibilityFilter !== '') {
@@ -28,7 +24,7 @@ function MoviesList(props) {
     foundMovie = true;
   }
 
-  if (!movies) return <div className='main-view' style={{ backgroundColor: '#1E2127', color: 'white' }}>no movies found</div>
+  if (!movies) return <div className='load'><div className='m-auto pt-5'><div className='loading'></div></div></div>
   return (
     <>
       <Col md={12} style={{ margin: '1em' }}>
@@ -38,7 +34,7 @@ function MoviesList(props) {
         <div className='main-view' />
       ) : (
         <Col style={{ backgroundColor: '1B1D24', color: 'white', height: '100vh' }} md={12}>
-          <div className='main-view text-center mt-5' >No Movies Found</div>
+          <div className='text-center mt-5' >No Movies Found</div>
         </Col>
       )}
       {filteredMovies.map(m => (

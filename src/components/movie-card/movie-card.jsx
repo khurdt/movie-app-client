@@ -9,9 +9,7 @@ import PropTypes from 'prop-types';
 export function MovieCard(props) {
   const { movie, userData, addFavorite, removeFavorite } = props;
 
-  if (userData.favoriteMovies === undefined) {
-    return null;
-  }
+  if (userData.favoriteMovies === undefined) return <div className='load'><div className='m-auto pt-5'><div className='loading'></div></div></div>
 
   let tempArray = userData.favoriteMovies;
   let isFavorite = false;

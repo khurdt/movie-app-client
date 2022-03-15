@@ -6,7 +6,16 @@ import { Container, Row, Col, Form, Button, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 export function ProfileView(props) {
-    const { movies, onBackClick, userData, componentDidMount, removeFavorite } = props;
+    const { movies, onBackClick, userData, removeFavorite } = props;
+    useEffect(() => {
+        setUsername(props.userData.username);
+        setEmail(props.userData.email);
+        if (props.userData.birthday !== undefined) {
+            setBirthday(props.userData.birthday);
+        } else {
+            setBirthday('');
+        }
+    }, [props.userData.username]); //if username changes then useEffect will render
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -17,11 +26,8 @@ export function ProfileView(props) {
     const [passwordErr, setPasswordErr] = useState('');
     const [emailErr, setEmailErr] = useState('');
 
-    useEffect(() => {
-        setUsername(props.userData.username);
-        setEmail(props.userData.email);
-        setBirthday(props.userData.birthday);
-    }, [props.userData.username]); //if username changes then useEffect will render
+    const [updateSuccess, setUpdateSuccess] = useState('');
+    const [updateFail, setUpdateFail] = useState('');
 
     const userInfo = {
         username: username,
@@ -31,6 +37,8 @@ export function ProfileView(props) {
     }
 
     const formattedBirthday = birthday.slice(0, 10);
+
+    if (userData.username === undefined) return <div className='load'></div>
 
     const validate = () => {
         let isReq = true;
@@ -48,6 +56,13 @@ export function ProfileView(props) {
             setPasswordErr('Password must be 6 characters long');
             isReq = false;
         }
+        if (!email) {
+            setEmailErr('Email Required');
+            isReq = false
+        } else if (email.indexOf('@') === -1) {
+            setEmailErr('invalid Email');
+            isReq = false
+        }
         return isReq;
     }
 
@@ -63,11 +78,12 @@ export function ProfileView(props) {
                 })
                 .then((response) => {
                     localStorage.setItem('user', username);
-                    alert('profile updated!')
-                    componentDidMount();
+                    setUpdateSuccess('update successfull!');
                 })
                 .catch(function (error) {
                     console.log(error);
+                    setUpdateFail('update failed');
+
                 });
         }
     };
@@ -102,6 +118,8 @@ export function ProfileView(props) {
                 <Card.Title style={{ fontSize: '30px' }} className='m-3'>Personal Info</Card.Title>
                 <Row>
                     <Col className='m-3' xs={10} md={4}>
+                        {updateSuccess && <p className='signal' style={{ color: 'green', padding: '1px' }}>{updateSuccess}</p>}
+                        {updateFail && <p style={{ color: 'red', padding: '1px' }}>{updateFail}</p>}
                         <Form>
                             <Form.Group className='m-1'>
                                 <Form.Label>Username:</Form.Label>
@@ -150,7 +168,7 @@ export function ProfileView(props) {
                             <Card.Title className='m-1'>Favorite Movies</Card.Title>
                             <Row className='m-auto'>
                                 {userData.favoriteMovies.length === 0 && (
-                                    <div className='text-center'>No Favorite Movies :(</div>
+                                    <div style={{ height: '50vh' }} className='text-center'>No Favorite Movies</div>
                                 )}
                                 {userData.favoriteMovies.length > 0 && movies.map((movie) => {
                                     if (
@@ -180,11 +198,12 @@ export function ProfileView(props) {
 ProfileView.propTypes = {
     movies: PropTypes.array.isRequired,
     userData: PropTypes.shape({
-        username: PropTypes.string.isRequired,
-        password: PropTypes.string.isRequired,
-        email: PropTypes.string.isRequired,
-        birthday: PropTypes.string.isRequired,
-        favoriteMovies: PropTypes.array.isRequired,
+        username: PropTypes.string,
+        password: PropTypes.string,
+        email: PropTypes.string,
+        birthday: PropTypes.string,
+        favoriteMovies: PropTypes.array,
     }).isRequired,
-    onBackClick: PropTypes.func.isRequired
+    onBackClick: PropTypes.func.isRequired,
+    removeFavorite: PropTypes.func.isRequired
 };

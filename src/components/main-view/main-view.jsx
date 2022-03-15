@@ -23,25 +23,28 @@ export class MainView extends React.Component {
     };
     this.removeFavorite = this.removeFavorite.bind(this);
     this.addFavorite = this.addFavorite.bind(this);
-    this.componentDidMount = this.componentDidMount.bind(this);
   }
 
   //code executed right after the component is added to the DOM
   componentDidMount() {
     let accessToken = localStorage.getItem('token');
     if (accessToken !== null) {
-      this.getUserData(accessToken);
       this.props.setUser(localStorage.getItem('user'))
+      this.getUserData(accessToken);
       this.getMovies(accessToken);
     }
   }
 
+  callDispatch() {
+    let accessToken = localStorage.getItem('token');
+    this.getUserData(accessToken);
+  }
+
   //When a user successfully logs in, this function updates the 'user' property from null to particular user
   onLoggedIn(authData) {
-    console.log(authData);
-    this.props.setUser(authData.user.username)
     localStorage.setItem('token', authData.token);
     localStorage.setItem('user', authData.user.username);
+    this.props.setUser(authData.user.username);
     this.getUserData(authData.token);
     this.getMovies(authData.token);
   }
@@ -65,7 +68,7 @@ export class MainView extends React.Component {
       headers: { Authorization: `Bearer ${token}` }
     })
       .then((response) => {
-        console.log('user', response.data)
+        console.log('userData', response.data)
         this.setState({ userData: response.data });
       })
       .catch(function (error) {
@@ -85,7 +88,7 @@ export class MainView extends React.Component {
     )
       .then((response) => {
         console.log(response);
-        this.componentDidMount();
+        this.callDispatch();
       })
       .catch(function (error) {
         console.log(error);
@@ -103,7 +106,7 @@ export class MainView extends React.Component {
     )
       .then((response) => {
         console.log(response);
-        this.componentDidMount();
+        this.callDispatch();
       })
       .catch(function (error) {
         console.log(error);
@@ -118,13 +121,13 @@ export class MainView extends React.Component {
       <Router>
         <Menu user={user} />
         <Container fluid style={{ width: '100%', height: 'max-content', backgroundColor: '#1B1D24', margin: '0', padding: '0' }}>
-          <Row className='main-view justify-content-md-center'>
+          <Row className='justify-content-md-center'>
             <Route exact path='/' render={() => {
               //If there is no user, the LoginView is rendered. If there is a user logged in, the user details are passed as a prop to the LoginView
               if (!user) return <Redirect to='/login' />
-              if (userData.favoriteMovies === undefined) return <div className='main-view' />
+              if (movies.length === 0) return <div className='load'><div className='m-auto pt-5'><div className='loading'></div></div></div>
+              if (userData.favoriteMovies === undefined) return <div className='load'><div className='m-auto pt-5'><div className='loading'></div></div></div>
               //Before the movies have been loaded
-              if (movies.length === 0) return <div className='main-view' />
               return <MoviesList movies={movies} userData={userData} addFavorite={this.addFavorite} removeFavorite={this.removeFavorite} />
             }} />
 
@@ -142,7 +145,7 @@ export class MainView extends React.Component {
 
             <Route path="/movies/:id" render={({ match, history }) => {
               if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
-              if (movies.length === 0) return <div className='main-view' />
+              if (movies.length === 0) return <div className='load'><div className='m-auto pt-5'><div className='loading'></div></div></div>
               return <Col md={8}>
                 <MovieView movie={movies.find(movie => movie._id === match.params.id)} userData={userData}
                   addFavorite={this.addFavorite} removeFavorite={this.removeFavorite}
@@ -152,7 +155,7 @@ export class MainView extends React.Component {
 
             <Route path='/genres/:name' render={({ match, history }) => {
               if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
-              if (movies.length === 0) return <div className='main-view' />;
+              if (movies.length === 0) return <div className='load'><div className='m-auto pt-5'><div className='loading'></div></div></div>
               return <Col md={8}>
                 <GenreView genre={movies.find(m => m.genre.name === match.params.name)}
                   movies={movies.filter(movie => movie.genre.name === match.params.name)}
@@ -162,7 +165,7 @@ export class MainView extends React.Component {
 
             <Route path='/directors/:name' render={({ match, history }) => {
               if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
-              if (movies.length === 0) return <div className='main-view' />;
+              if (movies.length === 0) return <div className='load'><div className='m-auto pt-5'><div className='loading'></div></div></div>
               return <Col md={8}>
                 <DirectorView director={movies.find(m => m.director.name === match.params.name)}
                   movies={movies.filter(movie => movie.director.name === match.params.name)}
@@ -170,11 +173,11 @@ export class MainView extends React.Component {
               </Col>
             }} />
 
-            <Route path={`/users/${userData.username}`} render={({ history }) => {
-              if (!user) return <Redirect to='/' />
-              if (movies.length === 0) return <div className='main-view' />;
+            <Route path={`/users/${user}`} render={({ history }) => {
+              if (!this.state.userData) return <Redirect to='/' />
+              if (movies.length === 0 || !this.state.userData) return <div className='load'><div className='m-auto pt-5'><div className='loading'></div></div></div>
               return <Col>
-                <ProfileView movies={movies} userData={userData} componentDidMount={this.componentDidMount}
+                <ProfileView movies={movies} userData={userData} user={user}
                   removeFavorite={this.removeFavorite} onBackClick={() => history.goBack()} />
               </Col>
             }} />
