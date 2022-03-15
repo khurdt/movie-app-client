@@ -51,7 +51,7 @@ export function ProfileView(props) {
         return isReq;
     }
 
-    updateUser = (e) => {
+    const updateUser = (e) => {
         e.preventDefault();
         const username = localStorage.getItem('user');
         const token = localStorage.getItem('token');
@@ -72,7 +72,7 @@ export function ProfileView(props) {
         }
     };
 
-    onDeleteAccount = () => {
+    const onDeleteAccount = () => {
         const username = localStorage.getItem('user');
         const token = localStorage.getItem('token');
         axios.delete(`https://kh-movie-app.herokuapp.com/users/${username}`,
@@ -141,8 +141,8 @@ export function ProfileView(props) {
                                     placeholder='Enter New Birthday'
                                     onChange={(e) => setBirthday(e.target.value)} required></Form.Control>
                             </Form.Group>
-                            <Button className='m-3' variant='success' type='submit' onClick={(e) => this.updateUser(e)}>Update</Button>
-                            <Button className='m-3' variant='danger' onClick={() => this.onDeleteAccount()}>Delete Account</Button>
+                            <Button className='m-3' variant='success' type='submit' onClick={(e) => updateUser(e)}>Update</Button>
+                            <Button className='m-3' variant='danger' onClick={() => onDeleteAccount()}>Delete Account</Button>
                         </Form>
                     </Col>
                     <Col className='m-1'>

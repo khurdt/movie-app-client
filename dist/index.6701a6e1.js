@@ -48978,7 +48978,7 @@ function ProfileView(props) {
         }
         return isReq;
     };
-    updateUser = (e)=>{
+    const updateUser = (e)=>{
         e.preventDefault();
         const username1 = localStorage.getItem('user');
         const token = localStorage.getItem('token');
@@ -48995,7 +48995,7 @@ function ProfileView(props) {
             console.log(error);
         });
     };
-    onDeleteAccount = ()=>{
+    const onDeleteAccount = ()=>{
         const username1 = localStorage.getItem('user');
         const token = localStorage.getItem('token');
         _axiosDefault.default.delete(`https://kh-movie-app.herokuapp.com/users/${username1}`, {
@@ -49263,7 +49263,7 @@ function ProfileView(props) {
                                             className: "m-3",
                                             variant: "success",
                                             type: "submit",
-                                            onClick: (e)=>this.updateUser(e)
+                                            onClick: (e)=>updateUser(e)
                                             ,
                                             __source: {
                                                 fileName: "src/components/profile-view/profile-view.jsx",
@@ -49275,7 +49275,7 @@ function ProfileView(props) {
                                         /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Button, {
                                             className: "m-3",
                                             variant: "danger",
-                                            onClick: ()=>this.onDeleteAccount()
+                                            onClick: ()=>onDeleteAccount()
                                             ,
                                             __source: {
                                                 fileName: "src/components/profile-view/profile-view.jsx",
