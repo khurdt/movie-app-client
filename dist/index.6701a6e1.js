@@ -50718,19 +50718,27 @@ class DirectorView extends _reactDefault.default.Component {
                                             },
                                             __self: this,
                                             children: [
-                                                /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Card.Img, {
-                                                    className: "m-auto",
-                                                    style: {
-                                                        maxWidth: '140px',
-                                                        height: '207px'
-                                                    },
-                                                    src: movie.imagePath,
-                                                    crossOrigin: "anonymous",
+                                                /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
+                                                    to: `/movies/${movie._id}`,
                                                     __source: {
                                                         fileName: "src/components/director-view/director-view.jsx",
                                                         lineNumber: 31
                                                     },
-                                                    __self: this
+                                                    __self: this,
+                                                    children: /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Card.Img, {
+                                                        className: "m-auto",
+                                                        style: {
+                                                            maxWidth: '140px',
+                                                            height: '207px'
+                                                        },
+                                                        src: movie.imagePath,
+                                                        crossOrigin: "anonymous",
+                                                        __source: {
+                                                            fileName: "src/components/director-view/director-view.jsx",
+                                                            lineNumber: 32
+                                                        },
+                                                        __self: this
+                                                    })
                                                 }),
                                                 /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Card.Text, {
                                                     style: {
@@ -50739,7 +50747,7 @@ class DirectorView extends _reactDefault.default.Component {
                                                     className: "m-2",
                                                     __source: {
                                                         fileName: "src/components/director-view/director-view.jsx",
-                                                        lineNumber: 32
+                                                        lineNumber: 34
                                                     },
                                                     __self: this,
                                                     children: movie.title
@@ -50748,14 +50756,14 @@ class DirectorView extends _reactDefault.default.Component {
                                                     to: `/movies/${movie._id}`,
                                                     __source: {
                                                         fileName: "src/components/director-view/director-view.jsx",
-                                                        lineNumber: 33
+                                                        lineNumber: 35
                                                     },
                                                     __self: this,
                                                     children: /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Button, {
                                                         variant: "link",
                                                         __source: {
                                                             fileName: "src/components/director-view/director-view.jsx",
-                                                            lineNumber: 34
+                                                            lineNumber: 36
                                                         },
                                                         __self: this,
                                                         children: "Read More"
@@ -50917,19 +50925,27 @@ class GenreView extends _reactDefault.default.Component {
                                             },
                                             __self: this,
                                             children: [
-                                                /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Card.Img, {
-                                                    className: "m-auto",
-                                                    style: {
-                                                        maxWidth: '140px',
-                                                        height: '207px'
-                                                    },
-                                                    src: movie.imagePath,
-                                                    crossOrigin: "anonymous",
+                                                /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
+                                                    to: `/movies/${movie._id}`,
                                                     __source: {
                                                         fileName: "src/components/genre-view/genre-view.jsx",
                                                         lineNumber: 31
                                                     },
-                                                    __self: this
+                                                    __self: this,
+                                                    children: /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Card.Img, {
+                                                        className: "m-auto",
+                                                        style: {
+                                                            maxWidth: '140px',
+                                                            height: '207px'
+                                                        },
+                                                        src: movie.imagePath,
+                                                        crossOrigin: "anonymous",
+                                                        __source: {
+                                                            fileName: "src/components/genre-view/genre-view.jsx",
+                                                            lineNumber: 32
+                                                        },
+                                                        __self: this
+                                                    })
                                                 }),
                                                 /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Card.Text, {
                                                     style: {
@@ -50938,7 +50954,7 @@ class GenreView extends _reactDefault.default.Component {
                                                     className: "m-2",
                                                     __source: {
                                                         fileName: "src/components/genre-view/genre-view.jsx",
-                                                        lineNumber: 32
+                                                        lineNumber: 34
                                                     },
                                                     __self: this,
                                                     children: movie.title
@@ -50947,14 +50963,14 @@ class GenreView extends _reactDefault.default.Component {
                                                     to: `/movies/${movie._id}`,
                                                     __source: {
                                                         fileName: "src/components/genre-view/genre-view.jsx",
-                                                        lineNumber: 33
+                                                        lineNumber: 35
                                                     },
                                                     __self: this,
                                                     children: /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Button, {
                                                         variant: "link",
                                                         __source: {
                                                             fileName: "src/components/genre-view/genre-view.jsx",
-                                                            lineNumber: 34
+                                                            lineNumber: 36
                                                         },
                                                         __self: this,
                                                         children: "Read More"

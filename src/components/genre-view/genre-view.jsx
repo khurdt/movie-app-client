@@ -28,7 +28,9 @@ export class GenreView extends React.Component {
             <Row>
               {movies.map(movie => (
                 <Card key={movie._id} className='m-1 little-card' style={{ backgroundColor: '#1E2127', color: 'white' }}>
-                  <Card.Img className='m-auto' style={{ maxWidth: '140px', height: '207px' }} src={movie.imagePath} crossOrigin='anonymous' />
+                  <Link to={`/movies/${movie._id}`}>
+                    <Card.Img className='m-auto' style={{ maxWidth: '140px', height: '207px' }} src={movie.imagePath} crossOrigin='anonymous' />
+                  </Link>
                   <Card.Text style={{ fontSize: '12px' }} className='m-2' >{movie.title}</Card.Text>
                   <Link to={`/movies/${movie._id}`}>
                     <Button variant='link'>Read More</Button>
