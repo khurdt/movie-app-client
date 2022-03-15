@@ -15,6 +15,9 @@ export function RegistrationView() {
     emailErr: ''
   });
 
+  const [registerSuccess, setRegisterSuccess] = useState('');
+  const [registerFail, setRegisterFail] = useState('');
+
   const validate = () => {
     let isReq = true;
     if (!username) {
@@ -53,13 +56,13 @@ export function RegistrationView() {
         .then(response => {
           const data = response.data;
           console.log(data);
-          alert('registration successful, please log in!');
+          setRegisterSuccess('Success! Please log in')
           window.open('/', '_self');
           //the second argument is necessary so that the page will open in the current tab
         })
         .catch(response => {
           console.error(response);
-          alert('unable to register');
+
         });
     }
   }
@@ -111,6 +114,8 @@ export function RegistrationView() {
                   handleSubmit}>Submit</Button>
               </Col>
             </Row>
+            {registerSuccess && <p style={{ color: 'green', padding: '1px' }}>{registerSuccess}</p>}
+            {registerFail && <p style={{ color: 'red', padding: '1px' }}>{registerFail}</p>}
           </Col>
         </Row>
       </Form>

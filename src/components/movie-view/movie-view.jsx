@@ -7,43 +7,11 @@ import { Container, Row, Col, Form, Button, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 export function MovieView(props) {
-  const { movie, onBackClick, userData, componentDidMount } = props
+  const { movie, onBackClick, userData, addFavorite, removeFavorite } = props
 
   if (userData.favoriteMovies === undefined) {
     return null;
   }
-
-  onRemoveFavorite = function () {
-    const username = localStorage.getItem('user');
-    const token = localStorage.getItem('token');
-
-    axios.delete(`https://kh-movie-app.herokuapp.com/users/${username}/movies/${movie._id}`, {
-      headers: { Authorization: `Bearer ${token}` },
-    })
-      .then((response) => {
-        console.log(response);
-        componentDidMount();
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  };
-
-  addFavorite = function () {
-    const username = localStorage.getItem('user');
-    const token = localStorage.getItem('token');
-
-    axios.post(`https://kh-movie-app.herokuapp.com/users/${username}/movies/${movie._id}`, { 'jwt': token }, {
-      headers: { Authorization: `Bearer ${token}` },
-    })
-      .then((response) => {
-        console.log(response);
-        componentDidMount();
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  };
 
   let tempArray = userData.favoriteMovies;
   let isFavorite = false;
@@ -71,13 +39,13 @@ export function MovieView(props) {
             {isFavorite ? (
               <Card.Img
                 className='heart-visible mt-3'
-                onClick={this.onRemoveFavorite}
+                onClick={(e) => removeFavorite(e, movie)}
                 style={{ width: '20px', height: '20px' }}
                 src={heartLogo} alt='heart logo' />
             ) : (
               <Card.Img
                 className='heart mt-3'
-                onClick={this.addFavorite}
+                onClick={(e) => addFavorite(e, movie)}
                 style={{ width: '20px', height: '20px' }}
                 src={heartLogo} alt='heart logo' />
             )}
@@ -133,5 +101,7 @@ MovieView.propTypes = {
     birthday: PropTypes.string,
     favoriteMovies: PropTypes.array,
   }).isRequired,
-  onBackClick: PropTypes.func.isRequired
+  onBackClick: PropTypes.func.isRequired,
+  addFavorite: PropTypes.func,
+  removeFavorite: PropTypes.func
 };

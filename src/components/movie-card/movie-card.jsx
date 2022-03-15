@@ -7,43 +7,9 @@ import { Button, Card, Row, Col } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
 export function MovieCard(props) {
-  const { movie, userData, componentDidMount } = props;
+  const { movie, userData, addFavorite, removeFavorite } = props;
 
-  if (userData.favoriteMovies === undefined) {
-    return null;
-  }
-
-  onRemoveFavorite = function () {
-    const username = localStorage.getItem('user');
-    const token = localStorage.getItem('token');
-    const movieID = movie._id;
-    axios.delete(`https://kh-movie-app.herokuapp.com/users/${username}/movies/${movieID}`, {
-      headers: { Authorization: `Bearer ${token}` },
-    })
-      .then((response) => {
-        console.log(response);
-        componentDidMount();
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  };
-
-  addFavorite = function () {
-    const username = localStorage.getItem('user');
-    const token = localStorage.getItem('token');
-    const movieID = movie._id;
-    axios.post(`https://kh-movie-app.herokuapp.com/users/${username}/movies/${movieID}`, { 'jwt': token }, {
-      headers: { Authorization: `Bearer ${token}` },
-    })
-      .then((response) => {
-        console.log(response);
-        componentDidMount();
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  };
+  if (userData.favoriteMovies === undefined) return <div className='load'><div className='m-auto pt-5'><div className='loading'></div></div></div>
 
   let tempArray = userData.favoriteMovies;
   let isFavorite = false;
@@ -58,7 +24,9 @@ export function MovieCard(props) {
       <Link className='m-auto pt-3 little-img' to={`/movies/${movie._id}`}>
         <Card.Img className='m-auto img' src={movie.imagePath} crossOrigin='anonymous' />
       </Link>
-      <Card.Text className='m-4 title'>{movie.title}</Card.Text>
+      <Link style={{ color: 'white' }} to={`/movies/${movie._id}`}>
+        <Card.Text className='m-4 title'>{movie.title}</Card.Text>
+      </Link>
       <Link className='m-auto big-img' to={`/movies/${movie._id}`}>
         <Card.Img className='m-auto' style={{ maxHeight: '480px' }} src={movie.imagePath} crossOrigin='anonymous' />
       </Link>
@@ -75,13 +43,13 @@ export function MovieCard(props) {
               {isFavorite ? (
                 <Card.Img
                   className='heart-visible mt-2'
-                  onClick={this.onRemoveFavorite}
+                  onClick={(e) => removeFavorite(e, movie)}
                   style={{ width: '20px', height: '20px' }}
                   src={heartLogo} alt='heart logo' />
               ) : (
                 <Card.Img
                   className='heart mt-2'
-                  onClick={this.addFavorite}
+                  onClick={(e) => addFavorite(e, movie)}
                   style={{ width: '20px', height: '20px' }}
                   src={heartLogo} alt='heart logo' />
               )}
@@ -89,7 +57,7 @@ export function MovieCard(props) {
           </Row>
         </Card.Footer>
       </Card.Body>
-    </Card>
+    </Card >
   );
 }
 
@@ -112,5 +80,6 @@ MovieCard.propTypes = {
     birthday: PropTypes.string,
     favoriteMovies: PropTypes.array,
   }).isRequired,
-  componentDidMount: PropTypes.func.isRequired
+  addFavorite: PropTypes.func,
+  removeFavorite: PropTypes.func
 };

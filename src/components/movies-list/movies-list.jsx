@@ -9,11 +9,7 @@ const mapStateToProps = state => {
   return { visibilityFilter };
 };
 function MoviesList(props) {
-  const { movies, visibilityFilter, componentDidMount, userData } = props;
-
-  if (userData.favoriteMovies === undefined) {
-    return null;
-  }
+  const { movies, visibilityFilter, userData, addFavorite, removeFavorite } = props;
 
   let filteredMovies = movies;
 
@@ -28,7 +24,7 @@ function MoviesList(props) {
     foundMovie = true;
   }
 
-  if (!movies) return <div className='main-view' style={{ backgroundColor: '#1E2127', color: 'white' }}>no movies found</div>
+  if (!movies) return <div className='load'><div className='m-auto pt-5'><div className='loading'></div></div></div>
   return (
     <>
       <Col md={12} style={{ margin: '1em' }}>
@@ -38,12 +34,12 @@ function MoviesList(props) {
         <div className='main-view' />
       ) : (
         <Col style={{ backgroundColor: '1B1D24', color: 'white', height: '100vh' }} md={12}>
-          <div className='main-view text-center mt-5' >No Movies Found</div>
+          <div className='text-center mt-5' >No Movies Found</div>
         </Col>
       )}
       {filteredMovies.map(m => (
         <Col xs={6} sm={6} md={5} lg={4} key={m._id}>
-          <MovieCard movie={m} userData={userData} componentDidMount={componentDidMount} />
+          <MovieCard movie={m} userData={userData} addFavorite={addFavorite} removeFavorite={removeFavorite} />
         </Col>
       ))}
     </>
@@ -62,5 +58,6 @@ MoviesList.propTypes = {
     birthday: PropTypes.string,
     favoriteMovies: PropTypes.array,
   }).isRequired,
-  componentDidMount: PropTypes.func.isRequired
+  addFavorite: PropTypes.func,
+  removeFavorite: PropTypes.func
 };

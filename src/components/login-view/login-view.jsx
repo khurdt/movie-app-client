@@ -14,6 +14,8 @@ export function LoginView(props) {
   const [usernameErr, setUsernameErr] = useState('');
   const [passwordErr, setPasswordErr] = useState('');
 
+  const [usernameSuccess, setUsernameSuccess] = useState('');
+
   const validate = () => {
     let isReq = true;
     if (!username) {
@@ -43,11 +45,13 @@ export function LoginView(props) {
         password: password
       })
         .then(response => {
+          setUsernameSuccess('success!');
           const data = response.data;
           onLoggedIn(data);
         })
         .catch(e => {
-          console.log('no such user')
+          console.log('no such user');
+          setUsernameErr('user or password not found');
         });
     }
   };
@@ -90,6 +94,7 @@ export function LoginView(props) {
                   handleSubmit}>Submit</Button>
               </Col>
             </Row>
+            {usernameSuccess && <p style={{ color: 'green', padding: '1px' }}>{usernameSuccess}</p>}
           </Col>
         </Row>
       </Form>
