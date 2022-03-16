@@ -67,14 +67,14 @@ export function RegistrationView() {
     }
   }
 
-  if (usernameErr !== '' || passwordErr !== '' || emailErr !== '') {
+  if (values.usernameErr !== '' || values.passwordErr !== '' || values.emailErr !== '') {
     setTimeout(
       () => {
-        setUsernameErr('')
-        setPasswordErr('')
-        setEmailErr('')
+        setValues(values.emailErr === '')
+        setValues(values.usernameErr === '')
+        setValues(values.passwordErr === '')
       },
-      5000
+      7000
     );
   }
 

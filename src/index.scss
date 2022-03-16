@@ -7,9 +7,11 @@
   background-color: #1B1D24;
   color: white;
   height: 100vh;
+  width: 100vh;
 }
 
 .loading {
+  margin: auto;
   border: 16px solid black;
   border-radius: 50%;
   border-top: 16px solid white;
@@ -35,14 +37,5 @@
   }
   100% { 
     transform: rotate(360deg); 
-  }
-}
-
-@media all and (max-width: 800px) {
-  .loading {
-    border: 4px solid black;
-    border-top: 4px solid white;
-    width: 40px;
-    height: 40px;
   }
 }

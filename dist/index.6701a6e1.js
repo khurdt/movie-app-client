@@ -50000,11 +50000,11 @@ function RegistrationView() {
             console.error(response);
         });
     };
-    if (usernameErr !== '' || passwordErr !== '' || emailErr !== '') setTimeout(()=>{
-        setUsernameErr('');
-        setPasswordErr('');
-        setEmailErr('');
-    }, 5000);
+    if (values.usernameErr !== '' || values.passwordErr !== '' || values.emailErr !== '') setTimeout(()=>{
+        setValues(values.emailErr === '');
+        setValues(values.usernameErr === '');
+        setValues(values.passwordErr === '');
+    }, 7000);
     return(/*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Container, {
         fluid: true,
         className: "body",
