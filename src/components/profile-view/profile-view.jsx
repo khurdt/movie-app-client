@@ -138,6 +138,7 @@ export function ProfileView(props) {
                             <Form.Group className='m-1'>
                                 <Form.Label>Username:</Form.Label>
                                 <Form.Control
+                                    style={{ backgroundColor: '#1E2127', color: 'white' }}
                                     type='text'
                                     name='username'
                                     placeholder='Enter New Username'
@@ -148,6 +149,7 @@ export function ProfileView(props) {
                             <Form.Group className='m-1'>
                                 <Form.Label>New Password:</Form.Label>
                                 <Form.Control
+                                    style={{ backgroundColor: '#1E2127', color: 'white' }}
                                     type='text'
                                     name='password'
                                     placeholder='Enter Password'
@@ -157,6 +159,7 @@ export function ProfileView(props) {
                             <Form.Group className='m-1'>
                                 <Form.Label>Email:</Form.Label>
                                 <Form.Control
+                                    style={{ backgroundColor: '#1E2127', color: 'white' }}
                                     type='text'
                                     name='email'
                                     placeholder='Enter New Email'
@@ -167,6 +170,7 @@ export function ProfileView(props) {
                             <Form.Group className='m-1'>
                                 <Form.Label>Birthday:</Form.Label>
                                 <Form.Control
+                                    style={{ backgroundColor: '#1E2127', color: 'white' }}
                                     type='date'
                                     name='birthday'
                                     value={formattedBirthday}

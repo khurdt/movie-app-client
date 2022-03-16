@@ -48718,7 +48718,7 @@ function LoginView(props) {
                 __self: this
             }),
             /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Form, {
-                className: "ml-auto mr-auto pt-5",
+                className: "ml-auto mr-auto pt-5 pr-2 pl-2",
                 style: {
                     maxWidth: '450px',
                     marginTop: '3%'
@@ -48810,6 +48810,10 @@ function LoginView(props) {
                                                 children: "Username:"
                                             }),
                                             /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Form.Control, {
+                                                style: {
+                                                    backgroundColor: '#1E2127',
+                                                    color: 'white'
+                                                },
                                                 className: "bg",
                                                 placeholder: "Enter your username",
                                                 type: "text",
@@ -48868,6 +48872,10 @@ function LoginView(props) {
                                                 children: "Password:"
                                             }),
                                             /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Form.Control, {
+                                                style: {
+                                                    backgroundColor: '#1E2127',
+                                                    color: 'white'
+                                                },
                                                 placeholder: "Enter your password",
                                                 type: "password",
                                                 onChange: (e)=>setPassword(e.target.value)
@@ -49221,6 +49229,10 @@ function ProfileView(props) {
                                                         children: "Username:"
                                                     }),
                                                     /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Form.Control, {
+                                                        style: {
+                                                            backgroundColor: '#1E2127',
+                                                            color: 'white'
+                                                        },
                                                         type: "text",
                                                         name: "username",
                                                         placeholder: "Enter New Username",
@@ -49241,7 +49253,7 @@ function ProfileView(props) {
                                                         },
                                                         __source: {
                                                             fileName: "src/components/profile-view/profile-view.jsx",
-                                                            lineNumber: 146
+                                                            lineNumber: 147
                                                         },
                                                         __self: this,
                                                         children: usernameErr
@@ -49252,19 +49264,23 @@ function ProfileView(props) {
                                                 className: "m-1",
                                                 __source: {
                                                     fileName: "src/components/profile-view/profile-view.jsx",
-                                                    lineNumber: 148
+                                                    lineNumber: 149
                                                 },
                                                 __self: this,
                                                 children: [
                                                     /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Form.Label, {
                                                         __source: {
                                                             fileName: "src/components/profile-view/profile-view.jsx",
-                                                            lineNumber: 149
+                                                            lineNumber: 150
                                                         },
                                                         __self: this,
                                                         children: "New Password:"
                                                     }),
                                                     /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Form.Control, {
+                                                        style: {
+                                                            backgroundColor: '#1E2127',
+                                                            color: 'white'
+                                                        },
                                                         type: "text",
                                                         name: "password",
                                                         placeholder: "Enter Password",
@@ -49273,7 +49289,7 @@ function ProfileView(props) {
                                                         required: true,
                                                         __source: {
                                                             fileName: "src/components/profile-view/profile-view.jsx",
-                                                            lineNumber: 150
+                                                            lineNumber: 151
                                                         },
                                                         __self: this
                                                     }),
@@ -49284,7 +49300,7 @@ function ProfileView(props) {
                                                         },
                                                         __source: {
                                                             fileName: "src/components/profile-view/profile-view.jsx",
-                                                            lineNumber: 155
+                                                            lineNumber: 157
                                                         },
                                                         __self: this,
                                                         children: passwordErr
@@ -49295,19 +49311,23 @@ function ProfileView(props) {
                                                 className: "m-1",
                                                 __source: {
                                                     fileName: "src/components/profile-view/profile-view.jsx",
-                                                    lineNumber: 157
+                                                    lineNumber: 159
                                                 },
                                                 __self: this,
                                                 children: [
                                                     /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Form.Label, {
                                                         __source: {
                                                             fileName: "src/components/profile-view/profile-view.jsx",
-                                                            lineNumber: 158
+                                                            lineNumber: 160
                                                         },
                                                         __self: this,
                                                         children: "Email:"
                                                     }),
                                                     /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Form.Control, {
+                                                        style: {
+                                                            backgroundColor: '#1E2127',
+                                                            color: 'white'
+                                                        },
                                                         type: "text",
                                                         name: "email",
                                                         placeholder: "Enter New Email",
@@ -49317,7 +49337,7 @@ function ProfileView(props) {
                                                         required: true,
                                                         __source: {
                                                             fileName: "src/components/profile-view/profile-view.jsx",
-                                                            lineNumber: 159
+                                                            lineNumber: 161
                                                         },
                                                         __self: this
                                                     }),
@@ -49328,7 +49348,7 @@ function ProfileView(props) {
                                                         },
                                                         __source: {
                                                             fileName: "src/components/profile-view/profile-view.jsx",
-                                                            lineNumber: 165
+                                                            lineNumber: 168
                                                         },
                                                         __self: this,
                                                         children: emailErr
@@ -49339,19 +49359,23 @@ function ProfileView(props) {
                                                 className: "m-1",
                                                 __source: {
                                                     fileName: "src/components/profile-view/profile-view.jsx",
-                                                    lineNumber: 167
+                                                    lineNumber: 170
                                                 },
                                                 __self: this,
                                                 children: [
                                                     /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Form.Label, {
                                                         __source: {
                                                             fileName: "src/components/profile-view/profile-view.jsx",
-                                                            lineNumber: 168
+                                                            lineNumber: 171
                                                         },
                                                         __self: this,
                                                         children: "Birthday:"
                                                     }),
                                                     /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Form.Control, {
+                                                        style: {
+                                                            backgroundColor: '#1E2127',
+                                                            color: 'white'
+                                                        },
                                                         type: "date",
                                                         name: "birthday",
                                                         value: formattedBirthday,
@@ -49361,7 +49385,7 @@ function ProfileView(props) {
                                                         required: true,
                                                         __source: {
                                                             fileName: "src/components/profile-view/profile-view.jsx",
-                                                            lineNumber: 169
+                                                            lineNumber: 172
                                                         },
                                                         __self: this
                                                     })
@@ -49375,7 +49399,7 @@ function ProfileView(props) {
                                                 ,
                                                 __source: {
                                                     fileName: "src/components/profile-view/profile-view.jsx",
-                                                    lineNumber: 176
+                                                    lineNumber: 180
                                                 },
                                                 __self: this,
                                                 children: "Update"
@@ -49387,7 +49411,7 @@ function ProfileView(props) {
                                                 ,
                                                 __source: {
                                                     fileName: "src/components/profile-view/profile-view.jsx",
-                                                    lineNumber: 177
+                                                    lineNumber: 181
                                                 },
                                                 __self: this,
                                                 children: "Delete Account"
@@ -49400,7 +49424,7 @@ function ProfileView(props) {
                                 className: "m-1",
                                 __source: {
                                     fileName: "src/components/profile-view/profile-view.jsx",
-                                    lineNumber: 180
+                                    lineNumber: 184
                                 },
                                 __self: this,
                                 children: /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Card, {
@@ -49410,7 +49434,7 @@ function ProfileView(props) {
                                     },
                                     __source: {
                                         fileName: "src/components/profile-view/profile-view.jsx",
-                                        lineNumber: 181
+                                        lineNumber: 185
                                     },
                                     __self: this,
                                     children: [
@@ -49418,7 +49442,7 @@ function ProfileView(props) {
                                             className: "m-1",
                                             __source: {
                                                 fileName: "src/components/profile-view/profile-view.jsx",
-                                                lineNumber: 182
+                                                lineNumber: 186
                                             },
                                             __self: this,
                                             children: "Favorite Movies"
@@ -49427,7 +49451,7 @@ function ProfileView(props) {
                                             className: "m-auto",
                                             __source: {
                                                 fileName: "src/components/profile-view/profile-view.jsx",
-                                                lineNumber: 183
+                                                lineNumber: 187
                                             },
                                             __self: this,
                                             children: [
@@ -49438,7 +49462,7 @@ function ProfileView(props) {
                                                     className: "text-center",
                                                     __source: {
                                                         fileName: "src/components/profile-view/profile-view.jsx",
-                                                        lineNumber: 185
+                                                        lineNumber: 189
                                                     },
                                                     __self: this,
                                                     children: "No Favorite Movies"
@@ -49454,7 +49478,7 @@ function ProfileView(props) {
                                                         },
                                                         __source: {
                                                             fileName: "src/components/profile-view/profile-view.jsx",
-                                                            lineNumber: 192
+                                                            lineNumber: 196
                                                         },
                                                         __self: this,
                                                         children: [
@@ -49468,7 +49492,7 @@ function ProfileView(props) {
                                                                 crossOrigin: "anonymous",
                                                                 __source: {
                                                                     fileName: "src/components/profile-view/profile-view.jsx",
-                                                                    lineNumber: 193
+                                                                    lineNumber: 197
                                                                 },
                                                                 __self: this
                                                             }),
@@ -49479,7 +49503,7 @@ function ProfileView(props) {
                                                                 className: "m-2 text-center",
                                                                 __source: {
                                                                     fileName: "src/components/profile-view/profile-view.jsx",
-                                                                    lineNumber: 194
+                                                                    lineNumber: 198
                                                                 },
                                                                 __self: this,
                                                                 children: movie.title
@@ -49489,7 +49513,7 @@ function ProfileView(props) {
                                                                 to: `/movies/${movie._id}`,
                                                                 __source: {
                                                                     fileName: "src/components/profile-view/profile-view.jsx",
-                                                                    lineNumber: 195
+                                                                    lineNumber: 199
                                                                 },
                                                                 __self: this,
                                                                 children: /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Button, {
@@ -49500,7 +49524,7 @@ function ProfileView(props) {
                                                                     ,
                                                                     __source: {
                                                                         fileName: "src/components/profile-view/profile-view.jsx",
-                                                                        lineNumber: 196
+                                                                        lineNumber: 200
                                                                     },
                                                                     __self: this,
                                                                     children: "Remove"
@@ -50023,7 +50047,7 @@ function RegistrationView() {
                 __self: this
             }),
             /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Form, {
-                className: "ml-auto mr-auto pt-5",
+                className: "ml-auto mr-auto pt-5 pr-2 pl-2",
                 style: {
                     maxWidth: '450px',
                     marginTop: '3%'
@@ -50115,6 +50139,10 @@ function RegistrationView() {
                                                 children: "Username:"
                                             }),
                                             /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Form.Control, {
+                                                style: {
+                                                    backgroundColor: '#1E2127',
+                                                    color: 'white'
+                                                },
                                                 className: "bg",
                                                 placeholder: "Enter your username",
                                                 type: "text",
@@ -50173,6 +50201,10 @@ function RegistrationView() {
                                                 children: "Password:"
                                             }),
                                             /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Form.Control, {
+                                                style: {
+                                                    backgroundColor: '#1E2127',
+                                                    color: 'white'
+                                                },
                                                 placeholder: "Enter your password",
                                                 type: "password",
                                                 onChange: (e)=>newPassword(e.target.value)
@@ -50229,6 +50261,10 @@ function RegistrationView() {
                                                 children: "Email:"
                                             }),
                                             /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Form.Control, {
+                                                style: {
+                                                    backgroundColor: '#1E2127',
+                                                    color: 'white'
+                                                },
                                                 className: "bg",
                                                 placeholder: "Enter your email",
                                                 type: "email",

@@ -81,7 +81,7 @@ export function RegistrationView() {
   return (
     <Container fluid className='body'>
       <Col className='pb-5'></Col>
-      <Form className='ml-auto mr-auto pt-5' style={{ maxWidth: '450px', marginTop: '3%' }}>
+      <Form className='ml-auto mr-auto pt-5 pr-2 pl-2' style={{ maxWidth: '450px', marginTop: '3%' }}>
         <Row>
           <Col style={{ backgroundColor: '#1E2127', color: 'white' }} className='login-body'>
             <Row>
@@ -94,7 +94,7 @@ export function RegistrationView() {
               <Col>
                 <Form.Group className='mb-3 mt-3 mr-5 ml-5' controlId='formUsername'>
                   <Form.Label>Username:</Form.Label>
-                  <Form.Control className='bg' placeholder='Enter your username' type='text' onChange={e => newUsername(e.target.value)} />
+                  <Form.Control style={{ backgroundColor: '#1E2127', color: 'white' }} className='bg' placeholder='Enter your username' type='text' onChange={e => newUsername(e.target.value)} />
                   {values.usernameErr && <p style={{ color: 'red', padding: '1px' }}>{values.usernameErr}</p>}
                 </Form.Group>
               </Col>
@@ -103,7 +103,7 @@ export function RegistrationView() {
               <Col className='mr-5 ml-5'>
                 <Form.Group className='mb-3' controlId='formPassword'>
                   <Form.Label>Password:</Form.Label>
-                  <Form.Control placeholder='Enter your password' type='password' onChange={e => newPassword(e.target.value)} />
+                  <Form.Control style={{ backgroundColor: '#1E2127', color: 'white' }} placeholder='Enter your password' type='password' onChange={e => newPassword(e.target.value)} />
                   {values.passwordErr && <p style={{ color: 'red', padding: '1px' }}>{values.passwordErr}</p>}
                 </Form.Group>
               </Col>
@@ -112,7 +112,7 @@ export function RegistrationView() {
               <Col>
                 <Form.Group className='mb-3 mr-5 ml-5' controlId='formUsername'>
                   <Form.Label>Email:</Form.Label>
-                  <Form.Control className='bg' placeholder='Enter your email' type='email' onChange={e => newEmail(e.target.value)} />
+                  <Form.Control style={{ backgroundColor: '#1E2127', color: 'white' }} className='bg' placeholder='Enter your email' type='email' onChange={e => newEmail(e.target.value)} />
                   {values.emailErr && <p style={{ color: 'red', padding: '1px' }}>{values.emailErr}</p>}
                 </Form.Group>
               </Col>
