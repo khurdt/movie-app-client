@@ -56,6 +56,16 @@ export function LoginView(props) {
     }
   };
 
+  if (usernameErr !== '' || passwordErr !== '') {
+    setTimeout(
+      () => {
+        setUsernameErr('')
+        setPasswordErr('')
+      },
+      5000
+    );
+  }
+
   return (
     <Container fluid className='body'>
       <Col className='pb-5'></Col>

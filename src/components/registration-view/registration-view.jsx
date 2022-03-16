@@ -67,6 +67,17 @@ export function RegistrationView() {
     }
   }
 
+  if (usernameErr !== '' || passwordErr !== '' || emailErr !== '') {
+    setTimeout(
+      () => {
+        setUsernameErr('')
+        setPasswordErr('')
+        setEmailErr('')
+      },
+      5000
+    );
+  }
+
   return (
     <Container fluid className='body'>
       <Col className='pb-5'></Col>

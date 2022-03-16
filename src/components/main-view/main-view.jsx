@@ -23,6 +23,7 @@ export class MainView extends React.Component {
     };
     this.removeFavorite = this.removeFavorite.bind(this);
     this.addFavorite = this.addFavorite.bind(this);
+    this.callDispatch = this.callDispatch.bind(this);
   }
 
   //code executed right after the component is added to the DOM
@@ -178,7 +179,7 @@ export class MainView extends React.Component {
               if (movies.length === 0 || !this.state.userData) return <div className='load'><div className='m-auto pt-5'><div className='loading'></div></div></div>
               return <Col>
                 <ProfileView movies={movies} userData={userData} user={user}
-                  removeFavorite={this.removeFavorite} onBackClick={() => history.goBack()} />
+                  removeFavorite={this.removeFavorite} callDispatch={this.callDispatch} onBackClick={() => history.goBack()} />
               </Col>
             }} />
           </Row>

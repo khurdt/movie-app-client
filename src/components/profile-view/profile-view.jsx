@@ -6,7 +6,7 @@ import { Container, Row, Col, Form, Button, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 export function ProfileView(props) {
-    const { movies, onBackClick, userData, removeFavorite } = props;
+    const { movies, onBackClick, userData, removeFavorite, callDispatch } = props;
     useEffect(() => {
         setUsername(props.userData.username);
         setEmail(props.userData.email);
@@ -78,6 +78,7 @@ export function ProfileView(props) {
                 })
                 .then((response) => {
                     localStorage.setItem('user', username);
+                    callDispatch();
                     setUpdateSuccess('update successfull!');
                 })
                 .catch(function (error) {
@@ -107,6 +108,19 @@ export function ProfileView(props) {
             });
     }
 
+    if (updateSuccess !== '' || updateFail !== '' || usernameErr !== '' || passwordErr !== '' || emailErr !== '') {
+        setTimeout(
+            () => {
+                setUpdateSuccess('')
+                setUpdateFail('')
+                setUsernameErr('')
+                setPasswordErr('')
+                setEmailErr('')
+            },
+            5000
+        );
+    }
+
     return (
         <Container fluid className='movie-view-container' >
             <Row className='mb-4 mt-3'>
@@ -118,7 +132,7 @@ export function ProfileView(props) {
                 <Card.Title style={{ fontSize: '30px' }} className='m-3'>Personal Info</Card.Title>
                 <Row>
                     <Col className='m-3' xs={10} md={4}>
-                        {updateSuccess && <p className='signal' style={{ color: 'green', padding: '1px' }}>{updateSuccess}</p>}
+                        {updateSuccess && <p style={{ color: 'green', padding: '1px' }}>{updateSuccess}</p>}
                         {updateFail && <p style={{ color: 'red', padding: '1px' }}>{updateFail}</p>}
                         <Form>
                             <Form.Group className='m-1'>
@@ -205,5 +219,6 @@ ProfileView.propTypes = {
         favoriteMovies: PropTypes.array,
     }).isRequired,
     onBackClick: PropTypes.func.isRequired,
-    removeFavorite: PropTypes.func.isRequired
+    removeFavorite: PropTypes.func.isRequired,
+    callDispatch: PropTypes.func.isRequired
 };
