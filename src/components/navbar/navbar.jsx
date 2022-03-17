@@ -46,7 +46,7 @@ export default function Menu({ user }) {
                                 <Nav.Link style={{ color: 'white' }} href='/'>Movies</Nav.Link>
                             )}
                             {isAuth() && (
-                                <Nav.Link style={{ color: 'white' }} href={`/users/${user}`}>{user}</Nav.Link>
+                                <Nav.Link as={Link} style={{ color: 'white' }} to={`/users/${user}`}>{user}</Nav.Link>
                             )}
                         </Nav>
                     </Navbar.Collapse>
