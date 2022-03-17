@@ -2,7 +2,7 @@ import React from 'react';
 import './movie-card.scss';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import heartLogo from '../../images/heart.png';
+import { Heart } from 'react-feather';
 import { Button, Card, Row, Col } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
@@ -20,44 +20,48 @@ export function MovieCard(props) {
   };
 
   return (
-    <Card className='mt-2 mb-5 movie-card' style={{ color: 'white', backgroundColor: '#1E2127', marginRight: '5px', marginLeft: '5px' }}>
-      <Link className='m-auto pt-3 little-img' to={`/movies/${movie._id}`}>
-        <Card.Img className='m-auto img' src={movie.imagePath} crossOrigin='anonymous' />
-      </Link>
-      <Link style={{ color: 'white' }} to={`/movies/${movie._id}`}>
-        <Card.Text className='title'>{movie.title}</Card.Text>
-      </Link>
-      <Link className='m-auto big-img' to={`/movies/${movie._id}`}>
-        <Card.Img className='m-auto' style={{ maxHeight: '480px' }} src={movie.imagePath} crossOrigin='anonymous' />
-      </Link>
-      <Card.Body>
-        <Card.Text className='overflow-hidden ml-2 desc-display' style={{ height: '50px' }}>{movie.description}</Card.Text>
-        <Card.Footer className='footer-display'>
-          <Row>
-            <Col>
-              <Link to={`/movies/${movie._id}`}>
-                <Button style={{ fontSize: '15px' }} variant='link'>Show More</Button>
-              </Link>
-            </Col>
-            <Col>
-              {isFavorite ? (
-                <Card.Img
-                  className='heart-visible mt-2'
-                  onClick={(e) => removeFavorite(e, movie)}
-                  style={{ width: '20px', height: '20px' }}
-                  src={heartLogo} alt='heart logo' />
-              ) : (
-                <Card.Img
-                  className='heart mt-2'
-                  onClick={(e) => addFavorite(e, movie)}
-                  style={{ width: '20px', height: '20px' }}
-                  src={heartLogo} alt='heart logo' />
-              )}
-            </Col>
-          </Row>
-        </Card.Footer>
-      </Card.Body>
-    </Card >
+    <div className='m-2'>
+      <Card className='m-auto movie-card' style={{ color: 'white', backgroundColor: '#1E2127' }}>
+        <Link className='m-auto pt-3 little-img' to={`/movies/${movie._id}`}>
+          <Card.Img className='m-auto img' src={movie.imagePath} crossOrigin='anonymous' />
+        </Link>
+        <Link style={{ color: 'white' }} to={`/movies/${movie._id}`}>
+          <Card.Text className='title'>{movie.title}</Card.Text>
+        </Link>
+        <Link className='m-auto big-img' to={`/movies/${movie._id}`}>
+          <Card.Img className='m-auto' style={{ maxHeight: '480px' }} src={movie.imagePath} crossOrigin='anonymous' />
+        </Link>
+        <Card.Body>
+          <Card.Text className='overflow-hidden ml-2 desc-display' style={{ height: '50px' }}>{movie.description}</Card.Text>
+          <Card.Footer className='footer-display'>
+            <Row>
+              <Col>
+                <Link to={`/movies/${movie._id}`}>
+                  <Button style={{ fontSize: '15px' }} variant='link'>Show More</Button>
+                </Link>
+              </Col>
+              <Col>
+                {isFavorite ? (
+                  <Heart
+                    color='red'
+                    className='heart-visible mt-2'
+                    onClick={(e) => removeFavorite(e, movie)}
+                    style={{ width: '20px', height: '20px' }}
+                    alt='heart logo' />
+                ) : (
+                  <Heart
+                    color='red'
+                    className='heart mt-2'
+                    onClick={(e) => addFavorite(e, movie)}
+                    style={{ width: '20px', height: '20px' }}
+                    alt='heart logo' />
+                )}
+              </Col>
+            </Row>
+          </Card.Footer>
+        </Card.Body>
+      </Card >
+    </div>
   );
 }
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import '../movie-view/movie-view.scss';
-import heartLogo from '../../images/heart.png';
+import { Heart } from 'react-feather';
 import PropTypes from 'prop-types';
 import { Container, Row, Col, Form, Button, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
@@ -28,7 +28,7 @@ export function MovieView(props) {
           <Button type='button' onClick={() => { onBackClick() }}>Return</Button>
         </Col>
       </Row>
-      <Card className='m-auto movie-view' style={{ maxWidth: '698px', height: '100vh', backgroundColor: '#1E2127', color: 'white' }}>
+      <Card className='m-auto movie-view' style={{ maxWidth: '698px', height: '90vh', backgroundColor: '#1E2127', color: 'white' }}>
         <Card.Img style={{ maxWidth: '698px', height: '26vh', objectFit: 'cover', objectPosition: '0 0' }} src={movie.imagePath} crossOrigin='anonymous' />
         <Card.Text className='ml-3 mt-2'>{movie.genre.name}</Card.Text>
         <Row>
@@ -37,17 +37,19 @@ export function MovieView(props) {
           </Col>
           <Col>
             {isFavorite ? (
-              <Card.Img
+              <Heart
+                color='red'
                 className='heart-visible mt-3'
                 onClick={(e) => removeFavorite(e, movie)}
                 style={{ width: '20px', height: '20px' }}
-                src={heartLogo} alt='heart logo' />
+                alt='heart logo' />
             ) : (
-              <Card.Img
+              <Heart
+                color='red'
                 className='heart mt-3'
                 onClick={(e) => addFavorite(e, movie)}
                 style={{ width: '20px', height: '20px' }}
-                src={heartLogo} alt='heart logo' />
+                alt='heart logo' />
             )}
           </Col>
         </Row>

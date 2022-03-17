@@ -11,14 +11,7 @@ export default function Menu({ user }) {
     }
 
     const isAuth = () => {
-        if (typeof window == 'undefined') {
-            return false;
-        }
-        if (localStorage.getItem('token')) {
-            return localStorage.getItem('token');
-        } else {
-            return false;
-        }
+        return localStorage.getItem('token') || false;
     };
 
     return (

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../movie-view/movie-view.scss';
 import PropTypes from 'prop-types';
+import { Trash } from 'react-feather';
 import { Container, Row, Col, Form, Button, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
@@ -183,7 +184,7 @@ export function ProfileView(props) {
                     </Col>
                     <Col className='m-1'>
                         <Card style={{ backgroundColor: '#1B1D24', color: 'white' }}>
-                            <Card.Title className='m-1'>Favorite Movies</Card.Title>
+                            <Card.Title className='m-3'>Favorite Movies</Card.Title>
                             <Row className='m-auto'>
                                 {userData.favoriteMovies.length === 0 && (
                                     <div style={{ height: '50vh' }} className='text-center'>No Favorite Movies</div>
@@ -196,10 +197,7 @@ export function ProfileView(props) {
                                             <Card key={movie._id} className='m-1 little-card' style={{ maxWidth: '200px', backgroundColor: '#1E2127', color: 'white' }}>
                                                 <Card.Img className='m-auto' style={{ maxWidth: '140px', height: '207px' }} src={movie.imagePath} crossOrigin='anonymous' />
                                                 <Card.Text style={{ fontSize: '12px' }} className='m-2 text-center' >{movie.title}</Card.Text>
-                                                <Link className='m-auto' to={`/movies/${movie._id}`}>
-                                                    <Button size='sm' variant='danger' value={movie._id}
-                                                        onClick={(e) => removeFavorite(e, movie)}>Remove</Button>
-                                                </Link>
+                                                <Trash style={{ cursor: 'pointer' }} className='m-auto' color='red' value={movie._id} onClick={(e) => removeFavorite(e, movie)} />
                                             </Card>
                                         )
                                     }
