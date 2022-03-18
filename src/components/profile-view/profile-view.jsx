@@ -182,10 +182,10 @@ export function ProfileView(props) {
                             <Button className='m-3' variant='danger' onClick={() => onDeleteAccount()}>Delete Account</Button>
                         </Form>
                     </Col>
-                    <Col className='m-1'>
+                    <Col className='my-1 mx-1'>
                         <Card style={{ backgroundColor: '#1B1D24', color: 'white' }}>
                             <Card.Title className='m-3'>Favorite Movies</Card.Title>
-                            <Row className='m-auto'>
+                            <Row>
                                 {userData.favoriteMovies.length === 0 && (
                                     <div style={{ height: '50vh' }} className='text-center'>No Favorite Movies</div>
                                 )}
@@ -194,11 +194,11 @@ export function ProfileView(props) {
                                         movie._id === userData.favoriteMovies.find((m) => m === movie._id)
                                     ) {
                                         return (
-                                            <Card key={movie._id} className='m-1 little-card' style={{ maxWidth: '200px', backgroundColor: '#1E2127', color: 'white' }}>
-                                                <Card.Img className='m-auto' style={{ maxWidth: '140px', height: '207px' }} src={movie.imagePath} crossOrigin='anonymous' />
-                                                <Card.Text style={{ fontSize: '12px' }} className='m-2 text-center' >{movie.title}</Card.Text>
-                                                <Trash style={{ cursor: 'pointer' }} className='m-auto' color='red' value={movie._id} onClick={(e) => removeFavorite(e, movie)} />
-                                            </Card>
+                                            <Row key={movie._id} className='my-2 mx-auto little-card' style={{ minWidth: '300px', backgroundColor: '#1E2127', color: 'white', }}>
+                                                <Card.Img className='m-1' style={{ maxWidth: '50px', height: '70px' }} src={movie.imagePath} crossOrigin='anonymous' />
+                                                <Card.Text style={{ fontSize: '20px', textAlign: 'left' }} className='mx-auto my-4' >{movie.title}</Card.Text>
+                                                <Trash style={{ cursor: 'pointer' }} className='mr-4 my-auto' color='red' value={movie._id} onClick={(e) => removeFavorite(e, movie)} />
+                                            </Row>
                                         )
                                     }
                                 })}

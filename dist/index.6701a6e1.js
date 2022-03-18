@@ -75647,7 +75647,7 @@ function ProfileView(props) {
                                 ]
                             }),
                             /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Col, {
-                                className: "m-1",
+                                className: "my-1 mx-1",
                                 __source: {
                                     fileName: "src/components/profile-view/profile-view.jsx",
                                     lineNumber: 185
@@ -75674,7 +75674,6 @@ function ProfileView(props) {
                                             children: "Favorite Movies"
                                         }),
                                         /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Row, {
-                                            className: "m-auto",
                                             __source: {
                                                 fileName: "src/components/profile-view/profile-view.jsx",
                                                 lineNumber: 188
@@ -75695,10 +75694,10 @@ function ProfileView(props) {
                                                 }),
                                                 userData.favoriteMovies.length > 0 && movies.map((movie)=>{
                                                     if (movie._id === userData.favoriteMovies.find((m)=>m === movie._id
-                                                    )) return(/*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Card, {
-                                                        className: "m-1 little-card",
+                                                    )) return(/*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Row, {
+                                                        className: "my-2 mx-auto little-card",
                                                         style: {
-                                                            maxWidth: '200px',
+                                                            minWidth: '300px',
                                                             backgroundColor: '#1E2127',
                                                             color: 'white'
                                                         },
@@ -75709,10 +75708,10 @@ function ProfileView(props) {
                                                         __self: this,
                                                         children: [
                                                             /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Card.Img, {
-                                                                className: "m-auto",
+                                                                className: "m-1",
                                                                 style: {
-                                                                    maxWidth: '140px',
-                                                                    height: '207px'
+                                                                    maxWidth: '50px',
+                                                                    height: '70px'
                                                                 },
                                                                 src: movie.imagePath,
                                                                 crossOrigin: "anonymous",
@@ -75724,9 +75723,10 @@ function ProfileView(props) {
                                                             }),
                                                             /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Card.Text, {
                                                                 style: {
-                                                                    fontSize: '12px'
+                                                                    fontSize: '20px',
+                                                                    textAlign: 'left'
                                                                 },
-                                                                className: "m-2 text-center",
+                                                                className: "mx-auto my-4",
                                                                 __source: {
                                                                     fileName: "src/components/profile-view/profile-view.jsx",
                                                                     lineNumber: 199
@@ -75738,7 +75738,7 @@ function ProfileView(props) {
                                                                 style: {
                                                                     cursor: 'pointer'
                                                                 },
-                                                                className: "m-auto",
+                                                                className: "mr-4 my-auto",
                                                                 color: "red",
                                                                 value: movie._id,
                                                                 onClick: (e)=>removeFavorite(e, movie)
