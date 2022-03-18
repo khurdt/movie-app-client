@@ -75674,6 +75674,7 @@ function ProfileView(props) {
                                             children: "Favorite Movies"
                                         }),
                                         /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Row, {
+                                            className: "m-auto",
                                             __source: {
                                                 fileName: "src/components/profile-view/profile-view.jsx",
                                                 lineNumber: 188
@@ -75694,10 +75695,9 @@ function ProfileView(props) {
                                                 }),
                                                 userData.favoriteMovies.length > 0 && movies.map((movie)=>{
                                                     if (movie._id === userData.favoriteMovies.find((m)=>m === movie._id
-                                                    )) return(/*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Row, {
-                                                        className: "my-2 mx-auto little-card",
+                                                    )) return(/*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Card, {
+                                                        className: "m-1 little-card",
                                                         style: {
-                                                            minWidth: '300px',
                                                             backgroundColor: '#1E2127',
                                                             color: 'white'
                                                         },
@@ -75710,8 +75710,8 @@ function ProfileView(props) {
                                                             /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Card.Img, {
                                                                 className: "m-1",
                                                                 style: {
-                                                                    maxWidth: '50px',
-                                                                    height: '70px'
+                                                                    maxWidth: '140px',
+                                                                    height: '207px'
                                                                 },
                                                                 src: movie.imagePath,
                                                                 crossOrigin: "anonymous",
@@ -75723,10 +75723,9 @@ function ProfileView(props) {
                                                             }),
                                                             /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Card.Text, {
                                                                 style: {
-                                                                    fontSize: '20px',
-                                                                    textAlign: 'left'
+                                                                    fontSize: '12px'
                                                                 },
-                                                                className: "mx-auto my-4",
+                                                                className: "m-1",
                                                                 __source: {
                                                                     fileName: "src/components/profile-view/profile-view.jsx",
                                                                     lineNumber: 199
@@ -75738,7 +75737,7 @@ function ProfileView(props) {
                                                                 style: {
                                                                     cursor: 'pointer'
                                                                 },
-                                                                className: "mr-4 my-auto",
+                                                                className: "mx-auto my-1",
                                                                 color: "red",
                                                                 value: movie._id,
                                                                 onClick: (e)=>removeFavorite(e, movie)
