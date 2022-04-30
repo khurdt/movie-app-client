@@ -4,7 +4,6 @@ import '../movie-view/movie-view.scss';
 import PropTypes from 'prop-types';
 import { Trash } from 'react-feather';
 import { Container, Row, Col, Form, Button, Card } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
 
 export function ProfileView(props) {
     const { movies, onBackClick, userData, removeFavorite, callDispatch } = props;

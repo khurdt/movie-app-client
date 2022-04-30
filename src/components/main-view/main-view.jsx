@@ -10,7 +10,7 @@ import { MovieView } from '../movie-view/movie-view';
 import { RegistrationView } from '../registration-view/registration-view';
 import { DirectorView } from '../director-view/director-view';
 import { GenreView } from '../genre-view/genre-view.jsx';
-import { BrowserRouter as Router, Routes, Route, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import { Container, Row, Col } from 'react-bootstrap';
 
 export class MainView extends React.Component {
@@ -177,7 +177,7 @@ export class MainView extends React.Component {
               if (movies.length === 0 || !this.state.userData) return <div className='load'><div className='m-auto pt-5'><div className='loading'></div></div></div>
               return <Col>
                 <ProfileView movies={movies} userData={userData} user={user}
-                  removeFavorite={this.removeFavorite} callDispatch={this.callDispatch} onBackClick={() => history.goBack()} />
+                  removeFavorite={this.removeFavorite} callDispatch={this.callDispatch} pageHighlighting={this.pageHighlighting} onBackClick={() => history.goBack()} />
               </Col>
             }} />
           </Row>
