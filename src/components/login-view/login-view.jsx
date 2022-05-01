@@ -3,7 +3,6 @@ import axios from 'axios';
 import './login-view.scss';
 import PropTypes from 'prop-types';
 import { Container, Button, Col, Form, Row } from 'react-bootstrap';
-import Menu from '../navbar/navbar';
 
 
 export function LoginView(props) {

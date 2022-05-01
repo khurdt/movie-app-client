@@ -31,6 +31,8 @@ export class MainView extends React.Component {
       this.props.setUser(localStorage.getItem('user'))
       this.getUserData(accessToken);
       this.getMovies(accessToken);
+    } else {
+      localStorage.clear();
     }
   }
 
@@ -58,6 +60,7 @@ export class MainView extends React.Component {
       })
       .catch(function (error) {
         console.log(error);
+        localStorage.clear()
       })
   }
 
@@ -72,6 +75,7 @@ export class MainView extends React.Component {
       })
       .catch(function (error) {
         console.log(error);
+        localStorage.clear()
       });
   };
 
