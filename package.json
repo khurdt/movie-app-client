@@ -22,6 +22,7 @@
     "@parcel/transformer-image": "^2.0.0-rc.0",
     "@parcel/transformer-sass": "^2.0.0-rc.0",
     "axios": "^0.26.1",
+    "jwt-check-expiration": "^1.0.5",
     "parcel": "^2.0.0-rc.0",
     "parcel-bundler": "^1.12.5",
     "prop-types": "^15.8.1",

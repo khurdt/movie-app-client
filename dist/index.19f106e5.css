@@ -1,0 +1,188 @@
+.movie-card {
+  box-shadow: 4px 4px 6px 4px rgba(12, 17, 26, 0.3);
+  max-width: 400px;
+  height: 725px;
+}
+
+.img {
+  max-width: 326px;
+  height: 481px;
+}
+
+.little-img {
+  display: none;
+}
+
+.big-img {
+  display: block;
+}
+
+.title {
+  font-size: 20px;
+  padding: 15px;
+  margin-left: 30px;
+}
+
+.button-size {
+  font-size: 15px;
+}
+
+.heart {
+  opacity: 0.3;
+}
+
+.heartclick {
+  opacity: 1;
+}
+
+@media all and (max-width: 700px) {
+  .movie-card {
+    max-width: 180px;
+    height: 300px;
+  }
+
+  .img {
+    max-width: 140px;
+    height: 207px;
+  }
+
+  .title {
+    font-size: 12px;
+    margin: 20px;
+    padding: 0;
+  }
+
+  .desc-display {
+    display: none;
+  }
+
+  .button-size {
+    font-size: 7px;
+  }
+
+  .footer-display {
+    display: none;
+  }
+
+  .little-img {
+    display: block;
+  }
+
+  .big-img {
+    display: none;
+  }
+}
+.submenu {
+  border-top: 1px solid #464545;
+  border-bottom: 1px solid #464545;
+}
+.body {
+  position: absolute;
+  background-color: #1266F1;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: -100;
+}
+
+.login-body {
+  box-shadow: 4px 4px 6px 4px rgba(24, 38, 58, 0.3);
+  border: 1px solid black;
+}
+
+.greeting {
+  text-align: center;
+  padding: 10px;
+}
+
+.log-in-greeting {
+  text-align: center;
+  padding: 10px;
+  opacity: 0.7;
+}
+.movie-view {
+  box-shadow: 4px 4px 6px 4px rgba(12, 17, 26, 0.3);
+  min-height: 750px;
+}
+
+.profile-card {
+  height: 90vh;
+}
+
+.little-card {
+  box-shadow: 1px 1px 2px 2px rgba(12, 17, 26, 0.3);
+}
+
+.heart {
+  opacity: 0.3;
+}
+
+.heart:hover {
+  cursor: pointer;
+}
+
+.heart-visible {
+  opacity: 1;
+}
+
+.heart-visible:hover {
+  cursor: pointer;
+}
+
+.label {
+  display: block;
+}
+
+@media all and (min-height: 630px) {
+  .movie-view-container {
+    height: auto;
+  }
+
+  .movie-view {
+    height: auto;
+  }
+
+  .profile-card {
+    height: auto;
+  }
+}
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:wght@300&display=swap");
+* {
+  font-family: "Merriweather", sans-serif;
+}
+.load {
+  background-color: #1B1D24;
+  color: white;
+  height: 100vh;
+  width: 100vh;
+}
+.loading {
+  margin: auto;
+  border: 16px solid black;
+  border-radius: 50%;
+  border-top: 16px solid white;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite;
+  /* Safari */
+  animation: spin 2s linear infinite;
+}
+/* Safari */
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+/*# sourceMappingURL=index.19f106e5.css.map */
