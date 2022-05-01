@@ -67297,8 +67297,22 @@ class Menu extends _reactDefault.default.Component {
     constructor(props){
         super(props);
         this.state = {
-            pageActive: 'home'
+            pageActive: ''
         };
+    }
+    componentDidMount() {
+        if (window.location.href.includes('user')) this.setState({
+            pageActive: 'user'
+        });
+        else if (window.location.href.includes('login')) this.setState({
+            pageActive: 'login'
+        });
+        else if (window.location.href.includes('register')) this.setState({
+            pageActive: 'register'
+        });
+        else this.setState({
+            pageActive: 'home'
+        });
     }
     onLoggedOut = ()=>{
         localStorage.clear();
@@ -67309,16 +67323,20 @@ class Menu extends _reactDefault.default.Component {
         const { user  } = this.props;
         const isAuth = localStorage.getItem('token');
         let homeIcon = {
-            textDecorationColor: '#1266F1',
-            textDecorationThickness: 'solid',
             color: 'white',
-            textDecorationLine: !window.location.href.includes('user') && 'underline'
+            border: !window.location.href.includes('user') ? '2px solid #1266F1' : '2px solid #1E2127'
         };
         let userIcon = {
-            textDecorationColor: '#1266F1',
-            textDecorationThickness: 'solid',
             color: 'white',
-            textDecorationLine: (pageActive === 'user' || window.location.href.includes('users')) && 'underline'
+            border: pageActive === 'user' || window.location.href.includes('users') ? '2px solid #1266F1' : '2px solid #1E2127'
+        };
+        let loginIcon = {
+            color: 'white',
+            border: pageActive === 'login' || window.location.href.includes('login') ? '2px solid #1266F1' : '2px solid #1E2127'
+        };
+        let registerIcon = {
+            color: 'white',
+            border: pageActive === 'register' || window.location.href.includes('register') ? '2px solid #1266F1' : '2px solid #1E2127'
         };
         return(/*#__PURE__*/ _jsxRuntime.jsxs(_jsxRuntime.Fragment, {
             children: [
@@ -67332,7 +67350,7 @@ class Menu extends _reactDefault.default.Component {
                     },
                     __source: {
                         fileName: "myFlix-client/src/components/navbar/navbar.jsx",
-                        lineNumber: 39
+                        lineNumber: 51
                     },
                     __self: this,
                     children: [
@@ -67345,7 +67363,7 @@ class Menu extends _reactDefault.default.Component {
                             href: "/",
                             __source: {
                                 fileName: "myFlix-client/src/components/navbar/navbar.jsx",
-                                lineNumber: 40
+                                lineNumber: 52
                             },
                             __self: this,
                             children: "myFlix"
@@ -67358,11 +67376,12 @@ class Menu extends _reactDefault.default.Component {
                             },
                             __source: {
                                 fileName: "myFlix-client/src/components/navbar/navbar.jsx",
-                                lineNumber: 41
+                                lineNumber: 53
                             },
                             __self: this,
                             children: [
                                 isAuth && /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Button, {
+                                    as: _reactRouterDom.Link,
                                     style: {
                                         color: 'white'
                                     },
@@ -67371,31 +67390,39 @@ class Menu extends _reactDefault.default.Component {
                                     },
                                     __source: {
                                         fileName: "myFlix-client/src/components/navbar/navbar.jsx",
-                                        lineNumber: 43
+                                        lineNumber: 55
                                     },
                                     __self: this,
                                     children: "Logout"
                                 }),
                                 !isAuth && /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Nav.Link, {
-                                    style: {
-                                        color: 'white'
+                                    as: _reactRouterDom.Link,
+                                    onClick: ()=>{
+                                        this.setState({
+                                            pageActive: 'login'
+                                        });
                                     },
-                                    href: "/",
+                                    style: loginIcon,
+                                    to: "/",
                                     __source: {
                                         fileName: "myFlix-client/src/components/navbar/navbar.jsx",
-                                        lineNumber: 46
+                                        lineNumber: 58
                                     },
                                     __self: this,
                                     children: "Login"
                                 }),
                                 !isAuth && /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Nav.Link, {
-                                    style: {
-                                        color: 'white'
+                                    as: _reactRouterDom.Link,
+                                    onClick: ()=>{
+                                        this.setState({
+                                            pageActive: 'register'
+                                        });
                                     },
-                                    href: "/register",
+                                    style: registerIcon,
+                                    to: "/register",
                                     __source: {
                                         fileName: "myFlix-client/src/components/navbar/navbar.jsx",
-                                        lineNumber: 49
+                                        lineNumber: 61
                                     },
                                     __self: this,
                                     children: "Register"
@@ -67412,7 +67439,7 @@ class Menu extends _reactDefault.default.Component {
                     expand: "lg",
                     __source: {
                         fileName: "myFlix-client/src/components/navbar/navbar.jsx",
-                        lineNumber: 54
+                        lineNumber: 66
                     },
                     __self: this,
                     children: [
@@ -67420,7 +67447,7 @@ class Menu extends _reactDefault.default.Component {
                             "aria-controls": "responsive-navbar-nav",
                             __source: {
                                 fileName: "myFlix-client/src/components/navbar/navbar.jsx",
-                                lineNumber: 55
+                                lineNumber: 67
                             },
                             __self: this
                         }),
@@ -67428,25 +67455,21 @@ class Menu extends _reactDefault.default.Component {
                             id: "responsive-navbar-nav",
                             __source: {
                                 fileName: "myFlix-client/src/components/navbar/navbar.jsx",
-                                lineNumber: 56
+                                lineNumber: 68
                             },
                             __self: this,
                             children: /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Nav, {
                                 className: "mr-auto",
                                 __source: {
                                     fileName: "myFlix-client/src/components/navbar/navbar.jsx",
-                                    lineNumber: 57
+                                    lineNumber: 69
                                 },
                                 __self: this,
                                 children: [
                                     isAuth && /*#__PURE__*/ _jsxRuntime.jsx("div", {
-                                        style: {
-                                            border: '1px',
-                                            borderColor: 'blue'
-                                        },
                                         __source: {
                                             fileName: "myFlix-client/src/components/navbar/navbar.jsx",
-                                            lineNumber: 59
+                                            lineNumber: 71
                                         },
                                         __self: this,
                                         children: /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Nav.Link, {
@@ -67459,17 +67482,16 @@ class Menu extends _reactDefault.default.Component {
                                             href: "/",
                                             __source: {
                                                 fileName: "myFlix-client/src/components/navbar/navbar.jsx",
-                                                lineNumber: 60
+                                                lineNumber: 72
                                             },
                                             __self: this,
                                             children: "Movies"
                                         })
                                     }),
                                     isAuth && /*#__PURE__*/ _jsxRuntime.jsx("div", {
-                                        style: userIcon,
                                         __source: {
                                             fileName: "myFlix-client/src/components/navbar/navbar.jsx",
-                                            lineNumber: 64
+                                            lineNumber: 76
                                         },
                                         __self: this,
                                         children: /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Nav.Link, {
@@ -67483,7 +67505,7 @@ class Menu extends _reactDefault.default.Component {
                                             to: `/users/${user}`,
                                             __source: {
                                                 fileName: "myFlix-client/src/components/navbar/navbar.jsx",
-                                                lineNumber: 65
+                                                lineNumber: 77
                                             },
                                             __self: this,
                                             children: user
