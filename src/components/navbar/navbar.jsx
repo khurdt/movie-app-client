@@ -52,13 +52,13 @@ class Menu extends React.Component {
                     <Navbar.Brand style={{ color: '#1266F1', fontSize: '20px', padding: '10px' }} href='/'>myFlix</Navbar.Brand>
                     <Nav className='ml-auto' style={{ backgroundColor: '#1E2127', padding: '5px' }}>
                         {isAuth && (
-                            <Button as={Link} style={{ color: 'white' }} onClick={() => { this.onLoggedOut() }}>Logout</Button>
+                            <Button style={{ color: 'white' }} onClick={() => { this.onLoggedOut() }}>Logout</Button>
                         )}
                         {!isAuth && (
-                            <Nav.Link as={Link} onClick={() => { this.setState({ pageActive: 'login' }) }} style={loginIcon} to='/'>Login</Nav.Link>
+                            <Nav.Link className='text-center' as={Link} onClick={() => { this.setState({ pageActive: 'login' }) }} style={loginIcon} to='/'>Login</Nav.Link>
                         )}
                         {!isAuth && (
-                            <Nav.Link as={Link} onClick={() => { this.setState({ pageActive: 'register' }) }} style={registerIcon} to='/register'>Register</Nav.Link>
+                            <Nav.Link className='text-center' as={Link} onClick={() => { this.setState({ pageActive: 'register' }) }} style={registerIcon} to='/register'>Register</Nav.Link>
                         )}
                     </Nav>
                 </Navbar>
@@ -69,12 +69,12 @@ class Menu extends React.Component {
                             <Nav className='mr-auto'>
                                 {isAuth && (
                                     <div>
-                                        <Nav.Link style={homeIcon} onClick={() => { this.setState({ pageActive: 'home' }) }} href='/'>Movies</Nav.Link>
+                                        <Nav.Link className='text-center' style={homeIcon} onClick={() => { this.setState({ pageActive: 'home' }) }} href='/'>Movies</Nav.Link>
                                     </div>
                                 )}
                                 {isAuth && (
                                     <div>
-                                        <Nav.Link as={Link} style={userIcon} onClick={() => { this.setState({ pageActive: 'user' }) }} to={`/users/${user}`}>{user}</Nav.Link>
+                                        <Nav.Link className='text-center' as={Link} style={userIcon} onClick={() => { this.setState({ pageActive: 'user' }) }} to={`/users/${user}`}>{user}</Nav.Link>
                                     </div>
                                 )}
                             </Nav>

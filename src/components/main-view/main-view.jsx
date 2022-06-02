@@ -12,6 +12,7 @@ import { DirectorView } from '../director-view/director-view';
 import { GenreView } from '../genre-view/genre-view.jsx';
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import { Container, Row, Col } from 'react-bootstrap';
+import { isJwtExpired } from 'jwt-check-expiration';
 
 export class MainView extends React.Component {
   constructor() { //the place to initialize a state's values or data in memory before rendering component
@@ -27,10 +28,12 @@ export class MainView extends React.Component {
   //code executed right after the component is added to the DOM
   componentDidMount() {
     let accessToken = localStorage.getItem('token');
-    if (accessToken !== null) {
+    if (accessToken !== null && !(isJwtExpired(accessToken))) {
       this.props.setUser(localStorage.getItem('user'))
       this.getUserData(accessToken);
       this.getMovies(accessToken);
+    } else {
+      localStorage.clear();
     }
   }
 
