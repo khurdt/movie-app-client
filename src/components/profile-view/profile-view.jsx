@@ -10,7 +10,7 @@ export function ProfileView(props) {
     useEffect(() => {
         setUsername(props.userData.username);
         setEmail(props.userData.email);
-        if (props.userData.birthday !== undefined) {
+        if (props.userData.birthday !== undefined || props.userData.birthday !== null) {
             setBirthday(props.userData.birthday);
         } else {
             setBirthday('');
