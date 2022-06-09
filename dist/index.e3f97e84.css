@@ -1,0 +1,185 @@
+@import "https://fonts.googleapis.com/css2?family=Merriweather:wght@300&display=swap";
+.movie-card {
+  max-width: 400px;
+  height: 725px;
+  box-shadow: 4px 4px 6px 4px #0c111a4d;
+}
+
+.img {
+  max-width: 326px;
+  height: 481px;
+}
+
+.little-img {
+  display: none;
+}
+
+.big-img {
+  display: block;
+}
+
+.title {
+  margin-left: 30px;
+  padding: 15px;
+  font-size: 20px;
+}
+
+.button-size {
+  font-size: 15px;
+}
+
+.heart {
+  opacity: .3;
+}
+
+.heartclick {
+  opacity: 1;
+}
+
+@media (max-width: 700px) {
+  .movie-card {
+    max-width: 180px;
+    height: 300px;
+  }
+
+  .img {
+    max-width: 140px;
+    height: 207px;
+  }
+
+  .title {
+    margin: 20px;
+    padding: 0;
+    font-size: 12px;
+  }
+
+  .desc-display {
+    display: none;
+  }
+
+  .button-size {
+    font-size: 7px;
+  }
+
+  .footer-display {
+    display: none;
+  }
+
+  .little-img {
+    display: block;
+  }
+
+  .big-img {
+    display: none;
+  }
+}
+
+.submenu {
+  border-top: 1px solid #464545;
+  border-bottom: 1px solid #464545;
+}
+
+.body {
+  z-index: -100;
+  background-color: #1266f1;
+  position: absolute;
+  inset: 0;
+}
+
+.login-body {
+  border: 1px solid #000;
+  box-shadow: 4px 4px 6px 4px #18263a4d;
+}
+
+.greeting {
+  text-align: center;
+  padding: 10px;
+}
+
+.log-in-greeting {
+  text-align: center;
+  opacity: .7;
+  padding: 10px;
+}
+
+.movie-view {
+  min-height: 750px;
+  box-shadow: 4px 4px 6px 4px #0c111a4d;
+}
+
+.profile-card {
+  height: 90vh;
+}
+
+.little-card {
+  box-shadow: 1px 1px 2px 2px #0c111a4d;
+}
+
+.heart {
+  opacity: .3;
+}
+
+.heart:hover {
+  cursor: pointer;
+}
+
+.heart-visible {
+  opacity: 1;
+}
+
+.heart-visible:hover {
+  cursor: pointer;
+}
+
+.label {
+  display: block;
+}
+
+@media (min-height: 630px) {
+  .movie-view-container, .movie-view, .profile-card {
+    height: auto;
+  }
+}
+
+* {
+  font-family: Merriweather, sans-serif;
+}
+
+.load {
+  color: #fff;
+  height: 100vh;
+  width: 100vh;
+  background-color: #1b1d24;
+}
+
+.loading {
+  width: 120px;
+  height: 120px;
+  border: 16px solid #000;
+  border-top-color: #fff;
+  border-radius: 50%;
+  margin: auto;
+  animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/*# sourceMappingURL=index.e3f97e84.css.map */
