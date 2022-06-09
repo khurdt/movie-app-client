@@ -1,4 +1,8 @@
-# Movie App Client-Side
+# Movie App Client-Side using React
+
+An application that displays movies from a movie database, and allows you to see information about each movie, its genre and director. One can create an account and collect their personal favorite movies and delete them.
+
+# What the App should do
 ● Returns a list of ALL movies to the user (each listed item with an image, title, and
 description)
 <br><br>
